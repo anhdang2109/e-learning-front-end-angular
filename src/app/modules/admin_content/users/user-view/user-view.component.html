@@ -1,1 +1,403 @@
-<p>user-view works!</p>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Thông tin người dùng</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Quản lý người dùng</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <form method="post">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src="assets/img/default-avatar.jpg"
+                       alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center"><span>Đặng Trần Nam Anh</span></h3>
+
+                <p class="text-muted text-center">Thành viên từ ngày: <span>12-12-2020</span></p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Trạng thái</b> <a class="float-right">
+                    <span>Hoạt động</span>
+                    <span>&nbsp;</span>
+                    <span class="dotGreen"></span>
+                  </a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Quyền hạn</b>
+                    <a class="float-right">
+                      <span>Thành viên</span>
+                      <span>&nbsp;</span> <i class="fas fa-id-badge"></i>
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Ví tiền</b> <a class="float-right"><span></span><span>&nbsp;</span> <i
+                    class="fas fa-coins"></i></a>
+                  </li>
+                  <div class="card-body">
+                    <strong><i class="fas fa-venus-mars"></i><span>&nbsp;</span> Giới tính</strong>
+
+                    <p class="text-muted">
+                      <span>Nam</span>
+                    </p>
+
+                    <hr>
+
+                    <strong><i class="fas fa-phone"></i><span>&nbsp;</span> Số điện thoại</strong>
+
+                    <p class="text-muted">
+                      <span></span>
+                    </p>
+
+                    <hr>
+
+                    <strong><i class="fas fa-envelope"></i><span>&nbsp;</span> Email</strong>
+                    <p class="text-muted"></p>
+                    <hr>
+                  </div>
+                </ul>
+                <a class="btn btn-primary btn-block"><b>Chỉnh sửa thông
+                  tin</b></a>
+                <a class="btn btn-danger btn-block"><b>Xoá người dùng</b></a>
+              </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header p-2">
+              <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link active" href="#basic-info"
+                                        data-toggle="tab">Tài liệu</a></li>
+                <li class="nav-item"><a class="nav-link" href="#upload" data-toggle="tab">Tải lên</a></li>
+                <li class="nav-item"><a class="nav-link" href="#documents" data-toggle="tab">Tin nhắn</a></li>
+              </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+              <div class="tab-content">
+                <div class="active tab-pane" id="basic-info">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Danh sách tài liệu</h3>
+
+                      <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                          <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                          <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                      <table class="table table-hover text-nowrap">
+                        <thead>
+                        <tr>
+                          <th class="text-center" style="width: 10%">#</th>
+                          <th style="width: 25%">Tên tài liệu</th>
+                          <th class="text-center" style="width: 10%">Ngày upload</th>
+                          <th class="text-center" style="width: 25%">Danh mục</th>
+                          <th class="text-center" style="width: 10%">Tải xuống</th>
+                          <th style="width: 20%">Tác vụ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td class="text-center">183</td>
+                          <td>Luận án tốt nghiệp</td>
+                          <td class="text-center">11-7-2014</td>
+                          <td class="text-center">Tài liệu học tập</td>
+                          <td class="text-center"><i class="fas fa-download"></i></td>
+                          <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="/admin/documents/1/view">
+                              <i class="fas fa-folder">
+                              </i>
+                              Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/admin/documents/1/edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">183</td>
+                          <td>Luận án tốt nghiệp</td>
+                          <td class="text-center">11-7-2014</td>
+                          <td class="text-center">Tài liệu học tập</td>
+                          <td class="text-center"><i class="fas fa-download"></i></td>
+                          <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="/admin/documents/1/view">
+                              <i class="fas fa-folder">
+                              </i>
+                              Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/admin/documents/1/edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">183</td>
+                          <td>Luận án tốt nghiệp</td>
+                          <td class="text-center">11-7-2014</td>
+                          <td class="text-center">Tài liệu học tập</td>
+                          <td class="text-center"><i class="fas fa-download"></i></td>
+                          <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="/admin/documents/1/view">
+                              <i class="fas fa-folder">
+                              </i>
+                              Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/admin/documents/1/edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">183</td>
+                          <td>Luận án tốt nghiệp</td>
+                          <td class="text-center">11-7-2014</td>
+                          <td class="text-center">Tài liệu học tập</td>
+                          <td class="text-center"><i class="fas fa-download"></i></td>
+                          <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="/admin/documents/1/view">
+                              <i class="fas fa-folder">
+                              </i>
+                              Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/admin/documents/1/edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">183</td>
+                          <td>Luận án tốt nghiệp</td>
+                          <td class="text-center">11-7-2014</td>
+                          <td class="text-center">Tài liệu học tập</td>
+                          <td class="text-center"><i class="fas fa-download"></i></td>
+                          <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="/admin/documents/1/view">
+                              <i class="fas fa-folder">
+                              </i>
+                              Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/admin/documents/1/edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">183</td>
+                          <td>Luận án tốt nghiệp</td>
+                          <td class="text-center">11-7-2014</td>
+                          <td class="text-center">Tài liệu học tập</td>
+                          <td class="text-center"><i class="fas fa-download"></i></td>
+                          <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="/admin/documents/1/view">
+                              <i class="fas fa-folder">
+                              </i>
+                              Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/admin/documents/1/edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">183</td>
+                          <td>Luận án tốt nghiệp</td>
+                          <td class="text-center">11-7-2014</td>
+                          <td class="text-center">Tài liệu học tập</td>
+                          <td class="text-center"><i class="fas fa-download"></i></td>
+                          <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="/admin/documents/1/view">
+                              <i class="fas fa-folder">
+                              </i>
+                              Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/admin/documents/1/edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">183</td>
+                          <td>Luận án tốt nghiệp</td>
+                          <td class="text-center">11-7-2014</td>
+                          <td class="text-center">Tài liệu học tập</td>
+                          <td class="text-center"><i class="fas fa-download"></i></td>
+                          <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="/admin/documents/1/view">
+                              <i class="fas fa-folder">
+                              </i>
+                              Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/admin/documents/1/edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">183</td>
+                          <td>Luận án tốt nghiệp</td>
+                          <td class="text-center">11-7-2014</td>
+                          <td class="text-center">Tài liệu học tập</td>
+                          <td class="text-center"><i class="fas fa-download"></i></td>
+                          <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="/admin/documents/1/view">
+                              <i class="fas fa-folder">
+                              </i>
+                              Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/admin/documents/1/edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">183</td>
+                          <td>Luận án tốt nghiệp</td>
+                          <td class="text-center">11-7-2014</td>
+                          <td class="text-center">Tài liệu học tập</td>
+                          <td class="text-center"><i class="fas fa-download"></i></td>
+                          <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="/admin/documents/1/view">
+                              <i class="fas fa-folder">
+                              </i>
+                              Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/admin/documents/1/edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="card-footer clearfix">
+                      <ul class="pagination pagination-sm m-0 float-right">
+                        <li class="page-item"><a class="page-link" href="#">«</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">»</a></li>
+                      </ul>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="active tab-pane" id="documents">
+                </div>
+                <!-- /.tab-pane -->
+              </div>
+              <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>

@@ -12,6 +12,7 @@ import { QuestionsComponent } from './modules/admin_content/questions/questions.
 import { AssignmentsComponent } from './modules/admin_content/assignments/assignments.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AdminModule} from './_shared/admin_layout/admin.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {AdminModule} from './_shared/admin_layout/admin.module';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AdminModule
+    AdminModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
