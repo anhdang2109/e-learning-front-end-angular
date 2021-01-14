@@ -15,7 +15,6 @@ import { QuestionsComponent } from './modules/admin_content/questions/questions.
 import { AssignmentsComponent } from './modules/admin_content/assignments/assignments.component';
 import { StudiesComponent } from './modules/admin_content/studies/studies.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,10 +25,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AdminLayoutComponent,
     GroupsComponent,
     CoursesComponent,
-    QuizzesComponent,
-    QuestionsComponent,
     AssignmentsComponent,
-    StudiesComponent
+    StudiesComponent,
   ],
   imports: [
     AppRoutingModule,
