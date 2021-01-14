@@ -1,13 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from '../../modules/admin_content/dashboard/dashboard.component';
+import {SidebarComponent} from './admin-sidebar/sidebar.component';
+import {AdminControlBarComponent} from './admin-control-bar/admin-control-bar.component';
+import {FooterComponent} from './admin-footer/footer.component';
+import {HeaderComponent} from './admin-header/header.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'admin_content/dashboard'
+    redirectTo: '/admin/dashboard'
   },
   {
     path: 'dashboard',
@@ -21,11 +25,23 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-
+    SidebarComponent,
+    HeaderComponent,
+    FooterComponent,
+    AdminControlBarComponent,
+    DashboardComponent
+  ],
+  exports: [
+    SidebarComponent,
+    HeaderComponent,
+    FooterComponent,
+    AdminControlBarComponent,
+    DashboardComponent
   ],
   imports: [
     RouterModule.forChild(routes),
     CommonModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+}

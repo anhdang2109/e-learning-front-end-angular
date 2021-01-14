@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileComponent } from './profile.component';
+import { AdminControlBarComponent } from './admin-control-bar.component';
 
-describe('ProfileComponent', () => {
-  let component: ProfileComponent;
-  let fixture: ComponentFixture<ProfileComponent>;
+describe('AdminControlBarComponent', () => {
+  let component: AdminControlBarComponent;
+  let fixture: ComponentFixture<AdminControlBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ]
+      declarations: [ AdminControlBarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileComponent);
+    fixture = TestBed.createComponent(AdminControlBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

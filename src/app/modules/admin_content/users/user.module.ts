@@ -40,6 +40,13 @@ const routes: Routes = [
     UserViewComponent,
     UserImportComponent
   ],
+  exports: [
+    UsersComponent,
+    UserCreateComponent,
+    UserEditComponent,
+    UserViewComponent,
+    UserImportComponent
+  ],
   imports: [
     RouterModule.forChild(routes),
     CommonModule

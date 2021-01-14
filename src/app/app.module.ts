@@ -4,9 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {AdminLayoutComponent} from './_shared/admin_layout/admin-layout.component';
 import {HomeComponent} from './modules/home_content/home.component';
-import {HeaderComponent} from './_shared/admin_layout/admin-header/header.component';
-import {FooterComponent} from './_shared/admin_layout/admin-footer/footer.component';
-import {SidebarComponent} from './_shared/admin_layout/admin-sidebar/sidebar.component';
 import {AppRoutingModule} from './app-routing.module';
 import { GroupsComponent } from './modules/admin_content/groups/groups.component';
 import { CoursesComponent } from './modules/admin_content/courses/courses.component';
@@ -15,14 +12,12 @@ import { QuestionsComponent } from './modules/admin_content/questions/questions.
 import { AssignmentsComponent } from './modules/admin_content/assignments/assignments.component';
 import { StudiesComponent } from './modules/admin_content/studies/studies.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AdminModule} from './_shared/admin_layout/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent,
-    SidebarComponent,
-    FooterComponent,
     AdminLayoutComponent,
     GroupsComponent,
     CoursesComponent,
@@ -34,7 +29,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
