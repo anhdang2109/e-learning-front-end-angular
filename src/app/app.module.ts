@@ -12,7 +12,10 @@ import { QuestionsComponent } from './modules/admin_content/questions/questions.
 import { AssignmentsComponent } from './modules/admin_content/assignments/assignments.component';
 import { StudiesComponent } from './modules/admin_content/studies/studies.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+<<<<<<< HEAD
 import {AdminModule} from './_shared/admin_layout/admin.module';
+=======
+>>>>>>> 649cfcc79633db762424c350b74ddbc2f0d3e67e
 import { AssumptionComponent } from './modules/admin_content/assumption/assumption.component';
 import { AssumptionCreateComponent } from './modules/admin_content/assumption/assumption-create/assumption-create.component';
 import { AssumptionEditComponent } from './modules/admin_content/assumption/assumption-edit/assumption-edit.component';
@@ -33,7 +36,22 @@ import { AttemptViewComponent } from './modules/admin_content/attempt/attempt-vi
     CoursesComponent,
     QuizzesComponent,
     QuestionsComponent,
+<<<<<<< HEAD
     AssignmentsComponent
+=======
+    AssignmentsComponent,
+    StudiesComponent,
+    AssumptionComponent,
+    AssumptionCreateComponent,
+    AssumptionEditComponent,
+    AssumptionImportComponent,
+    AssumptionViewComponent,
+    AttemptComponent,
+    AttemptCreateComponent,
+    AttemptEditComponent,
+    AttemptImportComponent,
+    AttemptViewComponent
+>>>>>>> 649cfcc79633db762424c350b74ddbc2f0d3e67e
   ],
   imports: [
     AppRoutingModule,

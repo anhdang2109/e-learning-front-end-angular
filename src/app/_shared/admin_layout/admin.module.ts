@@ -22,7 +22,11 @@ const routes: Routes = [
     loadChildren: () => import('../../modules/admin_content/users/user.module').then(m => m.UserModule)
   },
   {
+<<<<<<< HEAD
     path: 'studies',
+=======
+    path: 'study',
+>>>>>>> 649cfcc79633db762424c350b74ddbc2f0d3e67e
     loadChildren: () => import('../../modules/admin_content/studies/study.module').then(m => m.StudyModule)
   },
   {
