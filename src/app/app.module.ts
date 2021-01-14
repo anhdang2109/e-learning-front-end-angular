@@ -21,8 +21,6 @@ import {AdminModule} from './_shared/admin_layout/admin.module';
     AdminLayoutComponent,
     GroupsComponent,
     CoursesComponent,
-    QuizzesComponent,
-    QuestionsComponent,
     AssignmentsComponent
   ],
   imports: [

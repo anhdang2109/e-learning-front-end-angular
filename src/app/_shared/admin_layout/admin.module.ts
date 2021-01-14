@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from '../../modules/admin_content/dashboard/dashboard.component';
 import {SidebarComponent} from './admin-sidebar/sidebar.component';
@@ -20,6 +20,22 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () => import('../../modules/admin_content/users/user.module').then(m => m.UserModule)
+  },
+  {
+    path: 'categories',
+    loadChildren: () => import('../../modules/admin_content/category/category.module').then(m => m.CategoryModule)
+  },
+  {
+    path: 'questions',
+    loadChildren: () => import('../../modules/admin_content/questions/questions.module').then(m => m.QuestionsModule)
+  },
+  {
+    path: 'questions-answer',
+    loadChildren: () => import('../../modules/admin_content/questions-answer/questions-answer.module').then(m => m.QuestionsAnswerModule)
+  },
+  {
+    path: 'quizzes',
+    loadChildren: () => import('../../modules/admin_content/quizzes/quizzes.module').then(m => m.QuizzesModule)
   },
   {
 
@@ -56,5 +72,4 @@ const routes: Routes = [
     CommonModule
   ]
 })
-export class AdminModule {
-}
+export class AdminModule { }
