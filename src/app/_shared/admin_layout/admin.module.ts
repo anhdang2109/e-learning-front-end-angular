@@ -22,7 +22,7 @@ const routes: Routes = [
     loadChildren: () => import('../../modules/admin_content/users/user.module').then(m => m.UserModule)
   },
   {
-    path: 'study',
+    path: 'studies',
     loadChildren: () => import('../../modules/admin_content/studies/study.module').then(m => m.StudyModule)
   },
   {

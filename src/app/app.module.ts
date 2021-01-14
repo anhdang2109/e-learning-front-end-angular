@@ -33,18 +33,7 @@ import { AttemptViewComponent } from './modules/admin_content/attempt/attempt-vi
     CoursesComponent,
     QuizzesComponent,
     QuestionsComponent,
-    AssignmentsComponent,
-    StudiesComponent,
-    AssumptionComponent,
-    AssumptionCreateComponent,
-    AssumptionEditComponent,
-    AssumptionImportComponent,
-    AssumptionViewComponent,
-    AttemptComponent,
-    AttemptCreateComponent,
-    AttemptEditComponent,
-    AttemptImportComponent,
-    AttemptViewComponent
+    AssignmentsComponent
   ],
   imports: [
     AppRoutingModule,

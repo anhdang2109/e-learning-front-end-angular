@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StudyCreateComponent } from './study-create/study-create.component';
-import { StudyEditComponent } from './study-edit/study-edit.component';
-import { StudyImportComponent } from './study-import/study-import.component';
-import { StudyViewComponent } from './study-view/study-view.component';
 import {RouterModule, Routes} from "@angular/router";
 import {StudiesComponent} from "./studies.component";
+import {StudyCreateComponent} from "./study-create/study-create.component";
+import {StudyEditComponent} from "./study-edit/study-edit.component";
+import {StudyImportComponent} from "./study-import/study-import.component";
+import {StudyViewComponent} from "./study-view/study-view.component";
 
 const routes: Routes = [
   {
