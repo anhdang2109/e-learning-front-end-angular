@@ -12,7 +12,7 @@ import { UserImportComponent } from './user-import/user-import.component';
 const routes: Routes = [
   {
     path: '',
-    component: UsersComponent,
+    component: UsersComponent
   },
   {
     path: 'add',
