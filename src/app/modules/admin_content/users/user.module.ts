@@ -15,7 +15,7 @@ const routes: Routes = [
     component: UsersComponent
   },
   {
-    path: 'add',
+    path: 'create',
     component: UserCreateComponent
   },
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'view',
-    component: UserEditComponent
+    component: UserViewComponent
   },
   {
     path: 'import',

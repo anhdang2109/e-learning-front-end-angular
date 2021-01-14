@@ -1,1 +1,178 @@
-<p>user-edit works!</p>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Quản lý người dùng</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Quản lý người dùng</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <form  method="post">
+      <div class="container-fluid">
+        <!-- .row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- .card-header -->
+              <div class="card-header">
+                <h3 class="card-title">Khởi tạo người dùng</h3>
+              </div>
+              <!-- /.card-header -->
+
+              <!-- .card-body -->
+              <div class="card-body">
+                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle"
+                                 src="assets/img/default-avatar.jpg"
+                                 alt="User profile picture">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="col-form-label">
+                              <strong>Ảnh đại diện:</strong>
+                            </label>
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input"
+                                     id="customFile">
+                              <label class="custom-file-label" for="customFile">Choose
+                                file</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">
+                              <strong>Họ & Tên:</strong>
+                            </label>
+                            <input type="text" class="form-control"
+                                   id="exampleInputName"
+                                   placeholder="Điền tên">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control"
+                                   id="exampleInputEmail1"
+                                   placeholder="Điền email">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control"
+                                   id="exampleInputPassword1"
+                                   placeholder="Điền mật khẩu">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group"><label class="col-form-label"><strong>Giới
+                            tính:</strong></label><select name="gender"
+                                                          id="user_gender"
+                                                          class="form-control m-input">
+                            <option value="0">Nữ</option>
+                            <option value="1">Nam</option>
+                            <option selected="selected" value="2">Khác</option>
+                          </select></div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="col-form-label">
+                              <strong>Số điện thoại:</strong>
+                            </label>
+                            <input type="text"
+                                   name="user[phone]"
+                                   id="user_phone"
+                                   class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <label class="col-form-label">
+                            <strong>Quyền:</strong></label>
+                          <select name="role" class="form-control">
+                            <option value="2">Người dùng</option>
+                            <option value="1">Admin</option>
+                          </select>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="col-form-label"><strong>Ví tiền</strong>
+                            </label>
+                            <input type="text"
+                                   name="user[year_of_birth]"
+                                   id="user_year_of_birth"
+                                   class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label class="col-form-label"><strong>Trạng thái: </strong>
+                            <span>&nbsp;</span>
+                            <span>&nbsp;</span>
+                            <span>&nbsp;</span>
+                          </label>
+                          <div class="form-check-inline">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="status" value="active" checked="true">Hoạt động
+                            </label>
+                          </div>
+                          <div class="form-check-inline">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="status" value="disable">Tạm dừng
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-success" style="width: 205px">
+                  <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                  <span>&nbsp;</span>
+                  Thêm người dùng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+    </form>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content -->
+</div>
+

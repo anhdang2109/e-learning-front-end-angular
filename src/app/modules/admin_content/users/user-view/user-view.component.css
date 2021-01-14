@@ -1,0 +1,19 @@
+td{
+  white-space: normal;
+}
+.dotGreen {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  background-color: #4CAF4F;
+  border-radius: 50%;
+}
+.dotRed {
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 15px;
+  width: 15px;
+  background-color: #DA5966;
+  border-radius: 50%;
+}
