@@ -18,11 +18,11 @@ const routes: Routes = [
     component: StudyCreateComponent
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     component: StudyEditComponent
   },
   {
-    path: 'view',
+    path: 'view/:id',
     component: StudyEditComponent
   },
   {

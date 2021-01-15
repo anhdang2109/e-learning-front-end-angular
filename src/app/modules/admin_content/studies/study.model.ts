@@ -6,5 +6,5 @@ export interface Study {
   created_at?: string;
   updated_at?: string;
   quiz?: string;
-  // attempts: []
+  attempts: [];
 }
