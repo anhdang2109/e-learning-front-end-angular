@@ -18,7 +18,7 @@ const routes: Routes = [
     component: QuestionsComponent
   },
   {
-    path: 'add',
+    path: 'create',
     component: QuestionsCreateComponent
   },
   {
