@@ -1,38 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {User} from "./user.model";
+import {UserService} from "./user.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
-interface Country {
-  name: string;
-  flag: string;
-  area: number;
-  population: number;
-}
-
-const COUNTRIES: Country[] = [
-  {
-    name: 'Russia',
-    flag: 'f/f3/Flag_of_Russia.svg',
-    area: 17075200,
-    population: 146989754
-  },
-  {
-    name: 'Canada',
-    flag: 'c/cf/Flag_of_Canada.svg',
-    area: 9976140,
-    population: 36624199
-  },
-  {
-    name: 'United States',
-    flag: 'a/a4/Flag_of_the_United_States.svg',
-    area: 9629091,
-    population: 324459463
-  },
-  {
-    name: 'China',
-    flag: 'f/fa/Flag_of_the_People%27s_Republic_of_China.svg',
-    area: 9596960,
-    population: 1409517397
-  }
-];
 @Component(
   {
     selector: 'app-users',
@@ -40,14 +10,35 @@ const COUNTRIES: Country[] = [
     styleUrls: ['./users.component.css']
   })
 export class UsersComponent implements OnInit {
-  countries = COUNTRIES;
-  constructor() {
+  user: User[];
+  newU: FormGroup;
+
+  constructor(private userService: UserService,
+              private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.getAllUser();
+    this.newU = this.fb.group({
+        imageSource: [''],
+        username: [''],
+        email: [''],
+        password: [''],
+        gender: [''],
+        title: [''],
+        phone: [''],
+        isDeleted: ['']
+      }
+    );
+  }
+
+  getAllUser(): User[] {
+    this.userService.getAllUser().subscribe((data: any) => {
+      this.user = data;
+    });
+    return this.user;
   }
 }
-
 
 
 
