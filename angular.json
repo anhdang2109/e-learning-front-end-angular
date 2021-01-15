@@ -144,5 +144,8 @@
       }
     }
   },
-  "defaultProject": "angular-users"
+  "defaultProject": "angular-users",
+  "cli": {
+    "analytics": "2919c18b-55ee-427d-84ff-2193f5889aa6"
+  }
 }
