@@ -21,4 +21,12 @@ export class UserService {
   getUsers(): Observable<HttpResponse<User[]>> {
     return this.http.get<User[]>(USER_API_ENDPOINT + '/users', {observe: 'response'});
   }
+
+  userDetail(id: string): Observable<User> {
+    return this.http.get<User>(USER_API_ENDPOINT + `/users/${id}`);
+  }
+
+  create(id, user): Observable<User> {
+    return this.http.post<User>(USER_API_ENDPOINT + `/user/${id}`, user);
+  }
 }

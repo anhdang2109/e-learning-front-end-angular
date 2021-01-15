@@ -20,7 +20,7 @@
 
   <!-- Main content -->
   <div class="content">
-    <form  method="post">
+    <form  [formGroup]="createForm" (ngSubmit)="createUser()">
       <div class="container-fluid">
         <!-- .row -->
         <div class="row">
@@ -54,7 +54,7 @@
                             </label>
                             <div class="custom-file">
                               <input type="file" class="custom-file-input"
-                                     id="customFile">
+                                     id="customFile" (change)="saveImg($event)">
                               <label class="custom-file-label" for="customFile">Choose
                                 file</label>
                             </div>

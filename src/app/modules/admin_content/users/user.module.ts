@@ -6,6 +6,7 @@ import {UsersComponent} from './users.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { UserImportComponent } from './user-import/user-import.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -47,9 +48,10 @@ const routes: Routes = [
     UserViewComponent,
     UserImportComponent
   ],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule
-  ]
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule,
+        ReactiveFormsModule
+    ]
 })
 export class UserModule { }

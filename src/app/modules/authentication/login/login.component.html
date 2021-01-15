@@ -9,9 +9,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg"><b>Đăng nhập</b></p>
 
-      <!--      <form (ngSubmit)="login()">-->
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Username" name="username" [(ngModel)]="user.username">
+        <input type="text" class="form-control" placeholder="Username" name="username" formControlName="username">
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-user"></span>
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="input-group mb-3">
-        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password">
+        <input type="password" class="form-control" placeholder="Password" formControlName="password">
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-lock"></span>
@@ -42,7 +42,7 @@
         </div>
         <!-- /.col -->
       </div>
-      <!--      </form>-->
+            </form>
 
       <!--      <div class="social-auth-links text-center mb-3">-->
       <!--        <p>- OR -</p>-->

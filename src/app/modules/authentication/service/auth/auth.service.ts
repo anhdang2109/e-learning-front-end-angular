@@ -9,16 +9,15 @@ import {UserToken} from "../../../admin_content/users/user-token";
 import {User} from "../../../admin_content/users/user.model";
 
 const API_URL = `${environment.API_ENDPOINT}`;
-const CREATE: string = environment.CREATE;
-const UPDATE: string = environment.UPDATE;
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  update = new EventEmitter<string>();
   private currentUserSubject: BehaviorSubject<UserToken>;
   public currentUser: Observable<UserToken>;
+  update = new EventEmitter<string>();
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<UserToken>(JSON.parse(localStorage.getItem('user')));
@@ -29,18 +28,18 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+  register(user: User): Observable<User> {
+    return this.http.post<User>(API_URL + '/register', user);
+  }
+
   login(username: string, password: string) {
-    return this.http.post(API_URL + '/login', {username, password})
+    return this.http.post<any>(API_URL + '/login', {username, password})
       .pipe(map(user => {
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUserSubject.next(user);
         this.update.emit('login');
         return user;
       }));
-  }
-
-  register(user: User): Observable<User> {
-    return this.http.post<User>(API_URL + '/register', user);
   }
 
   logout() {

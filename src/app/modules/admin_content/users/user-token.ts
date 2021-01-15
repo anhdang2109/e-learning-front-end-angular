@@ -1,3 +1,7 @@
+
+
+import {Role} from "./role";
+
 export interface UserToken {
   id?: number;
   username?: string;
@@ -9,4 +13,5 @@ export interface UserToken {
   imageSource?: string;
   token?: string;
   isDeleted?: number;
+  roles: Role[];
 }
