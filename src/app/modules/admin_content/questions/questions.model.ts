@@ -1,4 +1,4 @@
-export class Questions {
+export class Question {
   id: number;
   type: string;
   level: string;
