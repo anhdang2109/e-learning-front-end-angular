@@ -6,6 +6,7 @@ import {SidebarComponent} from './admin-sidebar/sidebar.component';
 import {AdminControlBarComponent} from './admin-control-bar/admin-control-bar.component';
 import {FooterComponent} from './admin-footer/footer.component';
 import {HeaderComponent} from './admin-header/header.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes = [
   {
@@ -65,7 +66,9 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     AdminControlBarComponent,
-    DashboardComponent
+    DashboardComponent,
+    FormsModule,
+    ReactiveFormsModule
   ],
   imports: [
     RouterModule.forChild(routes),

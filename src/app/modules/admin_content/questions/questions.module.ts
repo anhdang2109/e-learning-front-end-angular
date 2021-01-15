@@ -10,6 +10,7 @@ import {QuestionsCreateComponent} from "./questions-create/questions-create.comp
 import {QuestionsEditComponent} from "./questions-edit/questions-edit.component";
 import {QuestionsImportComponent} from "./questions-import/questions-import.component";
 import {QuestionsViewComponent} from "./questions-view/questions-view.component";
+import {FormsModule} from "@angular/forms";
 
 
 const routes: Routes = [
@@ -46,7 +47,8 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class QuestionsModule { }

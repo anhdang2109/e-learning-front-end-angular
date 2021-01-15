@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    const user = this.setNewUser();
+    let user = this.setNewUser();
     this.authService.register(user).subscribe(() => {
       console.log('Đăng ký thành công');
       this.registerForm.reset();
