@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {Study} from "../study.model";
+import {Study} from "../model/study.model";
 import {Observable} from "rxjs";
 
 const API = environment.API_FAKE;
@@ -18,8 +18,8 @@ export class StudyService {
     return this.httpClient.get<Study[]>(API + '/studies');
   }
 
-  getById(id: string | null): Observable<Study> {
-    return this.httpClient.get<Study>(API + `/${id}`);
+  getById(id: string): Observable<Study> {
+    return this.httpClient.get<Study>(API + `/studies/${id}`);
   }
 
   create(study: Study): Observable<Study> {
@@ -27,14 +27,10 @@ export class StudyService {
   }
 
   deleteById(id: string): Observable<Study> {
-    return this.httpClient.delete<Study>(API + `/${id}`);
+    return this.httpClient.delete<Study>(API + `/studies/${id}`);
   }
 
   updateById(id: string, study: Study): Observable<Study> {
-    return this.httpClient.put<Study>(API + `/${id}`, study);
-  }
-
-  getAPI(): string {
-    return API;
+    return this.httpClient.put<Study>(API + `/studies/${id}`, study);
   }
 }

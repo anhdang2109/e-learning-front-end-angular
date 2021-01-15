@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'view/:id',
-    component: StudyEditComponent
+    component: StudyViewComponent
   },
   {
     path: 'import',
@@ -33,6 +33,13 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    StudiesComponent,
+    StudyCreateComponent,
+    StudyEditComponent,
+    StudyImportComponent,
+    StudyViewComponent
+  ],
+  exports: [
     StudiesComponent,
     StudyCreateComponent,
     StudyEditComponent,
