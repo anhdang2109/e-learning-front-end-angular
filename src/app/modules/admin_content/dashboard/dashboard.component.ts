@@ -23,10 +23,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.role = localStorage.getItem("ROLE");
     if (this.role == "ROLE_USER") {
-      alert("Bạn không có quyền!")
+      alert("Bạn không có quyền!");
       this.router.navigate(['/home']);
     }
     this.currentUsername = localStorage.getItem("USERNAME");
-
   }
 }
