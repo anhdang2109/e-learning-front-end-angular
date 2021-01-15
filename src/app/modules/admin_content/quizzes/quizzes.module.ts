@@ -17,7 +17,7 @@ const routes: Routes = [
     component: QuizzesComponent
   },
   {
-    path: 'add',
+    path: 'create',
     component: QuizzesCreateComponent
   },
   {
