@@ -20,7 +20,7 @@
 
   <!-- Main content -->
   <div class="content">
-    <form  method="post">
+    <form  [formGroup]="userForm" (ngSubmit)="update()">
       <div class="container-fluid">
         <!-- .row -->
         <div class="row">
@@ -54,7 +54,7 @@
                             </label>
                             <div class="custom-file">
                               <input type="file" class="custom-file-input"
-                                     id="customFile">
+                                     id="customFile" formControlName="imageSource">
                               <label class="custom-file-label" for="customFile">Choose
                                 file</label>
                             </div>
@@ -65,11 +65,11 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="exampleInputEmail1">
-                              <strong>Họ & Tên:</strong>
+                              <strong>Tài khoản</strong>
                             </label>
                             <input type="text" class="form-control"
                                    id="exampleInputName"
-                                   placeholder="Điền tên">
+                                   placeholder="Điền tên" formControlName="username">
                           </div>
                         </div>
                       </div>
@@ -79,7 +79,7 @@
                             <label for="exampleInputEmail1">Email</label>
                             <input type="email" class="form-control"
                                    id="exampleInputEmail1"
-                                   placeholder="Điền email">
+                                   placeholder="Điền email" formControlName="email">
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -87,7 +87,7 @@
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" class="form-control"
                                    id="exampleInputPassword1"
-                                   placeholder="Điền mật khẩu">
+                                   placeholder="Điền mật khẩu" formControlName="password">
                           </div>
                         </div>
                       </div>
@@ -96,9 +96,9 @@
                           <div class="form-group"><label class="col-form-label"><strong>Giới
                             tính:</strong></label><select name="gender"
                                                           id="user_gender"
-                                                          class="form-control m-input">
-                            <option value="0">Nữ</option>
-                            <option value="1">Nam</option>
+                                                          class="form-control m-input" formControlName="gender">
+                            <option value="Nữ">Nữ</option>
+                            <option value="Nam">Nam</option>
                             <option selected="selected" value="2">Khác</option>
                           </select></div>
                         </div>
@@ -110,26 +110,26 @@
                             <input type="text"
                                    name="user[phone]"
                                    id="user_phone"
-                                   class="form-control">
+                                   class="form-control" formControlName="phone">
                           </div>
                         </div>
                         <div class="col-md-3">
                           <label class="col-form-label">
-                            <strong>Quyền:</strong></label>
-                          <select name="role" class="form-control">
+                            <strong>Quyền</strong></label>
+                          <select name="role" class="form-control" formControlName="roles">
                             <option value="2">Người dùng</option>
                             <option value="1">Admin</option>
                           </select>
                         </div>
                         <div class="col-md-3">
-                          <div class="form-group">
-                            <label class="col-form-label"><strong>Ví tiền</strong>
-                            </label>
-                            <input type="text"
-                                   name="user[year_of_birth]"
-                                   id="user_year_of_birth"
-                                   class="form-control">
-                          </div>
+                          <label class="col-form-label">
+                            <strong>Nghề nghiệp</strong></label>
+                          <select name="title" class="form-control" formControlName="title">
+                            <option value="">Khác </option>
+                            <option value="Giáo viên">Giáo viên</option>
+                            <option value="Sinh viên, học sinh">Sinh viên, học sinh</option>
+                            <option value="Lập trình viên">Lập trình viên</option>
+                          </select>
                         </div>
                       </div>
                       <br>
@@ -142,12 +142,12 @@
                           </label>
                           <div class="form-check-inline">
                             <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="status" value="active" checked="true">Hoạt động
+                              <input type="radio" class="form-check-input" name="isDeleted" value="1"  formControlName="isDeleted">Hoạt động
                             </label>
                           </div>
                           <div class="form-check-inline">
                             <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="status" value="disable">Tạm dừng
+                              <input type="radio" class="form-check-input" name="isDeleted" value="0" formControlName="isDeleted">Tạm dừng
                             </label>
                           </div>
                         </div>
@@ -162,7 +162,7 @@
                 <button type="submit" class="btn btn-success" style="width: 205px">
                   <i class="fas fa-plus-circle" aria-hidden="true"></i>
                   <span>&nbsp;</span>
-                  Thêm người dùng
+                  Sửa người dùng
                 </button>
               </div>
             </div>

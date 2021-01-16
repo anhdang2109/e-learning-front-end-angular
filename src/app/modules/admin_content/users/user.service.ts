@@ -19,11 +19,20 @@ export class UserService {
   logout(): void {
   }
 
-  // getUsers(): Observable<HttpResponse<User[]>> {
-  //   return this.http.get<User[]>(USER_API_ENDPOINT + '/users', {observe: 'response'});
-  // }
-
   getAllUser(): Observable<any> {
     return this.http.get(this.API);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(this.API + `/delete/+${id}`);
+  }
+
+  update(user: User): Observable<any> {
+    console.log(this.API  + `/edit/${user.id}`);
+    return this.http.put<User>(this.API  + `/edit/${user.id}`, user);
+  }
+
+  getUserById(id: number): Observable<any> {
+    return this.http.get(this.API + `/` + `${id}`);
   }
 }

@@ -27,7 +27,9 @@ export class UsersComponent implements OnInit {
         gender: [''],
         title: [''],
         phone: [''],
-        isDeleted: ['']
+        isDeleted: [''],
+        createdAt: [''],
+        updatetAt: ['']
       }
     );
   }

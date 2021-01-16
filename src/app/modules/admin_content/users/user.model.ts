@@ -11,5 +11,7 @@ export class User {
   imageSource?: string;
   token?: string;
   isDeleted?: number;
+  createdAt?: any;
+  updatedAt?: any;
   // roles: Role[];
 }

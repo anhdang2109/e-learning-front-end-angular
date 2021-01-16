@@ -69,13 +69,14 @@
                     <table class="table table-hover text-nowrap table-responsive">
                       <thead>
                       <tr>
-                        <th style="width: 5%">#</th>
-                        <th style="width: 7%" class="text-center">Ava</th>
-                        <th style="width: 5%" class="text-center">Tên</th>
+                        <th style="width: 2%">#</th>
+                        <th style="width: 5%" class="text-center">Tài khoản</th>
                         <th style="width: 5%" class="text-center">Giới tính</th>
                         <th style="width: 5%" class="text-center">E-mail</th>
                         <th style="width: 5%" class="text-center">Nghề nghiệp</th>
                         <th style="width: 5%" class="text-center">Điện thoại</th>
+                        <th style="width: 5%" class="text-center">Ngày tạo</th>
+                        <th style="width: 5%" class="text-center">Ngày cập nhập</th>
                         <th style="width: 5%" class="text-center">Trạng thái</th>
                         <th></th>
                       </tr>
@@ -83,15 +84,16 @@
                       <tbody>
                       <tr *ngFor="let user of user; index as i">
                         <th scope="row">{{ i + 1 }}</th>
-                        <td>{{ user.imageSource}}</td>
                         <td>{{ user.username}}</td>
                         <td>{{ user.gender }}</td>
                         <td>{{ user.email  }}</td>
                         <td>{{ user.title  }}</td>
                         <td>{{ user.phone  }}</td>
+                        <td>{{ user.createdAt  }}</td>
+                        <td>{{ user.updatedAt  }}</td>
                         <td *ngIf="user.isDeleted == 1">Hoạt động</td>
                         <td class="project-actions text-right">
-                          <form method="post">
+
                             <a class="btn btn-primary btn-sm"
                                routerLink="/admin/users/view">
                               <i class="fas fa-folder"></i>
@@ -99,7 +101,7 @@
                             </a>
                             <span>&nbsp;</span><span>&nbsp;</span>
                             <a class="btn btn-info btn-sm"
-                               routerLink="/admin/users/edit">
+                               routerLink="/admin/users/edit/{{user.id}}">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Sửa
@@ -110,7 +112,7 @@
                               </i>
                               Xoá
                             </a>
-                          </form>
+
                         </td>
                       </tr>
                       </tbody>
