@@ -27,6 +27,9 @@ export class UserService {
     // @ts-ignore
     return this.http.put(this.API + `/delete/${id}`);
   }
+  getUserByUsername(username: any): Observable<any> {
+    return this.http.get(this.API + `/` + `${username}`);
+  }
 
   update(user: User): Observable<any> {
     return this.http.put<User>(this.API + `/edit/${user.id}`, user);
