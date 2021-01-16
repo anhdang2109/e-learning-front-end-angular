@@ -1,1 +1,135 @@
-<p>study-view works!</p>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Quản lý lượt thi</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Quản lý lượt thi</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <!-- .row -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- .card-header -->
+            <div class="card-header">
+              <h3 class="card-title">Danh sách lượt thi</h3>
+              <a style="width: 190px" class="btn btn-success btn-sm float-right"
+                 routerLink="create">
+                <i class="fas fa-plus-circle"></i>
+                <span>&nbsp;</span>
+                Thêm lượt thi</a>
+            </div>
+            <!-- /.card-header -->
+
+            <!-- .card-body -->
+            <div class="card-body">
+              <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+<!--                <div class="row">-->
+<!--                  <div class="col-sm-12 col-md-6">-->
+<!--                  </div>-->
+<!--                  <div class="col-sm-12 col-md-6">-->
+<!--                    <div id="example1_filter" class="dataTables_filter">-->
+<!--                      <form method="get">-->
+<!--                        <div class="form-inline" style="float: right">-->
+<!--                          <input class="form-control form-control-sm"-->
+<!--                                 style="width: 340px"-->
+<!--                                 name="s" id="s"-->
+<!--                                 type="search"-->
+<!--                                 placeholder="Nhập tên hoặc email hoặc SĐT"-->
+<!--                                 aria-controls="example1">-->
+<!--                          <span>&nbsp;</span>-->
+<!--                          <a class="btn btn-secondary btn-sm">-->
+<!--                            <i class="fas fa-search"></i>-->
+<!--                            Tìm kiếm-->
+<!--                          </a>-->
+<!--                        </div>-->
+<!--                      </form>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <br>-->
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <table class="table table-hover text-nowrap table-responsive">
+                      <thead>
+                      <tr class="text-center">
+                        <th style="width: 5%">#</th>
+                        <th style="width: 15%">Tên lượt thi</th>
+                        <th style="width: 25%">Mô tả</th>
+                        <th style="width: 10%">Học viên</th>
+                        <th style="width: 7%" class="text-center">Ngày khởi tạo</th>
+                        <th style="width: 8%" class="text-center">Ngày chỉnh sửa</th>
+                        <th style="width: 15%"></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <th scope="row">{{study.id}}</th>
+                        <td>{{study.studyname}}</td>
+                        <td>{{study.description}}</td>
+                        <td>Học viên Nam Anh</td>
+                        <td>{{ study.created_at}}</td>
+                        <td>{{ study.updated_at}}</td>
+                        <td class="project-actions text-right">
+                          <form method="post">
+                            <a class="btn btn-primary btn-sm"
+                               [routerLink]="'view/' + study.id">
+                              <i class="fas fa-folder"></i>
+                              Xem
+                            </a>
+                            <span>&nbsp;</span><span>&nbsp;</span>
+                            <a class="btn btn-info btn-sm"
+                               [routerLink]="'create/' + study.id">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <span>&nbsp;</span><span>&nbsp;</span>
+                            <a class="btn btn-danger btn-sm"
+                               [routerLink]="'delete/' + study.id">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </form>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 col-md-5">
+                    <div class="dataTables_info" id="example1_info" role="status"
+                         aria-live="polite">
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content -->
+</div>

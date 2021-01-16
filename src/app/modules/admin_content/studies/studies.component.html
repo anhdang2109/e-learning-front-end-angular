@@ -67,7 +67,7 @@
                   <div class="col-sm-12 col-md-12">
                     <table class="table table-hover text-nowrap table-responsive">
                       <thead>
-                      <tr>
+                      <tr class="text-center">
                         <th style="width: 5%">#</th>
                         <th style="width: 15%">Tên lượt thi</th>
                         <th style="width: 25%">Mô tả</th>
@@ -78,32 +78,30 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let country of countries; index as i">
+                      <tr *ngFor="let study of studies; index as i">
                         <th scope="row">{{ i + 1 }}</th>
-                        <td>
-                          <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
-                          {{ country.name }}
-                        </td>
-                        <td>Mô tả bà thi abc xyz</td>
-                        <td>Nam Anh</td>
-                        <td>{{ country.area | number }}</td>
-                        <td>{{ country.population | number }}</td>
+                        <td>{{study.studyname}}</td>
+                        <td>{{study.description}}</td>
+                        <td>Học viên Nam Anh</td>
+                        <td>{{ study.created_at}}</td>
+                        <td>{{ study.updated_at}}</td>
                         <td class="project-actions text-right">
                           <form method="post">
                             <a class="btn btn-primary btn-sm"
-                               routerLink="/admin/users/view">
+                               [routerLink]="'view/' + study.id">
                               <i class="fas fa-folder"></i>
                               Xem
                             </a>
                             <span>&nbsp;</span><span>&nbsp;</span>
                             <a class="btn btn-info btn-sm"
-                               routerLink="/admin/users/edit">
+                               [routerLink]="'create/' + study.id">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Sửa
                             </a>
                             <span>&nbsp;</span><span>&nbsp;</span>
-                            <a class="btn btn-danger btn-sm">
+                            <a class="btn btn-danger btn-sm"
+                               [routerLink]="'delete/' + study.id">
                               <i class="fas fa-trash">
                               </i>
                               Xoá
@@ -130,12 +128,8 @@
         </div>
       </div>
       <!-- /.row -->
-
     </div>
     <!-- /.container-fluid -->
   </div>
   <!-- /.content -->
 </div>
-
-
-

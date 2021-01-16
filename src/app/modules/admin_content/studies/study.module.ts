@@ -18,12 +18,12 @@ const routes: Routes = [
     component: StudyCreateComponent
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     component: StudyEditComponent
   },
   {
-    path: 'view',
-    component: StudyEditComponent
+    path: 'view/:id',
+    component: StudyViewComponent
   },
   {
     path: 'import',
@@ -33,6 +33,13 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    StudiesComponent,
+    StudyCreateComponent,
+    StudyEditComponent,
+    StudyImportComponent,
+    StudyViewComponent
+  ],
+  exports: [
     StudiesComponent,
     StudyCreateComponent,
     StudyEditComponent,

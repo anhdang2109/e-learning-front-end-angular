@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Study} from "./model/study.model";
+import {StudyService} from "./service/study.service";
 interface Country {
   name: string;
   flag: string;
@@ -39,9 +41,14 @@ const COUNTRIES: Country[] = [
 })
 export class StudiesComponent implements OnInit {
   countries = COUNTRIES;
-  constructor() { }
+  studies: Study[];
+  constructor(private studyService: StudyService) { }
 
   ngOnInit(): void {
+    this.studyService.getAll().subscribe(data => {
+      this.studies = data;
+      console.log(data);
+    });
   }
 
 }

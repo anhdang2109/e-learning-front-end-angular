@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Study} from "../model/study.model";
+import {StudyService} from "../service/study.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-study-view',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./study-view.component.css']
 })
 export class StudyViewComponent implements OnInit {
-
-  constructor() { }
+  study: Study;
+  constructor(
+    private studyService: StudyService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(paramap => {
+      const id = paramap.get('id');
+      console.log(id);
+      this.studyService.getById(id).subscribe(data => {
+        console.log(data);
+        this.study = data;
+      });
+    });
   }
 
 }
