@@ -99,7 +99,6 @@
                                                           class="form-control m-input" formControlName="gender">
                             <option value="Nữ">Nữ</option>
                             <option value="Nam">Nam</option>
-                            <option selected="selected" value="2">Khác</option>
                           </select></div>
                         </div>
                         <div class="col-md-3">
@@ -115,7 +114,7 @@
                         </div>
                         <div class="col-md-3">
                           <label class="col-form-label">
-                            <strong>Quyền</strong></label>
+                            <strong>Quyền:</strong></label>
                           <select name="role" class="form-control" formControlName="roles">
                             <option value="2">Người dùng</option>
                             <option value="1">Admin</option>
@@ -124,7 +123,7 @@
                         <div class="col-md-3">
                           <label class="col-form-label">
                             <strong>Nghề nghiệp</strong></label>
-                          <select name="title" class="form-control" formControlName="title">
+                          <select name="role" class="form-control" formControlName="title">
                             <option value="">Khác </option>
                             <option value="Giáo viên">Giáo viên</option>
                             <option value="Sinh viên, học sinh">Sinh viên, học sinh</option>
@@ -142,7 +141,7 @@
                           </label>
                           <div class="form-check-inline">
                             <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="isDeleted" value="1"  formControlName="isDeleted">Hoạt động
+                              <input type="radio" class="form-check-input" name="isDeleted" value="1" checked="true" formControlName="isDeleted">Hoạt động
                             </label>
                           </div>
                           <div class="form-check-inline">
@@ -162,7 +161,7 @@
                 <button type="submit" class="btn btn-success" style="width: 205px">
                   <i class="fas fa-plus-circle" aria-hidden="true"></i>
                   <span>&nbsp;</span>
-                  Sửa người dùng
+                  Cập nhập người dùng
                 </button>
               </div>
             </div>

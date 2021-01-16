@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../user.model";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {UserService} from "../user.service";
@@ -59,7 +59,13 @@ export class UserEditComponent implements OnInit {
   // tslint:disable-next-line:typedef
   update() {
     if (!this.userForm.invalid) {
-      this.user.imageSource = this.userForm.value.imageSource,
+      const role = {
+        roleId: this.userForm.value.roles
+      };
+      console.log(this.userForm.value.roles);
+      const roles = [];
+      roles.push(role);
+      this.user.imageSource = this.userForm.value.imageSource;
       this.user.username = this.userForm.value.username;
       this.user.email = this.userForm.value.email;
       this.user.password = this.userForm.value.password;
@@ -67,7 +73,7 @@ export class UserEditComponent implements OnInit {
       this.user.title = this.userForm.value.title;
       this.user.phone = this.userForm.value.phone;
       this.user.isDeleted = this.userForm.value.isDeleted;
-      this.user.roles = this.userForm.value.roles;
+      this.user.roles = roles;
     }
     this.userService.update(this.user).subscribe(result => {
       alert('Update successfully');
