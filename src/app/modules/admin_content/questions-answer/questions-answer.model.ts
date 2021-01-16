@@ -1,5 +1,5 @@
-export class QuestionsAnswer {
-  id: number;
+export class QuestionAnswer {
+  id?: number;
   content: string;
   isCorrect: boolean;
 }

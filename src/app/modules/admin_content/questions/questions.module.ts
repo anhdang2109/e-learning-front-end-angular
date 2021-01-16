@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {UsersComponent} from "../users/users.component";
-import {UserCreateComponent} from "../users/user-create/user-create.component";
-import {UserEditComponent} from "../users/user-edit/user-edit.component";
-import {UserImportComponent} from "../users/user-import/user-import.component";
 import {QuestionsComponent} from "./questions.component";
-import {QuestionsCreateComponent} from "./questions-create/questions-create.component";
+import {DialogQuestionAnswerComponent, QuestionsCreateComponent} from './questions-create/questions-create.component';
 import {QuestionsEditComponent} from "./questions-edit/questions-edit.component";
 import {QuestionsImportComponent} from "./questions-import/questions-import.component";
 import {QuestionsViewComponent} from "./questions-view/questions-view.component";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 const routes: Routes = [
@@ -42,11 +42,17 @@ const routes: Routes = [
     QuestionsCreateComponent,
     QuestionsEditComponent,
     QuestionsImportComponent,
-    QuestionsViewComponent
+    QuestionsViewComponent,
+    DialogQuestionAnswerComponent
   ],
   imports: [
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class QuestionsModule { }
