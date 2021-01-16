@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
           if (data.roles[0].authority == "ROLE_ADMIN") {
             this.router.navigate(["/admin"]);
           } else {
-            this.router.navigate(["/home"]);
+            this.router.navigate(["/home/index"]);
           }
         },
         error => {
