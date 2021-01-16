@@ -11,6 +11,7 @@ const USER_API_ENDPOINT: string = environment.API_ENDPOINT;
   providedIn: 'root'
 })
 export class UserService {
+  API = 'http://localhost:8080/users';
 
   constructor(private http: HttpClient) {
   }
@@ -18,7 +19,20 @@ export class UserService {
   logout(): void {
   }
 
-  getUsers(): Observable<HttpResponse<User[]>> {
-    return this.http.get<User[]>(USER_API_ENDPOINT + '/users', {observe: 'response'});
+  getAllUser(): Observable<any> {
+    return this.http.get(this.API);
+  }
+
+  delete(id: number): Observable<any> {
+    // @ts-ignore
+    return this.http.put(this.API + `/delete/${id}`);
+  }
+
+  update(user: User): Observable<any> {
+    return this.http.put<User>(this.API  + `/edit/${user.id}`, user);
+  }
+
+  getUserById(id: number): Observable<any> {
+    return this.http.get(this.API + `/` + `${id}`);
   }
 }

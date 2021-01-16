@@ -1,3 +1,5 @@
+import {Role} from "./role";
+
 export class User {
   id?: number;
   username?: string;
@@ -9,4 +11,7 @@ export class User {
   imageSource?: string;
   token?: string;
   isDeleted?: number;
+  createdAt?: any;
+  updatedAt?: any;
+  // roles: Role[];
 }

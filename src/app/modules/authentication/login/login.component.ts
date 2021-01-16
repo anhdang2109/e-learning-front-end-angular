@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../service/auth/auth.service";
 import {first} from "rxjs/operators";
-import {UserService} from "../../admin_content/users/user.service";
-import {User} from "../../admin_content/users/user.model";
-import {UserToken} from "../../admin_content/users/user-token";
+import {FormControl, FormGroup} from "@angular/forms";
+
 
 @Component({
   selector: 'app-login',
@@ -12,30 +11,45 @@ import {UserToken} from "../../admin_content/users/user-token";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loginForm: FormGroup = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl('')
+  });
 
-  currentUser: UserToken;
-  user: User = {
-    username: '',
-    password: ''
-  };
-  returnUrl = '';
+  error = '';
+  loading = false;
+  submitted = false;
 
-  constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
-              private userSevice: UserService,
-              private authService: AuthService) {
-    this.authService.currentUser.subscribe(value => this.currentUser = value);
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private authenticationService: AuthService) {
+    if (this.authenticationService.currentUserValue) {
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
-    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/home';
   }
 
   login() {
-    this.authService.login(this.user.username, this.user.password)
+    this.submitted = true;
+    this.loading = true;
+    this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password)
       .pipe(first())
-      .subscribe(data => {
-        this.router.navigate([this.returnUrl]);
-      });
+      .subscribe(
+        data => {
+          localStorage.setItem('ACCESS_TOKEN', data.accessToken);
+          localStorage.setItem('ROLE', data.roles[0].authority);
+          localStorage.setItem('USERNAME', data.username);
+          if (data.roles[0].authority == "ROLE_ADMIN") {
+            this.router.navigate(["/admin"]);
+          } else {
+            this.router.navigate(["/home"]);
+          }
+        },
+        error => {
+          alert("Tài khoản của bạn đã bị khoá hoặc sai mật khẩu!");
+          this.loading = false;
+        });
   }
 }

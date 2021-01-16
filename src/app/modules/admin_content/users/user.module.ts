@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import { UserCreateComponent } from './user-create/user-create.component';
+import {UserCreateComponent} from './user-create/user-create.component';
 import {UsersComponent} from './users.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
-import { UserViewComponent } from './user-view/user-view.component';
-import { UserImportComponent } from './user-import/user-import.component';
-
+import {UserEditComponent} from './user-edit/user-edit.component';
+import {UserViewComponent} from './user-view/user-view.component';
+import {UserImportComponent} from './user-import/user-import.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
     component: UserCreateComponent
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     component: UserEditComponent
   },
   {
@@ -49,7 +49,10 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
-export class UserModule { }
+export class UserModule {
+}
