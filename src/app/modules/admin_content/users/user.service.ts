@@ -24,7 +24,8 @@ export class UserService {
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(this.API + `/delete/+${id}`);
+    // @ts-ignore
+    return this.http.put(this.API + `/delete/${id}`);
   }
 
   update(user: User): Observable<any> {

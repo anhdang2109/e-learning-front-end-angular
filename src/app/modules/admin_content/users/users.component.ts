@@ -40,6 +40,15 @@ export class UsersComponent implements OnInit {
     });
     return this.user;
   }
+
+  delete(id: any) {
+    if (confirm('Bạn đã chắc chắn?')) {
+      this.userService.delete(id).subscribe(value => {
+        console.log('Delete', value);
+        this.getAllUser();
+      });
+    }
+  }
 }
 
 
