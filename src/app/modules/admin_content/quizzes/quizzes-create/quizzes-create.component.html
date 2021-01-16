@@ -1,1 +1,99 @@
-<p>quizzes-create works!</p>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Quản lý bài thi</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a routerLink="/admin">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Quản lý bài thi</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <!-- .row -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- .card-header -->
+            <div class="card-header">
+              <h3 class="card-title">Thêm bài thi</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <!-- .card-body -->
+            <div class="card-body">
+              <div id="body-container" class="container">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>
+                            <strong>Tên bài thi:</strong>
+                          </label>
+                          <input type="text" class="form-control"
+                                 id="exampleInputName"
+                                 placeholder="Điền tên">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Mô tả: </label>
+                          <textarea name="quiz-explain" id="quiz-explain" rows="3"
+                                    class="form-control"
+                          placeholder="Nhập mô tả">
+                          </textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group"><label class="col-form-label"><strong>Danh mục: </strong></label><select
+                          name="category"
+                          id="user_gender"
+                          class="form-control m-input">
+                          <option value="english">Tiếng anh</option>
+                          <option value="development">Lập trình</option>
+                          <option value="science" selected="selected">Khoa học</option>
+                        </select></div>
+                      </div>
+                    </div>
+                    <br>
+                    <div id="button-bar-container" class="col-md-12">
+                      <div id="button-bar" class="col-md-12">
+                        <a style="width: 190px" class="btn btn-success btn-sm float-right"
+                           type="button">
+                          <i class="fas fa-plus-circle"></i>
+                          <span>&nbsp;</span>
+                          Thêm bài thi</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content -->
+</div>
+

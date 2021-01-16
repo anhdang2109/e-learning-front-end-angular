@@ -5,16 +5,15 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0 text-dark">Quản lý câu hỏi</h1>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
             <li class="breadcrumb-item active">Quản lý câu hỏi</li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-
-    </div><!-- /.container-fluid -->
+        </div>
+      </div>
+    </div>
   </div>
   <!-- /.content-header -->
 
@@ -27,321 +26,183 @@
           <div class="card">
             <!-- .card-header -->
             <div class="card-header">
-              <h3 class="card-title">Danh sách câu hỏi</h3>
+              <h3 class="card-title">Thêm câu câu hỏi</h3>
             </div>
             <!-- /.card-header -->
 
             <!-- .card-body -->
             <div class="card-body">
               <div id="body-container" class="container">
-                <form method="GET">
-                  <div id="quiz-container" class="col-md-10">
-                    <div class="form-group row">
-                      <label  class="col-3
-                            col-form-label">Tên quiz: </label>
-                      <div class="col-8">
-                        <input class="form-control"
-                               type="text"
-                               name="quiz-name"
-                               value="">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label  class="col-3
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <form>
+                      <div id="quiz-container" class="col-md-10">
+                        <div class="form-group row">
+                          <label class="col-3
+                            col-form-label">Mã câu hỏi: </label>
+                          <div class="col-9">
+                            <input class="form-control"
+                                   type="text"
+                                   name="quiz-name"
+                                   [(ngModel)]="question.code">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-3
                             col-form-label">Nội dung: </label>
-                      <div class="col-8">
+                          <div class="col-9">
                             <textarea
                               class="form-control"
                               name="quiz-content"
                               id="quiz-content"
+                              [(ngModel)]="question.content"
                               rows="3"></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label  class="col-3
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-3
                             col-form-label">Cấp độ: </label>
-                      <div class="col-8">
-                        <select class="custom-select mr-sm-2"
-                                name="quiz-level"
-                                id="quiz-level">
-                          <option value="Dễ">Dễ</option>
-                          <option value="Trung bình" selected>Trung bình</option>
-                          <option value="Khó">Khó</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label  class="col-3
-                            col-form-label">Loại quiz: </label>
-                      <div class="col-8">
-                        <select class="custom-select mr-sm-2"
-                                name="quiz-type"
-                                id="quiz-type">
-                          <option value="Multiple Choice">Multiple Choice</option>
-                          <option value="Single Choice" selected>Single
-                            Choice</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label  class="col-3
-                            col-form-label">Explain: </label>
-                      <div class="col-8">
+                          <div class="col-9">
+                            <select class="custom-select mr-sm-2"
+                                    name="quiz-level"
+                                    id="quiz-level"
+                                    [(ngModel)]="question.level">
+                              <option value="Dễ">Dễ</option>
+                              <option value="Trung bình" selected>Trung bình</option>
+                              <option value="Khó">Khó</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-3
+                            col-form-label">Loại câu hỏi: </label>
+                          <div class="col-9">
+                            <select class="custom-select mr-sm-2"
+                                    name="quiz-type"
+                                    [(ngModel)]="question.type"
+                                    id="quiz-type">
+                              <option value="Multiple Choice">Multiple Choice</option>
+                              <option value="Single Choice">Single
+                                Choice
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-3
+                            col-form-label">Giải thích: </label>
+                          <div class="col-9">
                             <textarea
                               class="form-control"
                               name="quiz-explain"
                               id="quiz-explain"
+                              [(ngModel)]="question.explanation"
                               rows="3"></textarea>
-                      </div>
-                    </div>
-                    <div id="quiz-table-container" class="table-responsive">
-                      <table id="quiz-table" class="table
-                            table-striped table-bordered table-hover">
-                        <thead class="thead-light">
-                        <tr class="answer-radio">
-                          <th style="width: 10%;">#</th>
-                          <th style="width: 55%;">Nội dung câu trả lời</th>
-                          <th style="width: 15%;">Đáp án</th>
-                          <th style="width: 20%;">Tác vụ</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td class="answer-radio">A</td>
-                          <td><span id="answer-1"></span></td>
-                          <input type="hidden" id="answer-1-input"
-                                 name="answer-1"
-                                 value="">
-                          <td class="answer-radio">
-                            <div class="form-check">
-                              <input class="form-check-input"
-                                     type="radio"
-                                     name="answer"
-                                     value="A"
-                                     checked>
-                            </div>
-                          </td>
-                          <td class="answer-radio">
-                            <button type="button" class="btn
-                                            btn-warning"
-                                    data-toggle="modal"
-                                    data-target="#Modal1">Sửa</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="answer-radio">B</td>
-                          <td><span id="answer-2"></span></td>
-                          <input type="hidden" id="answer-2-input"
-                                 name="answer-2"
-                                 value="">
-                          <td class="answer-radio">
-                            <div class="form-check">
-                              <input class="form-check-input"
-                                     type="radio"
-                                     name="answer"
-                                     value="B">
-                              <label class="form-check-label"
-                              >
-                              </label>
-                            </div>
-                          </td>
-                          <td class="answer-radio">
-                            <button type="button" class="btn
-                                            btn-warning"
-                                    data-toggle="modal"
-                                    data-target="#Modal2">Sửa</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="answer-radio">C</td>
-                          <td><span id="answer-3"></span></td>
-                          <input type="hidden" id="answer-3-input"
-                                 name="answer-3"
-                                 value="">
-                          <td class="answer-radio">
-                            <div class="form-check">
-                              <input class="form-check-input"
-                                     type="radio"
-                                     name="answer"
-                                     value="C">
-                            </div>
-                          </td>
-                          <td class="answer-radio">
-                            <button type="button" class="btn
-                                            btn-warning"
-                                    data-toggle="modal"
-                                    data-target="#Modal3">Sửa</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="answer-radio">D</td>
-                          <td><span id="answer-4"></span></td>
-                          <input type="hidden" id="answer-4-input"
-                                 name="answer-4"
-                                 value="">
-                          <td class="answer-radio">
-                            <div class="form-check">
-                              <input class="form-check-input"
-                                     type="radio"
-                                     name="answer"
-                                     value="D">
-                            </div>
-                          </td>
-                          <td class="answer-radio">
-                            <button type="button" class="btn
-                                            btn-warning"
-                                    data-toggle="modal"
-                                    data-target="#Modal4">Sửa</button>
-                          </td>
-                        </tr>
-                        </tbody>
-                      </table>
-                      <!-- Modal 1 -->
-                      <div class="modal fade" id="Modal1" tabindex="-1"
-                           role="dialog" aria-labelledby="exampleModalLabel"
-                           aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title"
-                              >Nhập câu trả
-                                lời</h5>
-                              <button type="button" class="close"
-                                      data-dismiss="modal"
-                                      aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="form-group">
-                                <label >Nội dung:</label>
-                                <textarea class="form-control"
-                                          rows="5" id="text1"></textarea>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn
-                                            btn-secondary" data-dismiss="modal">Đóng</button>
-                              <button type="button" class="btn
-                                            btn-primary"
-                                      onclick="write1()"
-                                      data-dismiss="modal">Lưu thay đổi</button>
-                            </div>
+                          </div>
+                        </div>
+                        <div id="quiz-table-container" class="table-responsive">
+                          <table id="quiz-table" class="table table-striped table-bordered table-hover">
+                            <thead class="thead-light">
+                            <tr class="answer-radio">
+                              <th style="width: 10%;">#</th>
+                              <th style="width: 55%;">Nội dung câu trả lời</th>
+                              <th style="width: 15%;">Đáp án</th>
+                              <th style="width: 20%;">Tác vụ</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                              <td class="answer-radio">A</td>
+                              <td class="answer-radio">
+                                <span style="float: left">{{answerA.content}}</span>
+                              </td>
+                              <td class="answer-radio">
+                                <span *ngIf="answerA.isCorrect == true"><i class="fas fa-check"></i></span>
+                                <span *ngIf="answerA.isCorrect == false"><i class="fas fa-times"></i></span>
+                              </td>
+                              <td class="answer-radio">
+                                <a class="btn btn-info btn-sm"
+                                   (click)="openDialogA()">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  <span>&nbsp;&nbsp;</span>
+                                  Nhập nội dung
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="answer-radio">B</td>
+                              <td class="answer-radio">
+                                <span style="float: left">{{answerB.content}}</span>
+                              </td>
+                              <td class="answer-radio">
+                                <span *ngIf="answerB.isCorrect == true"><i class="fas fa-check"></i></span>
+                                <span *ngIf="answerB.isCorrect == false"><i class="fas fa-times"></i></span>
+                              </td>
+                              <td class="answer-radio">
+                                <a class="btn btn-info btn-sm"
+                                   (click)="openDialogB()">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  <span>&nbsp;&nbsp;</span>
+                                  Nhập nội dung
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="answer-radio">C</td>
+                              <td class="answer-radio">
+                                <span style="float: left">{{answerC.content}}</span>
+                              </td>
+                              <td class="answer-radio">
+                                <span *ngIf="answerC.isCorrect == true"><i class="fas fa-check"></i></span>
+                                <span *ngIf="answerC.isCorrect == false"><i class="fas fa-times"></i></span>
+                              </td>
+                              <td class="answer-radio">
+                                <a class="btn btn-info btn-sm"
+                                   (click)="openDialogC()">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  <span>&nbsp;&nbsp;</span>
+                                  Nhập nội dung
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="answer-radio">D</td>
+                              <td class="answer-radio">
+                                <span style="float: left">{{answerD.content}}</span>
+                              </td>
+                              <td class="answer-radio">
+                                <span *ngIf="answerD.isCorrect == true"><i class="fas fa-check"></i></span>
+                                <span *ngIf="answerD.isCorrect == false"><i class="fas fa-times"></i></span>
+                              </td>
+                              <td class="answer-radio">
+                                <a class="btn btn-info btn-sm"
+                                   (click)="openDialogD()">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  <span>&nbsp;&nbsp;</span>
+                                  Nhập nội dung
+                                </a>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div id="button-bar-container" class="col-md-12">
+                          <div id="button-bar" class="col-md-12">
+                            <a style="width: 190px" class="btn btn-success btn-sm float-right"
+                               type="button" (click)="create()">
+                              <i class="fas fa-plus-circle"></i>
+                              <span>&nbsp;</span>
+                              Thêm câu hỏi</a>
                           </div>
                         </div>
                       </div>
-                      <!-- Modal 2 -->
-                      <div class="modal fade" id="Modal2" tabindex="-1"
-                           role="dialog" aria-labelledby="exampleModalLabel"
-                           aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title"
-                              >Nhập câu trả
-                                lời</h5>
-                              <button type="button" class="close"
-                                      data-dismiss="modal"
-                                      aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="form-group">
-                                <label >Nội dung:</label>
-                                <textarea class="form-control"
-                                          rows="5" id="text2"></textarea>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn
-                                            btn-secondary" data-dismiss="modal">Đóng</button>
-                              <button type="button" class="btn
-                                            btn-primary"
-                                      onclick="write2()"
-                                      data-dismiss="modal">Lưu thay đổi</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- Modal 3 -->
-                      <div class="modal fade" id="Modal3" tabindex="-1"
-                           role="dialog" aria-labelledby="exampleModalLabel"
-                           aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title"
-                              >Nhập câu trả
-                                lời</h5>
-                              <button type="button" class="close"
-                                      data-dismiss="modal"
-                                      aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="form-group">
-                                <label >Nội dung:</label>
-                                <textarea class="form-control"
-                                          rows="5" id="text3"></textarea>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn
-                                            btn-secondary" data-dismiss="modal">Đóng</button>
-                              <button type="button" class="btn
-                                            btn-primary"
-                                      onclick="write3()"
-                                      data-dismiss="modal">Lưu thay đổi</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- Modal 4 -->
-                      <div class="modal fade" id="Modal4" tabindex="-1"
-                           role="dialog" aria-labelledby="exampleModalLabel"
-                           aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title"
-                                  id="exampleModalLabel">Nhập câu trả
-                                lời</h5>
-                              <button type="button" class="close"
-                                      data-dismiss="modal"
-                                      aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="form-group">
-                                <label >Nội dung:</label>
-                                <textarea class="form-control"
-                                          rows="5" id="text4"></textarea>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn
-                                            btn-secondary" data-dismiss="modal">Đóng</button>
-                              <button type="button" class="btn
-                                            btn-primary"
-                                      onclick="write4()"
-                                      data-dismiss="modal">Lưu thay đổi</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="button-bar-container" class="col-md-12">
-                      <div id="button-bar" class="col-md-12">
-                        <input name="" id="add-button" style="width:28%;"
-                               class="btn btn-primary float-right"
-                               type="submit" value="Thêm quiz">
-                      </div>
-                    </div>
+                    </form>
                   </div>
-                </form>
+                </div>
                 <div>
                 </div>
               </div>
@@ -351,7 +212,6 @@
         </div>
       </div>
       <!-- /.row -->
-
     </div>
     <!-- /.container-fluid -->
   </div>

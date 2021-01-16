@@ -1,0 +1,102 @@
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-12 blog-main">
+      <hr>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <div class="card card-dark card-outline">
+              <div class="card-body box-profile">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="text-center">
+                      <img class="profile-user-img img-fluid img-circle"
+                           src="assets/img/default-avatar.jpg"
+                           alt="User profile picture">
+                    </div>
+                    <h3 class="profile-username text-center"><span>Đặng Trần Nam Anh</span></h3>
+
+                    <p class="text-muted text-center">Thành viên từ ngày: <span>12-12-2020</span></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="col-form-label">
+                        <strong>Ảnh đại diện:</strong>
+                      </label>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input"
+                               id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose
+                          file</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">
+                        <strong>Họ & Tên:</strong>
+                      </label>
+                      <input type="text" class="form-control"
+                             id="exampleInputName"
+                             placeholder="Điền tên">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email</label>
+                      <input type="email" class="form-control"
+                             id="exampleInputEmail1"
+                             placeholder="Điền email">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control"
+                             id="exampleInputPassword1"
+                             placeholder="Điền mật khẩu">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group"><label class="col-form-label"><strong>Giới
+                      tính:</strong></label><select name="gender"
+                                                    id="user_gender"
+                                                    class="form-control m-input">
+                      <option value="0">Nữ</option>
+                      <option value="1">Nam</option>
+                      <option selected="selected" value="2">Khác</option>
+                    </select></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">
+                        <strong>Số điện thoại:</strong>
+                      </label>
+                      <input type="text"
+                             name="user[phone]"
+                             id="user_phone"
+                             class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <a class="btn btn-secondary btn-block" routerLink="/home/user"><b>Cập nhật thông tin</b></a>
+              </div>
+              <!-- /.card-body -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.blog-main -->
+  </div><!-- /.row -->
+</main><!-- /.container -->

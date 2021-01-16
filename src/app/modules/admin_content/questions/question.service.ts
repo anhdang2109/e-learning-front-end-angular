@@ -12,24 +12,24 @@ export class QuestionService {
 
   update(product: Question, id: number): Observable<any> {
     if (!!product.id) {
-      return this.http.put(`http://localhost:3000/questions/${id}`, product);
+      return this.http.put(`http://localhost:8080/admin/question/${id}`, product);
     }
-    return this.http.post(`http://localhost:3000/questions`, product);
+    return this.http.post(`http://localhost:8080/admin/question`, product);
   }
 
   save(product: Question): Observable<any> {
-    return this.http.post(`http://localhost:3000/questions`, product);
+    return this.http.post(`http://localhost:8080/admin/question`, product);
   }
 
   findById(id: number): Observable<any> {
-    return this.http.get(`http://localhost:3000/questions/${id}`);
+    return this.http.get(`http://localhost:8080/admin/question/${id}`);
   }
 
   deleteById(id: number): Observable<any> {
-    return this.http.delete(`http://localhost:3000/questions/${id}`);
+    return this.http.delete(`http://localhost:8080/admin/question/${id}`);
   }
 
   getAll(): Observable<any> {
-    return this.http.get('http://localhost:3000/questions');
+    return this.http.get('http://localhost:8080/admin/question');
   }
 }
