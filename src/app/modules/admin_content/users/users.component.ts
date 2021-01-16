@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "./user.model";
 import {UserService} from "./user.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component(
   {
@@ -12,9 +13,12 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class UsersComponent implements OnInit {
   user: User[];
   newU: FormGroup;
+  role: string;
+  currentUsername: string;
 
   constructor(private userService: UserService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -32,6 +36,12 @@ export class UsersComponent implements OnInit {
         updatetAt: ['']
       }
     );
+    this.role = localStorage.getItem("ROLE");
+    if (this.role == "ROLE_USER") {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
 
   getAllUser(): User[] {

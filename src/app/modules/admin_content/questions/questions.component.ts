@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuestionService} from './question.service';
 import {Question} from './questions.model';
+import {User} from "../users/user.model";
+import {UserService} from "../users/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-questions',
@@ -9,7 +12,14 @@ import {Question} from './questions.model';
 })
 export class QuestionsComponent implements OnInit {
   products: Question[];
-  constructor(private questionService: QuestionService) { }
+  role: string;
+  users: User[];
+  currentUsername: string;
+
+  constructor(private questionService: QuestionService,
+              private userService: UserService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.questionService.getAll().toPromise().then(value => {
@@ -17,6 +27,13 @@ export class QuestionsComponent implements OnInit {
       console.log(value);
       console.log(this.products);
     });
+    this.role = localStorage.getItem("ROLE");
+    if (this.role == "ROLE_USER") {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
-
 }
+
+

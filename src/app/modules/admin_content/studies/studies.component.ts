@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Study} from "./model/study.model";
 import {StudyService} from "./service/study.service";
+import {User} from "../users/user.model";
+import {UserService} from "../users/user.service";
+import {Router} from "@angular/router";
+
 interface Country {
   name: string;
   flag: string;
@@ -34,6 +38,7 @@ const COUNTRIES: Country[] = [
     population: 1409517397
   }
 ];
+
 @Component({
   selector: 'app-studies',
   templateUrl: './studies.component.html',
@@ -42,13 +47,25 @@ const COUNTRIES: Country[] = [
 export class StudiesComponent implements OnInit {
   countries = COUNTRIES;
   studies: Study[];
-  constructor(private studyService: StudyService) { }
+  role: string;
+  users: User[];
+  currentUsername: string;
+
+  constructor(private studyService: StudyService,
+              private userService: UserService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.studyService.getAll().subscribe(data => {
       this.studies = data;
       console.log(data);
     });
+    this.role = localStorage.getItem("ROLE");
+    if (this.role == "ROLE_USER") {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
-
 }

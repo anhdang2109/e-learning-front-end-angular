@@ -29,10 +29,14 @@ export class UserService {
   }
 
   update(user: User): Observable<any> {
-    return this.http.put<User>(this.API  + `/edit/${user.id}`, user);
+    return this.http.put<User>(this.API + `/edit/${user.id}`, user);
   }
 
   getUserById(id: number): Observable<any> {
     return this.http.get(this.API + `/` + `${id}`);
+  }
+
+  login(user: User): Observable<User> {
+    return this.http.post<User>(this.API + '/login', user);
   }
 }
