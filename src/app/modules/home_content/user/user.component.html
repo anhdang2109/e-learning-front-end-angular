@@ -1,13 +1,15 @@
-<main role="main" class="container">
+<main role="main" class="container ">
   <div class="row">
-    <div class="col-md-12 blog-main">
+    <div class="col-md-8 mx-auto blog-main">
       <hr>
-      <div class="card-body">
+      <div class="card-body ">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 ">
 
             <!-- Profile Image -->
+
             <div class="card card-dark card-outline" *ngIf="currentUser">
+
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
@@ -19,48 +21,44 @@
 
                 <p class="text-muted text-center" >Thành viên từ ngày: <span>{{currentUser.createdAt}}</span></p>
 
-                <ul class="list-group list-group-unbordered mb-3">
+                <ul class="list-group list-group-unbordered mb-3 ">
                   <li class="list-group-item">
                     <b>Trạng thái</b> <a class="float-right">
-                    <span>{{currentUser.isDeleted}}</span>
-                    <span class="dotGreen"></span>
+                    Hoạt động
                   </a>
                   </li>
                   <li class="list-group-item">
                     <b>Quyền hạn</b>
                     <a class="float-right">
                       <span>Admin</span>
-                      <span>&nbsp</span> <i class="fas fa-id-badge"></i>
                     </a>
                   </li>
                   <li class="list-group-item">
-                    <b>Ví tiền</b> <a class="float-right"><span>200</span><span>&nbsp;</span> <i
+                    <b>Ví tiền </b> <a class="float-right"><span>200</span><span>&nbsp;</span> <i
                     class="fas fa-coins"></i></a>
                   </li>
                   <div class="card-body">
-                    <strong><i class="fas fa-venus-mars"></i><span>&nbsp;</span> Giới tính</strong>
-
+                    <strong><i class="fas fa-venus-mars"></i> Giới tính</strong>
                     <p class="text-muted">
                       <span>Nam</span>
                     </p>
 
                     <hr>
 
-                    <strong><i class="fas fa-phone"></i><span>&nbsp</span> Số điện thoại</strong>
-
+                    <strong><i class="fas fa-phone"></i> Số điện thoại</strong>
                     <p class="text-muted">
                       <span>0964259985</span>
                     </p>
 
                     <hr>
 
-                    <strong><i class="fas fa-envelope"></i><span>&nbsp</span> Email</strong>
+                    <strong><i class="fas fa-envelope"></i> Email</strong>
                     <p class="text-muted">namanh@gmail.com</p>
                     <hr>
                   </div>
                 </ul>
-                <a class="btn btn-secondary btn-block" routerLink="/home/user/edit"><b>Chỉnh sửa thông
-                  tin</b></a>
+                <a class="btn btn-secondary btn-block" routerLink="/home/user/edit">
+                  <b>Chỉnh sửa thông tin</b></a>
               </div>
               <!-- /.card-body -->
             </div>

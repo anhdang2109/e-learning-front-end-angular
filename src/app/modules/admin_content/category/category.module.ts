@@ -6,6 +6,7 @@ import {CategoryImportComponent} from "./category-import/category-import.compone
 import {CategoryViewComponent} from "./category-view/category-view.component";
 import {CategoryComponent} from "./category.component";
 import {FormsModule} from "@angular/forms";
+import { CategoryDeleteComponent } from './category-delete/category-delete.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,8 @@ const routes: Routes = [
     CategoryComponent,
     CategoryCreateComponent,
     CategoryImportComponent,
-    CategoryViewComponent
+    CategoryViewComponent,
+    CategoryDeleteComponent
   ],
   imports: [
     RouterModule.forChild(routes),
