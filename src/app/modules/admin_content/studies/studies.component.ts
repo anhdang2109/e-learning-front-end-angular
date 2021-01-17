@@ -34,7 +34,7 @@ export class StudiesComponent implements OnInit {
       console.log(data);
     });
     this.role = localStorage.getItem("ROLE");
-    if (this.role == "ROLE_USER") {
+    if (this.role === "ROLE_USER") {
       alert("Bạn không có quyền!");
       this.router.navigate(['/home']);
     }

@@ -6,6 +6,7 @@ import {StudyCreateComponent} from './study-create/study-create.component';
 import {StudyEditComponent} from './study-edit/study-edit.component';
 import {StudyImportComponent} from './study-import/study-import.component';
 import {StudyViewComponent} from './study-view/study-view.component';
+import {FormsModule} from '@angular/forms';
 
 
 const routes: Routes = [
@@ -48,7 +49,8 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class StudyModule { }

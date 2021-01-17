@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Attempt} from '../../attempt/attempt.model';
 
 @Component({
   selector: 'app-user-view',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-view.component.css']
 })
 export class UserViewComponent implements OnInit {
-
+  attempts: Attempt[];
   constructor() { }
 
   ngOnInit(): void {

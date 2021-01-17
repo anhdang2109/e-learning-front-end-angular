@@ -60,17 +60,65 @@
                         </div>
                       </div>
                     </div>
+<!--                    <div class="row">-->
+<!--                      <div class="col-md-12">-->
+<!--                        <div class="form-group"><label class="col-form-label"><strong>Danh mục: </strong></label>-->
+<!--                          <select-->
+<!--                          name="category"-->
+<!--                          class="form-control m-input">-->
+<!--                          <option value="english">Tiếng anh</option>-->
+<!--                          <option value="development">Lập trình</option>-->
+<!--                          <option value="science" selected="selected">Khoa học</option>-->
+<!--                        </select></div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+                    <br>
+                    <br>
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="form-group"><label class="col-form-label"><strong>Danh mục: </strong></label>
-                          <select
-                          name="category"
-                          class="form-control m-input">
-                          <option value="english">Tiếng anh</option>
-                          <option value="development">Lập trình</option>
-                          <option value="science" selected="selected">Khoa học</option>
-                        </select></div>
+                        <div class="input-group">
+                          <input [(ngModel)]="searchString" type="search" class="form-control form-control" placeholder="Nhập mã câu hỏi">
+                          <div class="input-group-append">
+                            <button type="submit" class="btn btn-default" (click)="addQuestion()">
+                              <i class="fa fa-search"></i>
+                              Tìm người dùng
+                            </button>
+                          </div>
+                        </div>
                       </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <table class="table table-hover text-nowrap table-responsive" style="width: 100%">
+                        <thead>
+                        <tr>
+                          <th style="width: 5%" class="text-center">#</th>
+                          <th style="width: 20%">Mã câu hỏi</th>
+                          <th style="width: 20%" class="text-center">Loại câu hỏi</th>
+                          <th style="width: 20%" class="text-center">Cấp độ câu hỏi</th>
+                          <th style="width: 20%" class="text-center">Ngày tạo</th>
+                          <th style="width: 15%" class="text-center">Ngày cập nhập</th>
+                          <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let question of questionPool">
+                          <td class="text-center">{{question.id}}</td>
+                          <td>{{question.code}}</td>
+                          <td class="text-center">{{question.type}}</td>
+                          <td class="text-center">{{question.level}}</td>
+                          <td class="text-center">12-12-2020</td>
+                          <td class="text-center">12-12-2020</td>
+                          <td>
+                            <button class="btn btn-danger btn-sm" (click)="removeQuestion(question.code)">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </button>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
                     </div>
                     <br>
                     <div id="button-bar-container" class="col-md-12">
