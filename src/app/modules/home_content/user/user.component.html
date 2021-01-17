@@ -7,9 +7,7 @@
           <div class="col-md-12 ">
 
             <!-- Profile Image -->
-
             <div class="card card-dark card-outline" *ngIf="currentUser">
-
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
@@ -21,10 +19,11 @@
 
                 <p class="text-muted text-center" >Thành viên từ ngày: <span>{{currentUser.createdAt}}</span></p>
 
-                <ul class="list-group list-group-unbordered mb-3 ">
+                <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
                     <b>Trạng thái</b> <a class="float-right">
-                    Hoạt động
+                    <span>{{currentUser.isDeleted}}</span>
+                    <span class="dotGreen"></span>
                   </a>
                   </li>
                   <li class="list-group-item">
