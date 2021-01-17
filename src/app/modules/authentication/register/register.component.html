@@ -34,7 +34,7 @@
           <input type="text" class="form-control"  formControlName="phone">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-user"></span>
+              <span class="fas fa-phone"></span>
             </div>
           </div>
         </div>
@@ -61,20 +61,18 @@
           <input type="password" class="form-control"  formControlName="password">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-user"></span>
+              <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
 
-        <div class="input-group mb-3 custom-file">
-
-          <input type="file" class="custom-file-input" id="validatedCustomFile" required formControlName="imageSource">
-          <label class="custom-file-label" for="validatedCustomFile">Ảnh đại diện Chọn tệp...</label>
-        </div>
         <div class="row" align="center">
           <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block" [routerLink]="['/home/index']">Quay lại</button>
           </div>
           <!-- /.col -->
         </div>

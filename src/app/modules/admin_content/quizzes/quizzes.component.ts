@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../users/user.model";
 import {UserService} from "../users/user.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../authentication/service/auth/auth.service";
 
 @Component({
   selector: 'app-quizzes',
@@ -15,7 +16,7 @@ export class QuizzesComponent implements OnInit {
   currentUsername: string;
 
   constructor(private userService: UserService,
-              private router: Router
+              private router: Router,
   ) {
   }
 

@@ -14,4 +14,6 @@ export interface UserToken {
   token?: string;
   isDeleted?: number;
   roles: Role[];
+  createdAt?: any;
+  updatedAt?: any;
 }

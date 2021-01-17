@@ -35,7 +35,7 @@ export class UserService {
     return this.http.put<User>(this.API + `/edit/${user.id}`, user);
   }
 
-  getUserById(id: number): Observable<any> {
+  getUserById(id: string): Observable<any> {
     return this.http.get(this.API + `/` + `${id}`);
   }
 
