@@ -27,12 +27,19 @@ export class UserService {
     // @ts-ignore
     return this.http.put(this.API + `/delete/${id}`);
   }
-
-  update(user: User): Observable<any> {
-    return this.http.put<User>(this.API  + `/edit/${user.id}`, user);
+  getUserByUsername(username: any): Observable<any> {
+    return this.http.get(this.API + `/` + `${username}`);
   }
 
-  getUserById(id: number): Observable<any> {
+  update(user: User): Observable<any> {
+    return this.http.put<User>(this.API + `/edit/${user.id}`, user);
+  }
+
+  getUserById(id: string): Observable<any> {
     return this.http.get(this.API + `/` + `${id}`);
+  }
+
+  login(user: User): Observable<User> {
+    return this.http.post<User>(this.API + '/login', user);
   }
 }

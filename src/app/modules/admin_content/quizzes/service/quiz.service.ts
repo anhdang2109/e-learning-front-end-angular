@@ -1,18 +1,22 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Quiz} from "../model/quiz.model";
-const API = environment.API_FAKE;
+
+const API = environment.API_ENDPOINT;
+// const APII = 'http://localhost:8080/users';
+
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  getAll(): Observable<Quiz[]> {
-    return this.httpClient.get<Quiz[]>(API + '/quizzes');
+  getAll(): Observable<any> {
+    return this.httpClient.get<any>(API + '/admin/quizzes');
   }
 
   getById(id: string): Observable<Quiz> {

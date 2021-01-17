@@ -14,7 +14,7 @@
         <img src="assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        <a href="#" class="d-block" *ngIf="currentUser">{{currentUser.username}}</a>
       </div>
     </div>
 
@@ -66,8 +66,8 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/logout" routerLinkActive="active" >
-            <p><span><i class="nav-icon fas fa-power-off"></i>
+          <a class="nav-link" (click)="logout()" routerLinkActive="active" >
+            <p><span ><i class="nav-icon fas fa-power-off"></i>
             </span>Đăng xuất
             </p>
           </a>

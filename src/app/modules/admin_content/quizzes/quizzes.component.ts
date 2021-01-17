@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from "../users/user.model";
+import {UserService} from "../users/user.service";
+import {Router} from "@angular/router";
+import {AuthService} from "../../authentication/service/auth/auth.service";
 
 @Component({
   selector: 'app-quizzes',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizzesComponent implements OnInit {
 
-  constructor() { }
+  role: string;
+  users: User[];
+  currentUsername: string;
 
-  ngOnInit(): void {
+  constructor(private userService: UserService,
+              private router: Router,
+  ) {
   }
 
+  ngOnInit() {
+    this.role = localStorage.getItem("ROLE");
+    if (this.role == "ROLE_USER") {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
+  }
 }

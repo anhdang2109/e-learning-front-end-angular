@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
-    <a class="navbar-brand" routerLink="/home/user">Đặng Trần Nam Anh</a>
+    <a class="navbar-brand" routerLink="/home/user" *ngIf="currentUser">{{currentUser.username}}</a>
     <button class="navbar-toggler navbar-toggler-right"
             type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -15,19 +15,25 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/home/quizzes">Bài thi</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="currentUser">
           <a class="nav-link" routerLink="/home/user">Trang cá nhân</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" routerLink="/home/contact">Liên hệ</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/admin">Trang quản lý</a>
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" routerLink="/admin">Trang quản lý</a>-->
+<!--        </li>-->
+        <li class="nav-item" *ngIf="!currentUser">
+          <a class="nav-link" routerLink="/login">Đăng nhập</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/admin">Đăng xuất</a>
+          <a class="nav-link" routerLink="/signup">Đăng ký</a>
         </li>
+        <div *ngIf="currentUser">
+          <a (click)="logout()" class="btn btn-outline-danger m-1">Đăng xuất</a>
+        </div>
       </ul>
     </div>
   </div>
