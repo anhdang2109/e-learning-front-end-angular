@@ -16,10 +16,10 @@ export class StudyViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(paramap => {
-      const id = paramap.get('id');
+    this.activatedRoute.params.subscribe(params => {
+      const id = params.id;
       console.log(id);
-      this.studyService.getById(id).subscribe(data => {
+      this.studyService.findById(id).subscribe(data => {
         console.log(data);
         this.study = data;
       });

@@ -3,35 +3,34 @@ import {environment} from "../../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Quiz} from "../model/quiz.model";
-
-const API = environment.API_ENDPOINT;
-// const APII = 'http://localhost:8080/users';
-
+const API = environment.API_FAKE;
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private http: HttpClient) { }
+
+  update(product: Quiz, id: number): Observable<any> {
+    if (!!product.id) {
+      return this.http.put(`http://localhost:8080/admin/quizzes/${id}`, product);
+    }
+    return this.http.post(`http://localhost:8080/admin/quizzes`, product);
+  }
+
+  save(product: Quiz): Observable<any> {
+    return this.http.post(`http://localhost:8080/admin/quizzes`, product);
+  }
+
+  findById(id: number): Observable<any> {
+    return this.http.get(`http://localhost:8080/admin/quizzes/${id}`);
+  }
+
+  deleteById(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8080/admin/quizzes/${id}`);
   }
 
   getAll(): Observable<any> {
-    return this.httpClient.get<any>(API + '/admin/quizzes');
-  }
-
-  getById(id: string): Observable<Quiz> {
-    return this.httpClient.get<Quiz>(API + `/quizzes/${id}`);
-  }
-
-  create(quiz: Quiz): Observable<Quiz> {
-    return this.httpClient.post<Quiz>(API, quiz);
-  }
-
-  deleteById(id: string): Observable<Quiz> {
-    return this.httpClient.delete<Quiz>(API + `/quizzes/${id}`);
-  }
-
-  updateById(id: string, quiz: Quiz): Observable<Quiz> {
-    return this.httpClient.put<Quiz>(API + `/quizzes/${id}`, quiz);
+    return this.http.get('http://localhost:8080/admin/quizzes');
   }
 }

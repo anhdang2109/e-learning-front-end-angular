@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../users/user.model";
 import {UserService} from "../users/user.service";
 import {Router} from "@angular/router";
-import {AuthService} from "../../authentication/service/auth/auth.service";
+import {Quiz} from './model/quiz.model';
+import {QuizService} from './service/quiz.service';
 
 @Component({
   selector: 'app-quizzes',
@@ -14,11 +15,12 @@ export class QuizzesComponent implements OnInit {
   role: string;
   users: User[];
   currentUsername: string;
+  quizzes: Quiz[];
 
   constructor(private userService: UserService,
               private router: Router,
-  ) {
-  }
+              private quizService: QuizService
+  ) {}
 
   ngOnInit() {
     this.role = localStorage.getItem("ROLE");
@@ -27,5 +29,11 @@ export class QuizzesComponent implements OnInit {
       this.router.navigate(['/home']);
     }
     this.currentUsername = localStorage.getItem("USERNAME");
+
+    this.quizService.getAll().toPromise().then(value => {
+      this.quizzes = value;
+      console.log(value);
+      console.log(this.quizzes);
+    });
   }
 }

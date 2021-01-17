@@ -1,6 +1,6 @@
 export interface Quiz {
-  id: number;
+  id?: number;
   quizname: string;
   description: string;
-  randomNumber: number;
+  randomNumber?: number;
 }
