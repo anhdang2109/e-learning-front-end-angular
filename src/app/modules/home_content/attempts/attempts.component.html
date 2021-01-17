@@ -2,13 +2,16 @@
 <div class="container">
 
   <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">Portfolio 1
+  <h1 class="mt-4 mb-3">Danh sách lượt thi
     <small>Subheading</small>
   </h1>
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="index.html">Home</a>
+      <a routerLink="/home/index">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a routerLink="/home/quizzes">Danh sách bài thi</a>
     </li>
     <li class="breadcrumb-item active">Danh sách lượt thi</li>
   </ol>
@@ -56,50 +59,29 @@
                   <tr>
                     <th style="width: 5%">#</th>
                     <th style="width: 20%">Trạng thái</th>
-                    <th style="width: 10%">Kết quả</th>
+                    <th style="width: 10%" class="text-center">Kết quả</th>
                     <th style="width: 7%" class="text-center">Ngày khởi tạo</th>
                     <th style="width: 8%" class="text-center">Ngày hoàn thành</th>
                     <th style="width: 15%"></th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Hoàn thành</td>
-                    <td>8.0/10.0</td>
-                    <td>12-12-2020</td>
-                    <td>12-12-2020</td>
-                    <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm"
-                         routerLink="/home/quizzes/attempts/view">
+                  <tr *ngFor="let attempt of attempts">
+                    <td>{{ attempt.id }}</td>
+                    <td>{{ attempt.status }}</td>
+                    <td class="text-center">{{ attempt.averageScore }} / 10</td>
+                    <td class="text-center">12-12-2020</td>
+                    <td class="text-center">12-12-2020</td>
+                    <td class="project-actions text-center">
+                        <a *ngIf="attempt.status == 'finished'" class="btn btn-info btn-sm"
+                           [routerLink]="'/home/quizzes/'+ idStudy +'/attempts/view/' + attempt.id">
+                          <i class="fas fa-folder"></i>
+                          Xem lại
+                        </a>
+                      <a *ngIf="attempt.status == 'in progress'" class="btn btn-primary btn-sm"
+                         [routerLink]="'/home/quizzes/'+ idStudy +'/attempts/view/' + attempt.id">
                         <i class="fas fa-folder"></i>
-                        Xem lại
-                      </a>
-                      <span>&nbsp;</span><span>&nbsp;</span>
-                      <a class="btn btn-danger btn-sm">
-                        <i class="fas fa-trash">
-                        </i>
-                        Xoá lượt thử
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Hoàn thành</td>
-                    <td>8.0/10.0</td>
-                    <td>12-12-2020</td>
-                    <td>12-12-2020</td>
-                    <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm"
-                         routerLink="/home/quizzes/attempts/view">
-                        <i class="fas fa-folder"></i>
-                        Xem lại
-                      </a>
-                      <span>&nbsp;</span><span>&nbsp;</span>
-                      <a class="btn btn-danger btn-sm">
-                        <i class="fas fa-trash">
-                        </i>
-                        Xoá lượt thử
+                        Làm tiếp
                       </a>
                     </td>
                   </tr>
@@ -119,7 +101,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-          <button routerLink="/home/quizzes/attempts/view" type="submit" class="btn btn-success" style="width: 205px">
+          <button (click)="tryAttempt()" type="button" class="btn btn-success" style="width: 205px">
             Đăng kí lượt mới
           </button>
         </div>

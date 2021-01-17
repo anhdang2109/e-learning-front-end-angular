@@ -3,6 +3,7 @@ import {environment} from "../../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Study} from "../model/study.model";
 import {Observable} from "rxjs";
+import {Attempt} from '../../attempt/attempt.model';
 
 const API = environment.API_FAKE;
 
@@ -12,25 +13,30 @@ const API = environment.API_FAKE;
 
 export class StudyService {
 
-  constructor(private httpClient: HttpClient) { }
-
-  getAll(): Observable<Study[]> {
-    return this.httpClient.get<Study[]>(API + '/studies');
+  constructor(private http: HttpClient) {
   }
 
-  getById(id: string): Observable<Study> {
-    return this.httpClient.get<Study>(API + `/studies/${id}`);
+  update(product: Study, id: number): Observable<any> {
+    return this.http.put(`http://localhost:8080/admin/studies/${id}`, product);
   }
 
-  create(study: Study): Observable<Study> {
-    return this.httpClient.post<Study>(API, study);
+  save(product: Study): Observable<any> {
+    return this.http.post(`http://localhost:8080/admin/studies`, product);
   }
 
-  deleteById(id: string): Observable<Study> {
-    return this.httpClient.delete<Study>(API + `/studies/${id}`);
+  addAttempt(product: Study): Observable<any> {
+    return this.http.post(`http://localhost:8080/admin/studies/addAttempt`, product);
   }
 
-  updateById(id: string, study: Study): Observable<Study> {
-    return this.httpClient.put<Study>(API + `/studies/${id}`, study);
+  findById(id: number): Observable<any> {
+    return this.http.get(`http://localhost:8080/admin/studies/${id}`);
+  }
+
+  deleteById(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8080/admin/studies/${id}`);
+  }
+
+  getAll(): Observable<any> {
+    return this.http.get('http://localhost:8080/admin/studies');
   }
 }

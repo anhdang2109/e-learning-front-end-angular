@@ -43,6 +43,7 @@
                           </label>
                           <input type="text" class="form-control"
                                  id="exampleInputName"
+                                 [(ngModel)]="quiz.quizname"
                                  placeholder="Điền tên">
                         </div>
                       </div>
@@ -53,6 +54,7 @@
                           <label>Mô tả: </label>
                           <textarea name="quiz-explain" id="quiz-explain" rows="3"
                                     class="form-control"
+                                    [(ngModel)]="quiz.description"
                           placeholder="Nhập mô tả">
                           </textarea>
                         </div>
@@ -60,9 +62,9 @@
                     </div>
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="form-group"><label class="col-form-label"><strong>Danh mục: </strong></label><select
+                        <div class="form-group"><label class="col-form-label"><strong>Danh mục: </strong></label>
+                          <select
                           name="category"
-                          id="user_gender"
                           class="form-control m-input">
                           <option value="english">Tiếng anh</option>
                           <option value="development">Lập trình</option>
@@ -74,7 +76,8 @@
                     <div id="button-bar-container" class="col-md-12">
                       <div id="button-bar" class="col-md-12">
                         <a style="width: 190px" class="btn btn-success btn-sm float-right"
-                           type="button">
+                           type="button"
+                           (click)="create()">
                           <i class="fas fa-plus-circle"></i>
                           <span>&nbsp;</span>
                           Thêm bài thi</a>

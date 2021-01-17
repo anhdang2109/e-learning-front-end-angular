@@ -10,6 +10,7 @@ import {AttemptViewComponent} from '../../modules/home_content/attempts/attempt-
 import {HomeComponent} from '../../modules/home_content/home.component';
 import {ContactComponent} from '../../modules/home_content/contact/contact.component';
 import {UserEditComponent} from '../../modules/home_content/user/user-edit/user-edit.component';
+import {FormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -26,11 +27,11 @@ const routes: Routes = [
     component: QuizzesComponent
   },
   {
-    path: 'quizzes/attempts',
+    path: 'quizzes/:idStudy/attempts',
     component: AttemptsComponent
   },
   {
-    path: 'quizzes/attempts/view',
+    path: 'quizzes/:idStudy/attempts/view/:idAttempt',
     component: AttemptViewComponent,
   },
   {
@@ -72,7 +73,8 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class HomeModule {

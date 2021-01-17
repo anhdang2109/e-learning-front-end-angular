@@ -79,6 +79,37 @@
                       </tr>
                       </thead>
                       <tbody>
+                      <tr *ngFor="let quiz of quizzes">
+                        <td>{{ quiz.id }}</td>
+                        <td>{{ quiz.quizname }}</td>
+                        <td>{{ quiz.description }}</td>
+                        <td>Category</td>
+                        <td>{{ quiz.randomNumber }}</td>
+                        <td>12-12-2020</td>
+                        <td>12-12-2020</td>
+                        <td class="project-actions text-right">
+                          <form method="post">
+                            <a class="btn btn-primary btn-sm"
+                               routerLink="view">
+                              <i class="fas fa-folder"></i>
+                              Xem
+                            </a>
+                            <span>&nbsp;</span><span>&nbsp;</span>
+                            <a class="btn btn-info btn-sm"
+                               routerLink="edit">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Sửa
+                            </a>
+                            <span>&nbsp;</span><span>&nbsp;</span>
+                            <a class="btn btn-danger btn-sm">
+                              <i class="fas fa-trash">
+                              </i>
+                              Xoá
+                            </a>
+                          </form>
+                        </td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>

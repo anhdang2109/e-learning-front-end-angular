@@ -6,10 +6,7 @@ import {QuizzesEditComponent} from "./quizzes-edit/quizzes-edit.component";
 import {QuizzesViewComponent} from "./quizzes-view/quizzes-view.component";
 import {QuizzesImportComponent} from "./quizzes-import/quizzes-import.component";
 import {RouterModule, Routes} from "@angular/router";
-import {UsersComponent} from "../users/users.component";
-import {UserCreateComponent} from "../users/user-create/user-create.component";
-import {UserEditComponent} from "../users/user-edit/user-edit.component";
-import {UserImportComponent} from "../users/user-import/user-import.component";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -43,6 +40,8 @@ const routes: Routes = [
     QuizzesImportComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(routes),
     CommonModule
   ]
