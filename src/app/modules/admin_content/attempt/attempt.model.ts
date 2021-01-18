@@ -4,6 +4,8 @@ import {Study} from '../studies/model/study.model';
 export interface Attempt {
   id?: number;
   name?: string;
+  username?: string;
+  email?: string;
   status?: string;
   averageScore?: number;
   study?: Study;

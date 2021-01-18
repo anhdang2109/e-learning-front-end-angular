@@ -48,7 +48,7 @@ const routes: Routes = [
     loadChildren: () => import('../../modules/admin_content/assumption/assumption.module').then(m => m.AssumptionModule)
   },
   {
-    path: 'attempt',
+    path: 'attempts',
     loadChildren: () => import('../../modules/admin_content/attempt/attempt.module').then(m => m.AttemptModule)
   }
 ];

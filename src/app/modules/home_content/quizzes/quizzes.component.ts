@@ -29,11 +29,11 @@ export class QuizzesComponent implements OnInit {
   ) {
   }
 
-  getAllCategory() {
-    this.categoryService.getAll().subscribe(next => {
-      this.listCategory = next;
-    });
-  }
+  // getAllCategory() {
+  //   this.categoryService.getAll().subscribe(next => {
+  //     this.listCategory = next;
+  //   });
+  // }
 
   getAllQuiz(): Quiz[] {
     this.qizzesService.getAll().subscribe((data: any) => {
@@ -54,7 +54,7 @@ export class QuizzesComponent implements OnInit {
   // }
 
   ngOnInit() {
-    this.getAllCategory();
+    // this.getAllCategory();
     // this.getCurrentUser();
     this.getAllQuiz();
     this.newQ = this.fb.group({
