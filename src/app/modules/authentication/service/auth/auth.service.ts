@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
 import {environment} from "../../../../../environments/environment";
 import {UserToken} from "../../../admin_content/users/user-token";
 import {User} from "../../../admin_content/users/user.model";
+import {Quiz} from "../../../admin_content/quizzes/model/quiz.model";
 
 const API_URL = `${environment.API_ENDPOINT}`;
 
