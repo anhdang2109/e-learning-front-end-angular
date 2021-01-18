@@ -28,7 +28,7 @@ export class StudyService {
     return this.http.post(`http://localhost:8080/admin/studies/addAttempt`, product);
   }
 
-  findById(id: number): Observable<any> {
+  findById(id: any): Observable<any> {
     return this.http.get(`http://localhost:8080/admin/studies/${id}`);
   }
 
