@@ -22,18 +22,15 @@ const routes: Routes = [
     path: 'index',
     component: HomeComponent
   },
-  // {
-  //   path: 'quizzes',
-  //   component: QuizzesComponent
-  // },
+  {
+    path: 'quizzes',
+    component: QuizzesComponent
+  },
   {
     path: 'quizzes/:idStudy/attempts',
     component: AttemptsComponent
   },
-  {
-    path: 'quizzes/:idStudy',
-    component: QuizzesComponent
-  },
+
   {
     path: 'quizzes/:idStudy/attempts/view/:idAttempt',
     component: AttemptViewComponent,

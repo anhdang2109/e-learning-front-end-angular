@@ -40,15 +40,6 @@ export class HomeHeaderComponent implements OnInit {
       console.log(this.currentUser);
     });
 
-    this.activatedRoute.params.subscribe(params => {
-      this.idStudy = params.idStudy;
-      this.studyService.findById(this.idStudy).toPromise().then(value => {
-        console.log(value);
-        this.study = value;
-        console.log(this.study);
-        // this.attempts = this.study.attempts;
-      });
-    });
   }
 
   logout() {
