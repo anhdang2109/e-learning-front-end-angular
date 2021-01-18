@@ -12,8 +12,8 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/home" >Trang chủ</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/home/quizzes">Bài thi</a>
+        <li class="nav-item" *ngIf="currentUser">
+          <a class="nav-link" [routerLink]="'/home/quizzes/'+ idStudy">Bài thi</a>
         </li>
         <li class="nav-item" *ngIf="currentUser">
           <a class="nav-link" routerLink="/home/user">Trang cá nhân</a>
@@ -28,7 +28,7 @@
         <li class="nav-item" *ngIf="!currentUser">
           <a class="nav-link" routerLink="/login">Đăng nhập</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngif="!currentUser">
           <a class="nav-link" routerLink="/signup">Đăng ký</a>
         </li>
         <div *ngIf="currentUser">

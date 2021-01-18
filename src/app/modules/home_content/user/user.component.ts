@@ -22,7 +22,8 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.authService.currentUser.subscribe(x => {
       this.currentUser = x;
-      this.userService.getUserByUsername(x.username).subscribe(value1 => {
+      this.userService.getUserByUsername(x.username && x.createdAt && x.password && x.isDeleted
+        && x.email && x.gender && x.phone && x.title).subscribe(value1 => {
         this.user = value1;
       });
       console.log(this.currentUser);
