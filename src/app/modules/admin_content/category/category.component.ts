@@ -3,6 +3,7 @@ import {User} from "../users/user.model";
 import {UserService} from "../users/user.service";
 import {Router} from "@angular/router";
 import {Category} from "./category.model";
+import {CategoryService} from "./category.service";
 
 @Component({
   selector: 'app-category',
@@ -12,13 +13,12 @@ import {Category} from "./category.model";
 export class CategoryComponent implements OnInit {
 
   role: string;
-  users: User[];
+  category: Category[];
   currentUsername: string;
-  // listBook: Category[] | undefined;
-  // constructor(private categotyService: Category) { }// dung de hung du lieu
-  //
+  listCategory: Category[] | undefined;
   constructor(private userService: UserService,
-              private router: Router
+              private router: Router,
+              private categoryService: CategoryService
   ) {
   }
 
@@ -29,5 +29,12 @@ export class CategoryComponent implements OnInit {
       this.router.navigate(['/home']);
     }
     this.currentUsername = localStorage.getItem("USERNAME");
+    this.getAll();
+  }
+  getAll() {
+    this.categoryService.getAll().subscribe(data => {
+      this.listCategory = data;
+      console.log(data);
+    });
   }
 }

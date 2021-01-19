@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Category} from "../category.model";
+import {CategoryService} from "../category.service";
 
 @Component({
   selector: 'app-category-create',
@@ -12,7 +13,7 @@ export class CategoryCreateComponent implements OnInit {
   newCategoryForm: FormGroup;
   constructor(
     private router: Router,
-    private user: Category,
+    private categoryService: CategoryService,
     private fb: FormBuilder
   ) { }
 
@@ -23,12 +24,13 @@ export class CategoryCreateComponent implements OnInit {
       description: [null],
     });
   }
-  // creatNewCategory() {
-  //   const newU: Category = this.newCategoryForm.value;
-  //   this.user.create(newU).subscribe( () => {
-  //     this.router.navigate(['']);
-  //     alert('tao moi thanh cong');
-  //   });
-  // }
+  creatNewCategory() {
+    const newU: Category = this.newCategoryForm.value;
+    this.categoryService.create(newU).subscribe( () => {
+      console.log(this.newCategoryForm.value);
+      this.router.navigate(['/admin/categories']);
+      alert('tao moi thanh cong');
+    });
+  }
 
 }
