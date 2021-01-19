@@ -13,5 +13,7 @@ export class User {
   isDeleted?: number;
   createdAt?: any;
   updatedAt?: any;
+  oldPassword?: any;
+  newPassword?: any;
   // roles: Role[];
 }

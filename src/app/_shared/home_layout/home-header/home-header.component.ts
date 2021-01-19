@@ -18,10 +18,12 @@ import {StudyService} from "../../../modules/admin_content/studies/service/study
 })
 export class HomeHeaderComponent implements OnInit {
 
-  currentUser: UserToken;
+  // currentUser: UserToken;
   user: Observable<any>;
   idStudy: number;
   study: Study;
+  userFromDB: User = {};
+  currentUser: User = {};
 
   constructor(private authService: AuthService,
               private attemptService: AttemptService,
@@ -29,16 +31,25 @@ export class HomeHeaderComponent implements OnInit {
               private userService: UserService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
+    this.authService.currentUserSubject.subscribe(value => {
+      this.currentUser = value;
+      if (this.currentUser) {
+      }
+    });
+
+    this.authService.currentUserSubjectFromDB.subscribe(value => {
+      this.userFromDB = value;
+    });
   }
 
   ngOnInit(): void {
-    this.authService.currentUser.subscribe(x => {
-      this.currentUser = x;
-      this.userService.getUserByUsername(x.username ).subscribe(value1 => {
-        this.user = value1;
-      });
-      console.log(this.currentUser);
-    });
+    // this.authService.currentUser.subscribe(x => {
+    //   this.currentUser = x;
+    //   this.userService.getUserByUsername(x.username).subscribe(value1 => {
+    //     this.user = value1;
+    //   });
+    //   console.log(this.currentUser);
+    // });
 
   }
 

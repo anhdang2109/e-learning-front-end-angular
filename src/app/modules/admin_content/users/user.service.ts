@@ -40,7 +40,7 @@ export class UserService {
     return this.http.put<User>(this.API + `/edit/${user.id}`, user);
   }
 
-  getUserById(id: string): Observable<any> {
+  getUserById(id: any): Observable<any> {
     return this.http.get(this.API + `/` + `${id}`);
   }
 

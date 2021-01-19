@@ -18,6 +18,7 @@ import { RegisterComponent } from './modules/authentication/register/register.co
 import { HomeLayoutComponent } from './_shared/home_layout/home-layout.component';
 import {HomeModule} from './_shared/home_layout/home.module';
 import { UserEditComponent } from './modules/home_content/user/user-edit/user-edit.component';
+import { ChangepasswordComponent } from './modules/changepassword/changepassword.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { UserEditComponent } from './modules/home_content/user/user-edit/user-ed
     CoursesComponent,
     AssignmentsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ChangepasswordComponent
   ],
   imports: [
     HomeModule,
