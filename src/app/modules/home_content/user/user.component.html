@@ -7,9 +7,7 @@
           <div class="col-md-12 ">
 
             <!-- Profile Image -->
-
-            <div class="card card-dark card-outline" *ngIf="currentUser">
-
+            <div class="card card-dark card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
@@ -19,45 +17,47 @@
 
                 <h3 class="profile-username text-center"><span>{{currentUser.username}}</span></h3>
 
-                <p class="text-muted text-center" >Thành viên từ ngày: <span>{{currentUser.createdAt}}</span></p>
+                <p class="text-muted text-center">Thành viên từ ngày: <span>{{currentUser.createdAt}}</span></p>
+                <p class="text-muted text-center">Cập nhập mới nhất: <span
+                  *ngIf="currentUser.updatedAt == null; else elseBlock">{{currentUser.createdAt}}</span>
+                  <span #elseBlock>{{currentUser.updatedAt}}</span>
+                </p>
 
-                <ul class="list-group list-group-unbordered mb-3 ">
+
+                <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
                     <b>Trạng thái</b> <a class="float-right">
-                    Hoạt động
+                    <span *ngIf="currentUser.isDeleted == 1">Hoạt động</span>
+                    <span class="dotGreen"></span>
                   </a>
                   </li>
                   <li class="list-group-item">
-                    <b>Quyền hạn</b>
+                    <b>Nghề nghiệp</b>
                     <a class="float-right">
-                      <span>Admin</span>
+                      <span>{{currentUser.title}}</span>
                     </a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Ví tiền </b> <a class="float-right"><span>200</span><span>&nbsp;</span> <i
-                    class="fas fa-coins"></i></a>
                   </li>
                   <div class="card-body">
                     <strong><i class="fas fa-venus-mars"></i> Giới tính</strong>
                     <p class="text-muted">
-                      <span>Nam</span>
+                      <span>{{currentUser.gender}}</span>
                     </p>
 
                     <hr>
 
                     <strong><i class="fas fa-phone"></i> Số điện thoại</strong>
                     <p class="text-muted">
-                      <span>0964259985</span>
+                      <span>{{currentUser.phone}}</span>
                     </p>
 
                     <hr>
 
                     <strong><i class="fas fa-envelope"></i> Email</strong>
-                    <p class="text-muted">namanh@gmail.com</p>
+                    <p class="text-muted">{{currentUser.email}}</p>
                     <hr>
                   </div>
                 </ul>
-                <a class="btn btn-secondary btn-block" routerLink="/home/user/edit">
+                <a class="btn btn-secondary btn-block" routerLink="/home/user/edit/{{currentUser.username}}">
                   <b>Chỉnh sửa thông tin</b></a>
               </div>
               <!-- /.card-body -->

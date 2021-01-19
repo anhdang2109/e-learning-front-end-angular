@@ -76,7 +76,7 @@ export class UserEditComponent implements OnInit {
       this.user.roles = roles;
     }
     this.userService.update(this.user).subscribe(result => {
-      alert('Update successfully');
+      alert('cập nhập thành công!');
       this.router.navigate(['/admin/users']);
     }, error => {
       console.log(error);

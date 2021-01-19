@@ -28,7 +28,7 @@ export class UserService {
     return this.http.put(this.API + `/delete/${id}`);
   }
   getUserByUsername(username: any): Observable<any> {
-    return this.http.get(this.API + `/` + `${username}`);
+    return this.http.get('http://localhost:8080/' + `${username}`);
   }
 
   update(user: User): Observable<any> {

@@ -14,7 +14,7 @@
   </ol>
 
   <!-- Project One -->
-  <form *ngFor="let quizz of listQuiz">
+    <form *ngFor="let quiz of study">
   <div class="row">
     <div class="col-md-7">
       <a href="#">
@@ -22,14 +22,18 @@
       </a>
     </div>
     <div class="col-md-5">
-      <h3>{{quizz.quizname}}</h3>
-      <p>{{quizz.description}}</p>
-      <a class="btn btn-primary" routerLink="/home/quizzes/1/attempts">Xem bài thi
+            <h3>{{quiz.quizname}}</h3>
+            <p>{{quiz.description}}</p>
+            ngày tạo:
+            <p>{{quiz.created_at}}</p>
+            ngày cập nhập:
+            <p>{{quiz.updated_at}}</p>
+<!--      <a class="btn btn-primary" [routerLink]="'/home/quizzes/'+ idStudy +'/attempts'">Xem bài thi-->
         <span class="glyphicon glyphicon-chevron-right"></span>
-      </a>
+<!--      </a>-->
     </div>
   </div>
-  </form>
+    </form>
   <!-- /.row -->
   <hr>
   <!-- /.row -->
@@ -59,7 +63,6 @@
       </a>
     </li>
   </ul>
-
 </div>
 <!-- /.container -->
 
