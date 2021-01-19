@@ -3,7 +3,7 @@
 import {Role} from "./role";
 
 export interface UserToken {
-  id?: number;
+  id?: any;
   username?: string;
   password?: string;
   email?: string;

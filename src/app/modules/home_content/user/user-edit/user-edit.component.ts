@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserToken} from "../../../admin_content/users/user-token";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {UserService} from "../../../admin_content/users/user.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, ParamMap, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-edit',
@@ -34,13 +34,13 @@ export class UserEditComponent implements OnInit {
       phone: [''],
 
     });
-    this.activate.params.subscribe((params: Params) => {
-      this.id = params.id;
-      console.log(this.id);
+    this.activate.paramMap.subscribe((params: ParamMap) => {
+      this.id = params.get('id');
+      console.log("id" + this.id);
       this.userService.getUserById(this.id).subscribe(result => {
         this.user = result;
         this.FormUser.patchValue({
-          imageSource: this.user.imageSource,
+          // imageSource: this.user.imageSource,
           username: this.user.username,
           email: this.user.email,
           password: this.user.password,
@@ -57,7 +57,7 @@ export class UserEditComponent implements OnInit {
   // tslint:disable-next-line:typedef
   updateUser() {
     if (!this.FormUser.invalid) {
-      this.user.imageSource = this.FormUser.value.imageSource;
+      // this.user.imageSource = this.FormUser.value.imageSource;
       this.user.username = this.FormUser.value.username;
       this.user.email = this.FormUser.value.email;
       this.user.password = this.FormUser.value.password;

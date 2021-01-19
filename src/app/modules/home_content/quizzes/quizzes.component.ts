@@ -12,6 +12,8 @@ import {Study} from "../../admin_content/studies/model/study.model";
 import {StudyService} from "../../admin_content/studies/service/study.service";
 import {Attempt} from "../../admin_content/attempt/attempt.model";
 import {AttemptService} from "../../admin_content/attempt/attempt.service";
+import {UserToken} from "../../admin_content/users/user-token";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-quizzes',
@@ -20,27 +22,26 @@ import {AttemptService} from "../../admin_content/attempt/attempt.service";
 })
 export class QuizzesComponent implements OnInit {
 
-  study: Study[];
-  currentQuiz: Quiz;
+  currentUser: UserToken;
+  user: Observable<any>;
+  idStudy: number;
+  study: Study;
 
-  constructor(
-    private quizService: QuizService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private studyService: StudyService,
-    private authenticationService: AuthService,
+  constructor(private authService: AuthService,
+              private attemptService: AttemptService,
+              private studyService: StudyService,
+              private userService: UserService,
   ) {
   }
 
   ngOnInit(): void {
-    this.authenticationService.currentQuiz.subscribe(x => {
-      this.currentQuiz = x;
-      console.log(x);
-      this.quizService.findById(x.id).subscribe(value1 => {
-        this.study = value1;
-        console.log(value1);
+    this.authService.currentUser.subscribe(x => {
+      this.currentUser = x;
+      this.userService.getUserByUsername(x.username).subscribe(value1 => {
+        this.user = value1;
       });
+      console.log(this.currentUser);
     });
-  }
 
+  }
 }

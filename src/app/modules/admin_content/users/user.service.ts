@@ -23,10 +23,15 @@ export class UserService {
     return this.http.get(this.API);
   }
 
+  getAllUserDeleted(): Observable<any> {
+    return this.http.get(this.API + `/isdeleted`);
+  }
+
   delete(id: number): Observable<any> {
     // @ts-ignore
     return this.http.put(this.API + `/delete/${id}`);
   }
+
   getUserByUsername(username: any): Observable<any> {
     return this.http.get('http://localhost:8080/' + `${username}`);
   }
