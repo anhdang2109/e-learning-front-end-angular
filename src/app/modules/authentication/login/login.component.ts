@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../service/auth/auth.service";
 import {first} from "rxjs/operators";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -12,8 +12,9 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl('')
+    username: new FormControl('', [Validators.required]),
+
+    password: new FormControl('', [Validators.required])
   });
 
   error = '';
@@ -51,5 +52,11 @@ export class LoginComponent implements OnInit {
           alert("Tài khoản của bạn đã bị khoá hoặc sai mật khẩu!");
           this.loading = false;
         });
+  }
+  get username(){
+    return this.loginForm.get('username');
+  }
+  get password(){
+    return this.loginForm.get('password');
   }
 }

@@ -35,6 +35,9 @@ export class CategoryComponent implements OnInit {
     this.categoryService.getAll().subscribe(data => {
       this.listCategory = data;
       console.log(data);
+    }, error => {
+      console.log("lỗi: ");
+      console.log(error);
     });
   }
 }

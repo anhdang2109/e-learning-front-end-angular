@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Category} from "../category.model";
 import {CategoryService} from "../category.service";
@@ -10,6 +10,7 @@ import {CategoryService} from "../category.service";
   styleUrls: ['./category-create.component.css']
 })
 export class CategoryCreateComponent implements OnInit {
+  errorMessage = '';
   newCategoryForm: FormGroup;
   constructor(
     private router: Router,
@@ -20,8 +21,12 @@ export class CategoryCreateComponent implements OnInit {
   ngOnInit(): void {
     this.newCategoryForm = this.fb.group( {
       id: [null],
-      name: [null],
-      description: [null],
+      name: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      description: new FormControl('', [Validators.required, Validators.minLength(4)]),
+
+
+      // name: [null],
+      // description: [null],
     });
   }
   creatNewCategory() {
@@ -31,6 +36,12 @@ export class CategoryCreateComponent implements OnInit {
       this.router.navigate(['/admin/categories']);
       alert('tao moi thanh cong');
     });
+  }
+  get name(){
+    return this.newCategoryForm.get('name');
+  }
+  get description(){
+    return this.newCategoryForm.get('description');
   }
 
 }

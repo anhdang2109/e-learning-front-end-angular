@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Category} from "../category.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CategoryService} from "../category.service";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-category-edit',
@@ -10,6 +10,7 @@ import {FormBuilder} from "@angular/forms";
   styleUrls: ['./category-edit.component.css']
 })
 export class CategoryEditComponent implements OnInit {
+  errorMessage = '';
 
   category: Category;
 
@@ -26,8 +27,9 @@ export class CategoryEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryForm = this.fb.group({
-      name: [''],
-      description: [''],
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      description: ['', [Validators.required, Validators.minLength(4)]],
+
     });
     this.activatedRoute.paramMap.subscribe(paramap => {
       const id = paramap.get('id');
@@ -52,5 +54,11 @@ export class CategoryEditComponent implements OnInit {
         alert('cap nhat thanh cong');
       }, error => alert('loi'));
     }
+  }
+  get name(){
+    return this.categoryForm.get('name');
+  }
+  get description(){
+    return this.categoryForm.get('description');
   }
 }
