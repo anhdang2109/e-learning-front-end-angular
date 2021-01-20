@@ -50,11 +50,11 @@ export class ChangepasswordComponent implements OnInit {
     //   this.notExist = 'Wrong password!';
     //   return;
     // }
-    this.currentUser.password = this.myForm.controls.newPassword.value;
-    this.userService.changePassword(this.currentUser).subscribe(() => {
-      alert('Đổi mật khẩu thành công!');
-      this.router.navigate(['/']);
-    });
+    // this.currentUser.password = this.myForm.controls.newPassword.value;
+    // this.userService.changePassword(this.currentUser).subscribe(() => {
+    //   alert('Đổi mật khẩu thành công!');
+    //   this.router.navigate(['/']);
+    // });
   }
   getCurrentUser() {
     this.userService.getUserById(this.userId).subscribe(data => {
