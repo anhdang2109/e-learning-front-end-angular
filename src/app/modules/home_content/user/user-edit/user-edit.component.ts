@@ -12,10 +12,6 @@ import {User} from "../../../admin_content/users/user.model";
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-
-  id: number = 0;
-  // @ts-ignore
-  user: UserToken;
   // @ts-ignore
   FormUser: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -26,6 +22,7 @@ export class UserEditComponent implements OnInit {
   });
   userProfile: User = {};
   userId = this.authService.currentUserValue.id;
+  currentUser: User;
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
@@ -41,7 +38,7 @@ export class UserEditComponent implements OnInit {
 
   getCurrentUser() {
     // @ts-ignore
-    this.userService.getUserById(this.userProfile.id).subscribe(data => {
+    this.userService.getUserById(this.userId).subscribe(data => {
       localStorage.setItem('currentUser', JSON.stringify(data));
       this.authService.currentUserSubjectFromDB.next(data);
       this.userProfile = data;
@@ -70,8 +67,10 @@ export class UserEditComponent implements OnInit {
     };
     this.router.navigate(["/home/user"]);
     // @ts-ignore
-    this.updateUserProfile();
+    this.updateUserProfile(this.userProfile.id);
     alert('Thành công!');
     this.router.navigate(['/home/user']);
   }
+
+
 }

@@ -18,7 +18,7 @@ const API_URL = `${environment.API_ENDPOINT}`;
 export class AuthService {
   public currentUserSubject: BehaviorSubject<UserToken>;
   public currentUser: Observable<UserToken>;
-  public currentQuiz: BehaviorSubject<Quiz>;
+  public currentUser1: BehaviorSubject<Quiz>;
   public currentUserSubjectFromDB: BehaviorSubject<User>;
   update = new EventEmitter<string>();
 
