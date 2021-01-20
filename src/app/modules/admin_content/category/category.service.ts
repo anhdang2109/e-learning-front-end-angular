@@ -8,11 +8,11 @@ import {environment} from "../../../../environments/environment";
   providedIn: 'root'
 })
 export class CategoryService {
-  // API_URL = environment.API_ENDPOINT + '/admin/categories';
+  API_URL = environment.API_ENDPOINT + '/admin/categories';
 
   constructor(private http: HttpClient) { }
 
-  // getAll(): Observable<Category[]> {
-  //   return this.http.get<Category[]>(this.API_URL);
-  // }
+  getAll(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.API_URL);
+  }
 }
