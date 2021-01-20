@@ -16,4 +16,6 @@ export interface UserToken {
   roles: Role[];
   createdAt?: any;
   updatedAt?: any;
+  confirmPassword?: any;
+  newPassword?: any;
 }

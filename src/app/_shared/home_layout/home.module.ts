@@ -11,6 +11,7 @@ import {HomeComponent} from '../../modules/home_content/home.component';
 import {ContactComponent} from '../../modules/home_content/contact/contact.component';
 import {UserEditComponent} from '../../modules/home_content/user/user-edit/user-edit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ChangepasswordComponent} from "../../modules/changepassword/changepassword.component";
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
     path: 'contact',
     component: ContactComponent
   },
+  {
+    path: 'user/password',
+    component: ChangepasswordComponent
+  }
 ];
 
 @NgModule({
