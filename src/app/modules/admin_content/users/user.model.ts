@@ -13,7 +13,7 @@ export class User {
   isDeleted?: number;
   createdAt?: any;
   updatedAt?: any;
-  confirmPassword?: any;
-  newPassword?: any;
+  confirmPassword?: string;
+  newPassword?: string;
   // roles: Role[];
 }

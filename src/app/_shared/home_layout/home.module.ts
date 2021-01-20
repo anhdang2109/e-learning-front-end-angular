@@ -49,7 +49,7 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
-    path: 'user/password',
+    path: 'user/password/:id',
     component: ChangepasswordComponent
   }
 ];

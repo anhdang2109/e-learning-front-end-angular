@@ -6,6 +6,7 @@ import {UserService} from "../admin_content/users/user.service";
 import {User} from "../admin_content/users/user.model";
 import {UserToken} from "../admin_content/users/user-token";
 import {Subscription} from "rxjs";
+import {AngularFireDatabase} from "@angular/fire/database";
 
 @Component({
   selector: 'app-changepassword',
@@ -83,6 +84,7 @@ export class ChangepasswordComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router,
               private fb: FormBuilder,
+              private db: AngularFireDatabase,
               private activatedRoute: ActivatedRoute,
               private authService: AuthService) {
     this.authService.currentUser.subscribe(
