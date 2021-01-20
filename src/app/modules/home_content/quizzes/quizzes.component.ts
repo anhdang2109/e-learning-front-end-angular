@@ -33,14 +33,14 @@ export class QuizzesComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
-    this.authenticationService.currentQuiz.subscribe(x => {
-      this.currentQuiz = x;
-      console.log(x);
-      this.quizService.findById(x.id).subscribe(value1 => {
-        this.study = value1;
-        console.log(value1);
-      });
-    });
+    // this.authenticationService.currentQuiz.subscribe(x => {
+    //   this.currentQuiz = x;
+    //   console.log(x);
+    //   this.quizService.findById(x.id).subscribe(value1 => {
+    //     this.study = value1;
+    //     console.log(value1);
+    //   });
+    // });
   }
 
   // getAllCategory() {
