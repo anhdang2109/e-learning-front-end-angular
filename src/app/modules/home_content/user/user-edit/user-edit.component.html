@@ -17,25 +17,25 @@
                     </div>
                   </div>
                 </div>
+<!--                <div class="row">-->
+<!--                  <div class="col-md-12">-->
+<!--                    <div class="form-group">-->
+<!--                      <label class="col-form-label">-->
+<!--                        <strong>Ảnh đại diện:</strong>-->
+<!--                      </label>-->
+<!--                      <div class="custom-file">-->
+<!--                        <input type="file" class="custom-file-input"-->
+<!--                               id="customFile" >-->
+<!--                        <label class="custom-file-label" for="customFile">Choose-->
+<!--                          file</label>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="col-form-label">
-                        <strong>Ảnh đại diện:</strong>
-                      </label>
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input"
-                               id="customFile" >
-                        <label class="custom-file-label" for="customFile">Choose
-                          file</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">
+                      <label for="exampleInputName">
                         <strong>Tài khoản:</strong>
                       </label>
                       <input type="text" class="form-control"
@@ -54,25 +54,36 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Mật khẩu:</label>
-                      <input type="password" class="form-control"
-                             id="exampleInputPassword1"
-                             placeholder="Điền mật khẩu" formControlName="password" >
-                    </div>
-                  </div>
-                </div>
+<!--                <div class="row">-->
+<!--                  <div class="col-md-12">-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputPassword1">Mật khẩu:</label>-->
+<!--                      <input type="password" class="form-control"-->
+<!--                             id="exampleInputPassword1"-->
+<!--                             placeholder="Điền mật khẩu" formControlName="password" >-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group"><label class="col-form-label"><strong>Giới
-                      tính:</strong></label><select name="gender"
-                                                    id="user_gender"
+                      tính:</strong></label>
+                      <select name="gender"
+                                                    id="gender"
                                                     class="form-control m-input" formControlName="gender">
                       <option value="Nữ">Nữ</option>
                       <option value="Nam">Nam</option>
 
+                    </select></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group"><label class="col-form-label"><strong>Nghề nghiệp:</strong></label>
+                      <select name="title"
+                                                    id="title"
+                                                    class="form-control m-input" formControlName="title">
+                        <option value="Giáo viên">Giáo viên</option>
+                        <option value="Sinh viên, học sinh">Sinh viên, học sinh</option>
+                        <option value="Lập trình viên">Lập trình viên</option>
                     </select></div>
                   </div>
                   <div class="col-md-6">
@@ -88,7 +99,7 @@
                   </div>
                 </div>
                 <br>
-                <a class="btn btn-secondary btn-block"><b>Cập nhật thông tin</b></a>
+                <button class="btn btn-secondary btn-block"><b>Cập nhật thông tin</b></button>
               </div>
               <!-- /.card-body -->
             </div>

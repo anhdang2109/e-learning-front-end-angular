@@ -23,10 +23,19 @@ export class UserService {
     return this.http.get(this.API);
   }
 
+  getAllUserDeleted(): Observable<any> {
+    return this.http.get(this.API + `/isdeleted`);
+  }
+
   delete(id: number): Observable<any> {
     // @ts-ignore
     return this.http.put(this.API + `/delete/${id}`);
   }
+  deleted(id: number): Observable<any> {
+    // @ts-ignore
+    return this.http.put(this.API + `/deleted/${id}`);
+  }
+
   getUserByUsername(username: any): Observable<any> {
     return this.http.get('http://localhost:8080/' + `${username}`);
   }
@@ -35,11 +44,16 @@ export class UserService {
     return this.http.put<User>(this.API + `/edit/${user.id}`, user);
   }
 
-  getUserById(id: string): Observable<any> {
+  getUserById(id: any): Observable<any> {
     return this.http.get(this.API + `/` + `${id}`);
   }
 
   login(user: User): Observable<User> {
     return this.http.post<User>(this.API + '/login', user);
   }
+
+  changePassword(user: User,  id: number): Observable<User> {
+    return this.http.put<User>(this.API + `/new-password/${id}`, user);
+  }
+
 }

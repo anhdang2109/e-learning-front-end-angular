@@ -7,6 +7,7 @@ import {UserEditComponent} from './user-edit/user-edit.component';
 import {UserViewComponent} from './user-view/user-view.component';
 import {UserImportComponent} from './user-import/user-import.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {UsersDeletedComponent} from "./users-deleted/users-deleted.component";
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: UserCreateComponent
+  },
+  {
+    path: 'deleted',
+    component: UsersDeletedComponent
   },
   {
     path: 'edit/:id',

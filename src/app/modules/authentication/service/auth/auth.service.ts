@@ -16,17 +16,24 @@ const API_URL = `${environment.API_ENDPOINT}`;
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<UserToken>;
+  public currentUserSubject: BehaviorSubject<UserToken>;
   public currentUser: Observable<UserToken>;
+  public currentQuiz: BehaviorSubject<Quiz>;
+  public currentUserSubjectFromDB: BehaviorSubject<User>;
   update = new EventEmitter<string>();
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<UserToken>(JSON.parse(localStorage.getItem('user')));
+    this.currentUserSubjectFromDB = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
   public get currentUserValue(): UserToken {
     return this.currentUserSubject.value;
+  }
+
+  public get currentUserDBValue(): User {
+    return this.currentUserSubjectFromDB.value;
   }
 
   register(user: User): Observable<User> {

@@ -3,7 +3,7 @@
 import {Role} from "./role";
 
 export interface UserToken {
-  id?: number;
+  id?: any;
   username?: string;
   password?: string;
   email?: string;
@@ -16,4 +16,6 @@ export interface UserToken {
   roles: Role[];
   createdAt?: any;
   updatedAt?: any;
+  confirmPassword?: any;
+  newPassword?: any;
 }

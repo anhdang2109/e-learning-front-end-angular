@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {UserToken} from "../../../admin_content/users/user-token";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../admin_content/users/user.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, ParamMap, Params, Router} from "@angular/router";
+import {AuthService} from "../../../authentication/service/auth/auth.service";
+import {User} from "../../../admin_content/users/user.model";
 
 @Component({
   selector: 'app-user-edit',
@@ -10,67 +12,65 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-
-  id: any;
   // @ts-ignore
-  user: UserToken;
-  // @ts-ignore
-  FormUser: FormGroup;
+  FormUser: FormGroup = new FormGroup({
+    username: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required]),
+    title: new FormControl('', Validators.required),
+  });
+  userProfile: User = {};
+  userId = this.authService.currentUserValue.id;
+  currentUser: User;
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private activate: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService) {
+    this.getCurrentUser();
   }
 
   ngOnInit(): void {
-    this.FormUser = this.fb.group({
-      imageSource: [''],
-      username: [''],
-      email: [''],
-      password: [''],
-      gender: [''],
-      title: [''],
-      phone: [''],
 
-    });
-    this.activate.params.subscribe((params: Params) => {
-      this.id = params.id;
-      console.log(this.id);
-      this.userService.getUserById(this.id).subscribe(result => {
-        this.user = result;
-        this.FormUser.patchValue({
-          imageSource: this.user.imageSource,
-          username: this.user.username,
-          email: this.user.email,
-          password: this.user.password,
-          gender: this.user.gender,
-          title: this.user.title,
-          phone: this.user.phone,
+  }
 
-        });
-        console.log(result);
+  getCurrentUser() {
+    // @ts-ignore
+    this.userService.getUserById(this.userId).subscribe(data => {
+      localStorage.setItem('currentUser', JSON.stringify(data));
+      this.authService.currentUserSubjectFromDB.next(data);
+      this.userProfile = data;
+      this.FormUser = new FormGroup({
+        username: new FormControl(this.userProfile.username, [Validators.required]),
+        email: new FormControl(this.userProfile.email, [Validators.required]),
+        gender: new FormControl(this.userProfile.gender, [Validators.required]),
+        phone: new FormControl(this.userProfile.phone, [Validators.required]),
+        title: new FormControl(this.userProfile.title, Validators.required),
       });
     });
   }
 
-  // tslint:disable-next-line:typedef
-  updateUser() {
-    if (!this.FormUser.invalid) {
-      this.user.imageSource = this.FormUser.value.imageSource;
-      this.user.username = this.FormUser.value.username;
-      this.user.email = this.FormUser.value.email;
-      this.user.password = this.FormUser.value.password;
-      this.user.gender = this.FormUser.value.gender;
-      this.user.title = this.FormUser.value.title;
-      this.user.phone = this.FormUser.value.phone;
-    }
-    this.userService.update(this.user).subscribe(result => {
-      alert('cập nhập thành công!');
-      this.router.navigate(['/home/user']);
-    }, error => {
-      console.log(error);
-    });
+  updateUserProfile() {
+    this.userService.update(this.userProfile).toPromise();
   }
+
+  updateUser() {
+    this.userProfile = {
+      id: this.userProfile.id,
+      username: this.FormUser.value.username === '' ? this.userProfile.username : this.FormUser.value.username,
+      email: this.FormUser.value.email === '' ? this.userProfile.email : this.FormUser.value.email,
+      phone: this.FormUser.value.phone === '' ? this.userProfile.phone : this.FormUser.value.phone,
+      gender: this.FormUser.value.gender === '' ? this.userProfile.gender : this.FormUser.value.gender,
+      title: this.FormUser.value.title === '' ? this.userProfile.title : this.FormUser.value.title
+    };
+    this.router.navigate(["/home/user"]);
+    // @ts-ignore
+    this.updateUserProfile(this.userProfile.id);
+    alert('Thành công!');
+    this.router.navigate(['/home/user']);
+  }
+
 
 }

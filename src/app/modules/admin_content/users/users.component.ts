@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
   })
 export class UsersComponent implements OnInit {
   user: User[];
+  userDeleted: User[];
   newU: FormGroup;
   role: string;
   currentUsername: string;
@@ -43,6 +44,13 @@ export class UsersComponent implements OnInit {
     }
     this.currentUsername = localStorage.getItem("USERNAME");
   }
+
+  // getAllUserDeleted(): User[] {
+  //   this.userService.getAllUserDeleted().subscribe((data: any) => {
+  //     this.userDeleted = data;
+  //   });
+  //   return this.userDeleted;
+  // }
 
   getAllUser(): User[] {
     this.userService.getAllUser().subscribe((data: any) => {

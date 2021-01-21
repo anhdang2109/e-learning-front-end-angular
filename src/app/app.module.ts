@@ -18,6 +18,12 @@ import { RegisterComponent } from './modules/authentication/register/register.co
 import { HomeLayoutComponent } from './_shared/home_layout/home-layout.component';
 import {HomeModule} from './_shared/home_layout/home.module';
 import { UserEditComponent } from './modules/home_content/user/user-edit/user-edit.component';
+import { ChangepasswordComponent } from './modules/changepassword/changepassword.component';
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import { UsersDeletedComponent } from './modules/admin_content/users/users-deleted/users-deleted.component';
 
 
 @NgModule({
@@ -29,7 +35,9 @@ import { UserEditComponent } from './modules/home_content/user/user-edit/user-ed
     CoursesComponent,
     AssignmentsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ChangepasswordComponent,
+    UsersDeletedComponent
   ],
   imports: [
     HomeModule,
@@ -40,7 +48,10 @@ import { UserEditComponent } from './modules/home_content/user/user-edit/user-ed
     NgbModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -82,14 +82,46 @@
                                    placeholder="Điền email" formControlName="email">
                           </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control"
-                                   id="exampleInputPassword1"
-                                   placeholder="Điền mật khẩu" formControlName="password">
-                          </div>
-                        </div>
+<!--                        <div class="col-md-6">-->
+<!--                          <div class="form-group">-->
+<!--                            <label for="exampleInputPassword1">Password</label>-->
+<!--                            <input type="password" class="form-control"-->
+<!--                                   id="exampleInputPassword1"-->
+<!--                                   placeholder="Điền mật khẩu" formControlName="password">-->
+<!--                          </div>-->
+<!--                        </div>-->
+
+<!--                         Button trigger modal-->
+                            <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#updateModal">
+                              Đổi mật khẩu
+                            </button>
+                            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form [formGroup]="newPassword2" (ngSubmit)="changePassword()" >
+                                      <div class="form-group">
+                                        <label for="password">Mật khẩu</label>
+                                        <input type="password" formControlName="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="password1">Nhập lại mật khẩu</label>
+                                        <input type="password" formControlName="confirmPassword" class="form-control" id="password1"
+                                               placeholder="Nhập lại mật khẩu">
+                                      </div>
+                                      <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
                       </div>
                       <div class="row">
                         <div class="col-md-3">
