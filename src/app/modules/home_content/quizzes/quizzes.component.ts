@@ -25,6 +25,14 @@ export class QuizzesComponent implements OnInit {
   listQuiz: Quiz[];
   currentUser: User;
   newQ: FormGroup;
+  categories: Category[];
+  quizzes: Quiz[];
+  studies: Study[];
+  userPresent: UserToken;
+  currentUser: User;
+  idStudy: number;
+  countQuiz: any;
+  num: any;
 
   currentUser: UserToken;
   user: Observable<any>;
@@ -35,6 +43,12 @@ export class QuizzesComponent implements OnInit {
               private attemptService: AttemptService,
               private studyService: StudyService,
               private userService: UserService,
+  constructor(private router: Router,
+              private userService: UserService,
+              private categoryService: CategoryService,
+              private quizzesService: QuizService,
+              private studyService: StudyService,
+              private authService: AuthService,
   ) {
   }
   ngOnInit(): void {
@@ -42,8 +56,92 @@ export class QuizzesComponent implements OnInit {
       this.currentUser = x;
       this.userService.getUserByUsername(x.username).subscribe(value1 => {
         this.user = value1;
+
+  getUserCurrentByName() {
+    this.authService.currentUser.subscribe(data => {
+      this.userService.getUserByUsername(data.username).subscribe(user => {
+        this.currentUser = user;
       });
       console.log(this.currentUser);
     });
+  }
+
+  // private getCurrentUserById() {
+  //   this.authService.currentUser.subscribe(value => {
+  //     this.userService.getUserById(value.id + '').subscribe(result => {
+  //       this.currentUser = result;
+  //     });
+  //   });
+  // }
+
+  getAllCategory() {
+    this.categoryService.getAll().subscribe(data => {
+      this.categories = data;
+    });
+    return this.categories;
+  }
+
+  getAllQuiz(): Quiz[] {
+    this.quizzesService.getAll().subscribe((data: any) => {
+      this.quizzes = data;
+    });
+    return this.quizzes;
+  }
+
+  getAllStudy(): Study[] {
+    this.studyService.getAll().subscribe((data: any) => {
+      this.studies = data;
+    });
+    return this.studies;
+  }
+
+  goToAttempt(idQuiz: number) {
+    this.studyService.getStudyById(this.currentUser.id, idQuiz).subscribe( data => {
+      if (data != null) {
+        console.log(data);
+        return data;
+      } else {
+        console.log(0);
+        return 0;
+      }
+    });
+  }
+
+
+
+  // getSizeOfCategory(id: any) {
+  //   this.quizzesService.countQuizByCategory(id).subscribe(data => {
+  //     this.num = data;
+  //   });
+  //   if (this.num == null) { this.num = 0; }
+  //   return this.num;
+  // }
+
+
+
+  ngOnInit() {
+    this.getUserCurrentByName();
+    // this.getCurrentUserById();
+    this.getAllCategory();
+    this.getAllQuiz();
+    this.getAllStudy();
+
+    // console.log(this.categories);
+
+    // for (let i = 0; i < this.categories.length; i++) {
+    //   this.countQuiz[i] = this.getSizeOfCategory(this.categories[1].id);
+    //   console.log(this.countQuiz[1]);
+    //   console.log(this.categories[1].id);
+    // }
+    // console.log(this.countQuiz);
+
+    // this.studyService.getStudyById(33, 7).subscribe(data => {
+    //   this.idStudy = data;
+    // });
+    // console.log(this.idStudy);
+
+
+    // console.log(this.studyService.getStudyById(33, 7));
+    // console.log(this.studies);
   }
 }

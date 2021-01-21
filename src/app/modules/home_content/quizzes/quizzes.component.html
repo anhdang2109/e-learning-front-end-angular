@@ -65,4 +65,158 @@
   </ul>
 </div>
 <!-- /.container -->
+<!--Design by Minh-->
+<div class="container col-12">
+  <br>
+  <div class="container" >
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Danh sách bài thi</li>
+    </ol>
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-3">
+          <!--          <a href="compose.html" class="btn btn-primary btn-block mb-3">Compose</a>-->
+
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Danh mục</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <ul class="nav nav-pills flex-column" *ngFor="let category of categories">
+                <li class="nav-item active">
+                  <a href="" class="nav-link">
+                    <i class="fas fa-inbox"></i> {{category.name}}
+                    <span class="badge bg-primary float-right">?</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Danh sách bài thi</h3>
+
+              <div class="card-tools">
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" placeholder="Tìm kiếm bài thi ...">
+                  <div class="input-group-append">
+                    <div class="btn btn-primary">
+                      <i class="fas fa-search"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <!--              <div class="mailbox-controls">-->
+              <!--                <button type="button" class="btn btn-default btn-sm">-->
+              <!--                  <i class="fas fa-sync-alt"></i>-->
+              <!--                </button>-->
+              <!--                <div class="float-right">-->
+              <!--                  1-50/200-->
+              <!--                  <div class="btn-group">-->
+              <!--                    <button type="button" class="btn btn-default btn-sm">-->
+              <!--                      <i class="fas fa-chevron-left"></i>-->
+              <!--                    </button>-->
+              <!--                    <button type="button" class="btn btn-default btn-sm">-->
+              <!--                      <i class="fas fa-chevron-right"></i>-->
+              <!--                    </button>-->
+              <!--                  </div>-->
+              <!--                  &lt;!&ndash; /.btn-group &ndash;&gt;-->
+              <!--                </div>-->
+              <!--                <div class="table-responsive mailbox-messages">-->
+              <!--                  <table class="table">-->
+              <!--                    <tbody>-->
+              <!--                    <tr>-->
+              <!--                      &lt;!&ndash;                    <td>&ndash;&gt;-->
+              <!--                      &lt;!&ndash;                      <div class="icheck-primary">&ndash;&gt;-->
+              <!--                      &lt;!&ndash;                        <input type="checkbox" value="" id="check1">&ndash;&gt;-->
+              <!--                      &lt;!&ndash;                        <label for="check1"></label>&ndash;&gt;-->
+              <!--                      &lt;!&ndash;                      </div>&ndash;&gt;-->
+              <!--                      &lt;!&ndash;                    </td>&ndash;&gt;-->
+              <!--                      &lt;!&ndash;                    <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>&ndash;&gt;-->
+              <!--                      <td class="mailbox-name"><a>abc</a></td>-->
+              <!--                      <td class="mailbox-subject"><b>xyz</b></td>-->
+              <!--                      <td class="mailbox-attachment"></td>-->
+              <!--                      <td class="mailbox-date">5 mins ago</td>-->
+              <!--                    </tr>-->
+              <!--                    </tbody>-->
+              <!--                  </table>-->
+              <!--                  &lt;!&ndash; /.table &ndash;&gt;-->
+              <!--                </div>-->
+              <!-- /.float-right -->
+              <!--              </div>-->
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                  <tr class="text-center">
+                    <th>#</th>
+                    <th>Tên bài thi</th>
+                    <th>Mô tả</th>
+                    <th></th>
+                    <th>Thời gian</th>
+                  </tr>
+                  <tr *ngFor="let quiz of quizzes, index as i">
+                    <td>{{i+1}}</td>
+                    <td class="mailbox-name">
+                      <a routerLink="/home/quizzes/0/attempts" title="{{goToAttempt(quiz.id)}}">{{quiz.quizname}}</a>
+                    </td>
+                    <td class="mailbox-subject"><!--<b>{{quiz.quizname}}</b> - -->{{quiz.description}}</td>
+                    <td class="mailbox-attachment"></td>
+                    <td class="mailbox-date">5 mins ago</td>
+                  </tr>
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer p-0">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm">
+                  <i class="fas fa-sync-alt"></i>
+                </button>
+                <div class="float-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button type="button" class="btn btn-default btn-sm">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.float-right -->
+              </div>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
 
