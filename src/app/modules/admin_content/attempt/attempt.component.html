@@ -39,7 +39,7 @@
                   </div>
                   <div class="col-sm-12 col-md-6">
                     <div id="example1_filter" class="dataTables_filter">
-                      <form  method="get">
+                      <form method="get">
                         <div class="form-inline" style="float: right">
                           <input class="form-control form-control-sm"
                                  style="width: 340px"
@@ -70,7 +70,7 @@
                         <th style="width: 10%" class="text-center">Điểm số</th>
                         <th style="width: 7%" class="text-center">Ngày khởi tạo</th>
                         <th style="width: 8%" class="text-center">Ngày hoàn thành</th>
-<!--                        <th style="width: 15%"></th>-->
+                        <th style="width: 15%"></th>
                       </tr>
                       </thead>
                       <tbody>
@@ -82,29 +82,13 @@
                         <td class="text-center">{{ attempt.averageScore}}</td>
                         <td class="text-center">12-12-2020</td>
                         <td class="text-center">12-12-2020</td>
-<!--                        <td class="project-actions text-right">-->
-<!--                          <form method="post">-->
-<!--                            <a class="btn btn-primary btn-sm"-->
-<!--                               [routerLink]="'view/' + attempt.id">-->
-<!--                              <i class="fas fa-folder"></i>-->
-<!--                              Xem-->
-<!--                            </a>-->
-<!--                            <span>&nbsp;</span><span>&nbsp;</span>-->
-<!--                            <a class="btn btn-info btn-sm"-->
-<!--                               [routerLink]="'create/' + attempt.id">-->
-<!--                              <i class="fas fa-pencil-alt">-->
-<!--                              </i>-->
-<!--                              Sửa-->
-<!--                            </a>-->
-<!--                            <span>&nbsp;</span><span>&nbsp;</span>-->
-<!--                            <a class="btn btn-danger btn-sm"-->
-<!--                               [routerLink]="'delete/' + attempt.id">-->
-<!--                              <i class="fas fa-trash">-->
-<!--                              </i>-->
-<!--                              Xoá-->
-<!--                            </a>-->
-<!--                          </form>-->
-<!--                        </td>-->
+                        <td class="project-actions text-center">
+                          <a class="btn btn-info btn-sm"
+                             [routerLink]="'/admin/attempts/view/' + attempt.id">
+                            <i class="fas fa-folder"></i>
+                            Xem
+                          </a>
+                        </td>
                       </tr>
                       </tbody>
                     </table>

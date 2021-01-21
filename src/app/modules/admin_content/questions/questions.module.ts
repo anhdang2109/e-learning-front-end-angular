@@ -2,8 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {QuestionsComponent} from "./questions.component";
-import {DialogQuestionAnswerComponent, QuestionsCreateComponent} from './questions-create/questions-create.component';
-import {QuestionsEditComponent} from "./questions-edit/questions-edit.component";
+import {
+  DialogQuestionAnswerComponent,
+  DialogQuestionInputComponent,
+  QuestionsCreateComponent
+} from './questions-create/questions-create.component';
+import {
+  DialogEditQuestionAnswerComponent,
+  DialogEditQuestionInputComponent,
+  QuestionsEditComponent
+} from './questions-edit/questions-edit.component';
 import {QuestionsImportComponent} from "./questions-import/questions-import.component";
 import {QuestionsViewComponent} from "./questions-view/questions-view.component";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -22,11 +30,11 @@ const routes: Routes = [
     component: QuestionsCreateComponent
   },
   {
-    path: 'edit',
+    path: 'edit/:idQuestion',
     component: QuestionsEditComponent
   },
   {
-    path: 'view',
+    path: 'view/:idQuestion',
     component: QuestionsViewComponent
   },
   {
@@ -43,7 +51,10 @@ const routes: Routes = [
     QuestionsEditComponent,
     QuestionsImportComponent,
     QuestionsViewComponent,
-    DialogQuestionAnswerComponent
+    DialogQuestionAnswerComponent,
+    DialogQuestionInputComponent,
+    DialogEditQuestionInputComponent,
+    DialogEditQuestionAnswerComponent
   ],
   imports: [
     MatDialogModule,

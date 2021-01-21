@@ -98,11 +98,21 @@
                     <td>{{assumption.question.type}}</td>
                   </tr>
                   <tr *ngFor="let userAnswer of assumption.userAnswers; let i = index">
-                    <td>
+                    <td *ngIf="assumption.question.type == 'multiple-choice'">
                       <input *ngIf="attempt.status == 'in progress'"  [(ngModel)]="userAnswer.correctAnswer" [ngModelOptions]="{standalone: true}" type="checkbox" name="answer">
                       <input *ngIf="attempt.status == 'finished'" [checked]="userAnswer.correctAnswer == true" type="checkbox" name="answer" disabled>
                       <span>&nbsp;&nbsp;&nbsp;</span>
                       <span>{{userAnswer.content}}</span>
+                    </td>
+                    <td *ngIf="assumption.question.type == 'single-choice' || assumption.question.type == 'true-false'">
+                      <input *ngIf="attempt.status == 'in progress'" [(ngModel)]="assumption.guessNumber" [value]="i"   type="radio" [name]="'answer' + assumption.question.id">
+                      <input *ngIf="attempt.status == 'finished'" [checked]="userAnswer.correctAnswer == true" type="radio" [name]="'answer' + assumption.question.id" disabled>
+                      <span>&nbsp;&nbsp;&nbsp;</span>
+                      <span>{{userAnswer.content}}</span>
+                    </td>
+                    <td *ngIf="assumption.question.type == 'input'">
+                      <p *ngIf="attempt.status == 'in progress'">Nhập câu trả lời : <span><span>&nbsp;&nbsp;&nbsp;</span><input [(ngModel)]="userAnswer.content" type="text" name="answer"></span></p>
+                      <p *ngIf="attempt.status == 'finished'">Nhập câu trả lời : <span><span>&nbsp;&nbsp;&nbsp;</span><input [(ngModel)]="userAnswer.content" type="text" name="answer" disabled></span></p>
                     </td>
                   </tr>
                   <tr>

@@ -28,7 +28,6 @@ export class AttemptViewComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.idAttempt = params.idAttempt;
       this.idStudy = params.idStudy;
-
       this.attemptService.findById(this.idAttempt).toPromise().then(value => {
         console.log(value);
         this.attempt = value;
@@ -37,11 +36,21 @@ export class AttemptViewComponent implements OnInit {
     });
   }
   onUpdate() {
-    console.log(this.attempt.assumptions[0].userAnswers);
+    for (const assumption of this.attempt.assumptions) {
+      if ( assumption.question.type === 'single-choice' || assumption.question.type === 'true-false'){
+        if (assumption.guessNumber != null) {
+          assumption.userAnswers[assumption.guessNumber].correctAnswer = true;
+        }
+      }
+      if ( assumption.question.type === 'input') {
+        if ( assumption.userAnswers[0].content === assumption.question.questionAnswers[0].content) {
+          assumption.userAnswers[0].correctAnswer = true;
+        }
+      }
+    }
     this.attemptService.update(this.attempt, this.idAttempt ).toPromise().then(value => {
         console.log('Update', value);
       });
     this.router.navigate(['/home/quizzes/' + this.idStudy + '/attempts']);
   }
-
 }

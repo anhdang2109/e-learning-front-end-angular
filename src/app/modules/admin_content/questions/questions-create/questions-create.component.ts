@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Question} from '../questions.model';
 import {QuestionService} from '../question.service';
@@ -12,15 +12,34 @@ export interface DialogData {
   content: string;
   isCorrect: boolean;
 }
+
 @Component({
   selector: 'app-dialog-question-answer',
-  templateUrl: 'dialog-question-answer.html',
+  templateUrl: 'dialog-create-question-answer.html',
 })
 export class DialogQuestionAnswerComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogQuestionAnswerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'app-dialog-question-input',
+  templateUrl: 'dialog-create-question-input.html',
+})
+export class DialogQuestionInputComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogQuestionAnswerComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -36,97 +55,343 @@ export class DialogQuestionAnswerComponent {
 export class QuestionsCreateComponent implements OnInit {
 
   // @ts-ignore
-  question: Question = {
+  questionSingleChoice: Question = {
     code: '',
-    type: '',
-    level: '',
+    type: 'single-choice',
+    level: 'medium',
+    content: '',
+    explanation: '',
+  };
+  questionMultipleChoice: Question = {
+    code: '',
+    type: 'multiple-choice',
+    level: 'medium',
     content: '',
     explanation: ''
   };
-  answers: QuestionAnswer[] = [];
-  answerA: QuestionAnswer = { content: '', isCorrect: false};
-  answerB: QuestionAnswer = { content: '', isCorrect: false};
-  answerC: QuestionAnswer = { content: '', isCorrect: false};
-  answerD: QuestionAnswer = { content: '', isCorrect: false};
+  questionTrueFalse: Question = {
+    code: '',
+    type: 'true-false',
+    level: 'medium',
+    content: '',
+    explanation: ''
+  };
+  questionInput: Question = {
+    code: '',
+    type: 'input',
+    level: 'medium',
+    content: '',
+    explanation: ''
+  };
+
+  answerAMultipleChoice: QuestionAnswer = {code: 'a', content: '', isCorrect: false};
+  answerBMultipleChoice: QuestionAnswer = {code: 'b', content: '', isCorrect: false};
+  answerCMultipleChoice: QuestionAnswer = {code: 'c', content: '', isCorrect: false};
+  answerDMultipleChoice: QuestionAnswer = {code: 'd', content: '', isCorrect: false};
+  answersMultipleChoice: QuestionAnswer[] = [
+    this.answerAMultipleChoice,
+    this.answerBMultipleChoice,
+    this.answerCMultipleChoice,
+    this.answerDMultipleChoice,
+  ];
+
+  answerASingleChoice: QuestionAnswer = {code: 'a', content: '', isCorrect: false};
+  answerBSingleChoice: QuestionAnswer = {code: 'b', content: '', isCorrect: false};
+  answerCSingleChoice: QuestionAnswer = {code: 'c', content: '', isCorrect: false};
+  answerDSingleChoice: QuestionAnswer = {code: 'd', content: '', isCorrect: false};
+  answersSingleChoice: QuestionAnswer[] = [
+    this.answerASingleChoice,
+    this.answerBSingleChoice,
+    this.answerCSingleChoice,
+    this.answerDSingleChoice,
+  ];
+
+  answerATrueFalse: QuestionAnswer = {code: '', content: 'True', isCorrect: false};
+  answerBTrueFalse: QuestionAnswer = {code: '', content: 'False', isCorrect: false};
+  answersTrueFalse: QuestionAnswer[] = [
+    this.answerATrueFalse,
+    this.answerBTrueFalse,
+  ];
+
+  answersInput: QuestionAnswer[] = [];
+  answerAInput: QuestionAnswer = {code: '', content: '', isCorrect: true};
 
   constructor(private http: HttpClient,
               private fb: FormBuilder,
               private productService: QuestionService,
               private router: Router,
               public dialog: MatDialog) {
-    console.log(this.question);
+    console.log(this.questionSingleChoice);
+    console.log(this.questionMultipleChoice);
+    console.log(this.questionTrueFalse);
+    console.log(this.questionInput);
   }
 
   ngOnInit(): void {
-    console.log(this.question);
+    console.log(this.questionSingleChoice);
+    console.log(this.questionMultipleChoice);
+    console.log(this.questionTrueFalse);
+    console.log(this.questionInput);
   }
 
   // tslint:disable-next-line:typedef
-  create() {
-    console.log(this.question);
-    this.answers.push(this.answerA);
-    this.answers.push(this.answerB);
-    this.answers.push(this.answerC);
-    this.answers.push(this.answerD);
-    console.log(this.question);
-    this.question.questionAnswers = this.answers;
-    console.log(this.question);
-    this.productService.save(this.question).subscribe(() => {
+  createMultipleChoice() {
+    if (this.validateAnswers(this.answersMultipleChoice)) {
+      this.questionMultipleChoice.questionAnswers = this.answersMultipleChoice;
+      console.log(this.questionMultipleChoice);
+      this.productService.save(this.questionMultipleChoice).subscribe(() => {
+        alert('successfully');
+        this.router.navigate(['/admin/questions']);
+      });
+    } else {
+      alert('Please input at least one true answer');
+    }
+  }
+
+  openDialogAMultipleChoice(): void {
+    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+      width: '500px',
+      data: {
+        type: this.questionMultipleChoice.type,
+        content: this.answerAMultipleChoice.content,
+        isCorrect: this.answerAMultipleChoice.isCorrect
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.answerAMultipleChoice.content = result.content;
+      this.answerAMultipleChoice.isCorrect = result.isCorrect;
+    });
+  }
+
+  openDialogBMultipleChoice(): void {
+    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+      width: '500px',
+      data: {
+        type: this.questionMultipleChoice.type,
+        content: this.answerBMultipleChoice.content,
+        isCorrect: this.answerBMultipleChoice.isCorrect
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.answerBMultipleChoice.content = result.content;
+      this.answerBMultipleChoice.isCorrect = result.isCorrect;
+    });
+  }
+
+  openDialogCMultipleChoice(): void {
+    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+      width: '500px',
+      data: {
+        type: this.questionMultipleChoice.type,
+        content: this.answerCMultipleChoice.content,
+        isCorrect: this.answerCMultipleChoice.isCorrect
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.answerCMultipleChoice.content = result.content;
+      this.answerCMultipleChoice.isCorrect = result.isCorrect;
+    });
+  }
+
+  openDialogDMultipleChoice(): void {
+    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+      width: '500px',
+      data: {
+        type: this.questionMultipleChoice.type,
+        content: this.answerDMultipleChoice.content,
+        isCorrect: this.answerDMultipleChoice.isCorrect
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.answerDMultipleChoice.content = result.content;
+      this.answerDMultipleChoice.isCorrect = result.isCorrect;
+    });
+  }
+
+
+  createSingleChoice() {
+    if (this.validateAnswers(this.answersSingleChoice)) {
+      this.questionSingleChoice.questionAnswers = this.answersSingleChoice;
+      console.log(this.questionSingleChoice);
+      this.productService.save(this.questionSingleChoice).subscribe(() => {
+        alert('successfully');
+        this.router.navigate(['/admin/questions']);
+      });
+    } else {
+      alert('Please input at least one true answer');
+    }
+  }
+
+  openDialogASingleChoice(): void {
+    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+      width: '500px',
+      data: {type: this.questionSingleChoice.type, content: this.answerASingleChoice.content, isCorrect: this.answerASingleChoice.isCorrect}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.answerASingleChoice.content = result.content;
+      if (result.isCorrect === true) {
+        this.answerASingleChoice.isCorrect = result.isCorrect;
+        this.answerBSingleChoice.isCorrect = false;
+        this.answerCSingleChoice.isCorrect = false;
+        this.answerDSingleChoice.isCorrect = false;
+      } else {
+        this.answerASingleChoice.isCorrect = result.isCorrect;
+      }
+    });
+  }
+
+  openDialogBSingleChoice(): void {
+    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+      width: '500px',
+      data: {type: this.questionSingleChoice.type, content: this.answerBSingleChoice.content, isCorrect: this.answerBSingleChoice.isCorrect}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.answerBSingleChoice.content = result.content;
+      if (result.isCorrect === true) {
+        this.answerBSingleChoice.isCorrect = result.isCorrect;
+        this.answerASingleChoice.isCorrect = false;
+        this.answerCSingleChoice.isCorrect = false;
+        this.answerDSingleChoice.isCorrect = false;
+      } else {
+        this.answerBSingleChoice.isCorrect = result.isCorrect;
+      }
+    });
+  }
+
+  openDialogCSingleChoice(): void {
+    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+      width: '500px',
+      data: {type: this.questionSingleChoice.type, content: this.answerCSingleChoice.content, isCorrect: this.answerCSingleChoice.isCorrect}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.answerCSingleChoice.content = result.content;
+      if (result.isCorrect === true) {
+        this.answerCSingleChoice.isCorrect = result.isCorrect;
+        this.answerASingleChoice.isCorrect = false;
+        this.answerBSingleChoice.isCorrect = false;
+        this.answerDSingleChoice.isCorrect = false;
+      } else {
+        this.answerCSingleChoice.isCorrect = result.isCorrect;
+      }
+    });
+  }
+
+  openDialogDSingleChoice(): void {
+    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+      width: '500px',
+      data: {type: this.questionSingleChoice.type, content: this.answerDSingleChoice.content, isCorrect: this.answerDSingleChoice.isCorrect}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.answerDSingleChoice.content = result.content;
+      if (result.isCorrect === true) {
+        this.answerDSingleChoice.isCorrect = result.isCorrect;
+        this.answerASingleChoice.isCorrect = false;
+        this.answerCSingleChoice.isCorrect = false;
+        this.answerBSingleChoice.isCorrect = false;
+      } else {
+        this.answerDSingleChoice.isCorrect = result.isCorrect;
+      }
+    });
+  }
+
+  createTrueFalse() {
+    if (this.validateAnswers(this.answersTrueFalse)) {
+      console.log(this.questionTrueFalse);
+      this.questionTrueFalse.questionAnswers = this.answersTrueFalse;
+      console.log(this.questionTrueFalse);
+      this.productService.save(this.questionTrueFalse).subscribe(() => {
+        alert('successfully');
+        this.router.navigate(['/admin/questions']);
+      });
+    } else {
+      alert('Please input at least one true answer');
+    }
+  }
+
+  openDialogATrueFalse(): void {
+    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+      width: '500px',
+      data: {type: this.questionTrueFalse.type, content: this.answerATrueFalse.content, isCorrect: this.answerATrueFalse.isCorrect}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.answerATrueFalse.content = result.content;
+      if (result.isCorrect === true) {
+        this.answerATrueFalse.isCorrect = result.isCorrect;
+        this.answerBTrueFalse.isCorrect = false;
+      } else {
+        this.answerATrueFalse.isCorrect = result.isCorrect;
+      }
+    });
+  }
+
+  openDialogBTrueFalse(): void {
+    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+      width: '500px',
+      data: {type: this.questionTrueFalse.type, content: this.answerBTrueFalse.content, isCorrect: this.answerBTrueFalse.isCorrect}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.answerBTrueFalse.content = result.content;
+      if (result.isCorrect === true) {
+        this.answerBTrueFalse.isCorrect = result.isCorrect;
+        this.answerATrueFalse.isCorrect = false;
+      } else {
+        this.answerBTrueFalse.isCorrect = result.isCorrect;
+      }
+    });
+  }
+
+  createInput() {
+    this.answersInput.push(this.answerAInput);
+    this.questionInput.questionAnswers = this.answersInput;
+    console.log(this.questionInput);
+    this.productService.save(this.questionInput).subscribe(() => {
       alert('successfully');
       this.router.navigate(['/admin/questions']);
     });
   }
 
-  openDialogA(): void {
-    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
+  openDialogInput(): void {
+    const dialogRef = this.dialog.open(DialogQuestionInputComponent, {
       width: '500px',
-      data: {type: this.question.type, content: this.answerA.content, isCorrect: this.answerA.isCorrect}
+      data: {type: this.questionInput.type, content: this.answerAInput.content, isCorrect: this.answerAInput.isCorrect}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      this.answerA.content = result.content;
-      this.answerA.isCorrect = result.isCorrect;
+      this.answerAInput.content = result.content;
+      this.answerAInput.isCorrect = result.isCorrect;
     });
   }
 
-  openDialogB(): void {
-    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
-      width: '500px',
-      data: {type: this.question.type, content: this.answerB.content, isCorrect: this.answerB.isCorrect}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.answerB.content = result.content;
-      this.answerB.isCorrect = result.isCorrect;
-    });
+  validateAnswers(answers: QuestionAnswer[]): boolean {
+    let count = 0;
+    for (let i = 0; i < answers.length; i++) {
+      if (answers[i].isCorrect === false) {
+        console.log('answer i = ' + answers[i].isCorrect);
+        count += 1;
+      }
+    }
+    console.log('count value = ' + count);
+    return count !== answers.length;
   }
-
-  openDialogC(): void {
-    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
-      width: '500px',
-      data: {type: this.question.type, content: this.answerC.content, isCorrect: this.answerC.isCorrect}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.answerC.content = result.content;
-      this.answerC.isCorrect = result.isCorrect;
-    });
-  }
-
-  openDialogD(): void {
-    const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
-      width: '500px',
-      data: {type: this.question.type, content: this.answerD.content, isCorrect: this.answerD.isCorrect}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.answerD.content = result.content;
-      this.answerD.isCorrect = result.isCorrect;
-    });
-  }
-
 }

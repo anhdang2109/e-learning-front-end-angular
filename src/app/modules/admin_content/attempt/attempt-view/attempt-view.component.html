@@ -1,1 +1,131 @@
-<p>attempt-view works!</p>
+<!-- .card-body -->
+
+<!-- /.card-body -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <br>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/home/index">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a [routerLink]="'/home/quizzes/'">Danh sách bài thi</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a [routerLink]="'/home/quizzes/'+ idAttempt + '/attempts'">Danh sách lượt thi</a>
+    </li>
+    <li class="breadcrumb-item active">Bài thi</li>
+  </ol>
+
+  <div class="card-body">
+    <div id="body-container" class="container-fluid">
+      <div class="card-body table-responsive p-0">
+        <div class="row">
+          <div class="col-md-2">
+            <table class="table" >
+              <tr>
+                <td><strong>Bắt đầu vào lúc: </strong></td>
+              </tr>
+              <tr>
+                <td><strong>Trạng thái:  </strong></td>
+              </tr>
+              <tr>
+                <td><strong>Kết thúc lúc:  </strong></td>
+              </tr>
+              <tr>
+                <td><strong>Thời gian thực hiện:  </strong></td>
+              </tr>
+              <tr>
+                <td><strong>Điểm:  </strong></td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-10">
+            <table class="table">
+              <tr>
+                <td><span>{{attempt.status}} </span></td>
+              </tr>
+              <tr>
+                <td><span>{{attempt.status}} </span></td>
+              </tr>
+              <tr>
+                <td><span>{{attempt.status}}</span></td>
+              </tr>
+              <tr>
+                <td><span>{{attempt.assumptions[0].userAnswers[0].content}} </span></td>
+              </tr>
+              <tr>
+                <td><span>{{attempt.averageScore}} / 10 ( -- %) </span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+      <br>
+      <div *ngFor="let assumption of attempt.assumptions; let i = index" class="card card-secondary card-outline">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="card-body table-responsive p-0">
+                <table class="table no-border">
+                  <tr>
+                    <td>Câu hỏi số {{i + 1}}:</td>
+                  </tr>
+                  <tr>
+                    <td><span>status:  </span><span>{{assumption.status}}</span></td>
+                  </tr>
+                  <tr>
+                    <td><span>Point: </span><span>{{assumption.point}}</span></td>
+                  </tr>
+                  <tr>
+                    <td><span>Flag question</span></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-10">
+
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table no-border">
+                  <tr>
+                    <td style="background: #f3f7f9;">{{assumption.question.content}}</td>
+                  </tr>
+                  <tr>
+                    <td>{{assumption.question.type}}</td>
+                  </tr>
+                  <tr *ngFor="let userAnswer of assumption.userAnswers; let i = index">
+                    <td>
+                      <input [checked]="userAnswer.correctAnswer == true" type="checkbox" name="answer" disabled>
+                      <span>&nbsp;&nbsp;&nbsp;</span>
+                      <span>{{userAnswer.content}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td *ngIf="attempt.status == 'finished'" style="background: #fbe8cd;">{{assumption.question.explanation}}</td>
+                  </tr>
+                </table>
+              </div>
+              <!-- /.card-body -->
+
+              <!-- /.tab-content -->
+
+              <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+</div>
+

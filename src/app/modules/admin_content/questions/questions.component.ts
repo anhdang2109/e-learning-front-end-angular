@@ -28,11 +28,22 @@ export class QuestionsComponent implements OnInit {
       console.log(this.products);
     });
     this.role = localStorage.getItem("ROLE");
-    if (this.role == "ROLE_USER") {
+    if (this.role === "ROLE_USER") {
       alert("Bạn không có quyền!");
       this.router.navigate(['/home']);
     }
     this.currentUsername = localStorage.getItem("USERNAME");
+  }
+
+  onDelete(id) {
+    console.log(id);
+    if (confirm("Are you sure?")){
+      console.log("hello");
+      this.questionService.deleteById(id).toPromise().then(value => {
+        console.log('Delete', value);
+        this.router.navigate(['/admin/questions']);
+      });
+    }
   }
 }
 
