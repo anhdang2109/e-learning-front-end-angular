@@ -174,7 +174,7 @@
                   <tr *ngFor="let quiz of quizzes, index as i">
                     <td>{{i+1}}</td>
                     <td class="mailbox-name">
-                      <a routerLink="/home/quizzes/0/attempts" title="{{goToAttempt(quiz.id)}}">{{quiz.quizname}}</a>
+                      <a routerLink="/home/quizzes/{{quiz.studyId}}/attempts/">{{quiz.quizname}}</a>
                     </td>
                     <td class="mailbox-subject"><!--<b>{{quiz.quizname}}</b> - -->{{quiz.description}}</td>
                     <td class="mailbox-attachment"></td>

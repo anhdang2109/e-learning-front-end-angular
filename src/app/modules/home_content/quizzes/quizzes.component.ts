@@ -84,6 +84,13 @@ export class QuizzesComponent implements OnInit {
   getAllQuiz(): Quiz[] {
     this.quizzesService.getAll().subscribe((data: any) => {
       this.quizzes = data;
+      this.quizzes.map(async quiz => {
+        let data = await this.getStudyId(quiz.id);
+        if (data == null) {
+          data = 0;
+        }
+        quiz.studyId = data;
+      })
     });
     return this.quizzes;
   }
@@ -95,16 +102,12 @@ export class QuizzesComponent implements OnInit {
     return this.studies;
   }
 
-  goToAttempt(idQuiz: number) {
-    this.studyService.getStudyById(this.currentUser.id, idQuiz).subscribe( data => {
-      if (data != null) {
-        console.log(data);
-        return data;
-      } else {
-        console.log(0);
-        return 0;
-      }
-    });
+  getStudyId(idQuiz: number) {
+    return this.studyService.getStudyById(this.currentUser.id, idQuiz).toPromise();
+  }
+
+  async goToAttempt(idQuiz) {
+
   }
 
 
