@@ -7,4 +7,5 @@ export interface Category {
   created_at?: string;
   updated_at?: string;
   quizzes?: Quiz[];
+  quantityQuiz?: any;
 }
