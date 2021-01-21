@@ -1,7 +1,7 @@
-<body class="hold-transition register-page">
+<body class="hold-transition register-page" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI1fRYVxgof-Xdg3zkJy1jcFQO97C-rp-PSg&usqp=CAU')">
 <div class="register-box">
   <div class="register-logo">
-    <b>Quiz</b>
+    <b>Đăng Ký</b>
   </div>
 
   <div class="card" style="width: 550px">
@@ -17,6 +17,12 @@
               <span class="fas fa-envelope"></span>
             </div>
           </div>
+        </div>
+        <div *ngIf="email.errors.email && email.touched" style="color: #e4606d">
+          <h3>Vui lòng nhập hợp lệ email (tên email.@gmail/email.com)</h3>
+        </div>
+        <div *ngIf="email.errors.required && email.touched" style="color: #e4606d">
+          <h3>Vui lòng không để trống</h3>
         </div>
         <div class="input-group mb-3">
           <label  class="col-sm-3 col-form-label">Giới tính</label>
@@ -38,6 +44,13 @@
             </div>
           </div>
         </div>
+        <div *ngIf="phone.errors.required && phone.touched" style="color: #e4606d">
+          <h3>Vui lòng không để trống</h3>
+        </div>
+        <div *ngIf="phone.errors.pattern && phone.touched" style="color: #e4606d">
+          <h3>Nhập đúng kiểu sdt hợp lệ</h3>
+        </div>
+
         <div class="input-group mb-3">
           <label  class="col-sm-3 col-form-label">Nghề nghiệp</label>
           <select class="custom-select" required formControlName="title">
@@ -56,6 +69,15 @@
             </div>
           </div>
         </div>
+        <div *ngIf="username.errors.required && username.touched" style="color: #e4606d">
+          <h3>Vui lòng lòng để trống</h3>
+        </div>
+        <div *ngIf="username.errors.minlength && username.touched" style="color: #e4606d">
+          <h3>Uesrname phải tối thiểu 6 kí tự</h3>
+        </div>
+        <div *ngIf="username.errors.maxlength && username.touched" style="color: #e4606d">
+          <h3>Username không đặt nhiều hơn 12 kí tự </h3>
+        </div>
         <div class="input-group mb-3">
           <label  class="col-sm-3 col-form-label">Mật khẩu</label>
           <input type="password" class="form-control"  formControlName="password">
@@ -64,6 +86,15 @@
               <span class="fas fa-lock"></span>
             </div>
           </div>
+        </div>
+        <div *ngIf="password.errors.required && password.touched" style="color: #e4606d">
+          <h3>Password không được để trống!</h3>
+        </div>
+        <div *ngIf="password.errors.minlength && password.touched" style="color: #e4606d">
+          <h3>Password phải tối thiểu 6 kí tự để độ bảo mật được cao!</h3>
+        </div>
+        <div *ngIf="password.errors.maxlength && password.touched" style="color: #e4606d">
+          <h3>Password thì không được nhiều hơn 12 kí tự</h3>
         </div>
 
         <div class="row" align="center">

@@ -13,15 +13,16 @@ export class RegisterComponent implements OnInit {
 
   successMessage = '';
   failMessage = '';
+  // @ts-ignore
   registerForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     // confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     title: new FormControl('', [Validators.required]),
     imageSource: new FormControl(''),
     gender: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', Validators.required),
+    phone: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
   });
 
   constructor(private authService: AuthService,
@@ -56,4 +57,17 @@ export class RegisterComponent implements OnInit {
     };
     return user;
   }
+  get email() {
+    return this.registerForm.get('email');
+  }
+  get phone() {
+    return this.registerForm.get('phone');
+  }
+  get username() {
+    return this.registerForm.get('username');
+  }
+  get password() {
+    return this.registerForm.get('password');
+  }
+
 }

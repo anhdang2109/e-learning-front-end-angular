@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {QuizService} from '../service/quiz.service';
 import {HttpClient} from '@angular/common/http';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Quiz} from '../model/quiz.model';
 import {Question} from '../../questions/questions.model';
@@ -14,6 +14,7 @@ import {User} from '../../users/user.model';
   styleUrls: ['./quizzes-create.component.css']
 })
 export class QuizzesCreateComponent implements OnInit {
+  // errorMessage = '';
   quiz: Quiz = {
     quizname: '',
     description: ''

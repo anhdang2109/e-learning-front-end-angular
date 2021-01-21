@@ -19,28 +19,43 @@ import {AttemptService} from "../../admin_content/attempt/attempt.service";
   styleUrls: ['./quizzes.component.css']
 })
 export class QuizzesComponent implements OnInit {
+  listCategory: Category[];
+  listQuiz: Quiz[];
+  currentUser: User;
+  newQ: FormGroup;
 
-  study: Study[];
-  currentQuiz: Quiz;
-
-  constructor(
-    private quizService: QuizService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private studyService: StudyService,
-    private authenticationService: AuthService,
+  constructor(private userService: UserService,
+              private router: Router,
+              private authService: AuthService,
+              private categoryService: CategoryService,
+              private  qizzesService: QuizService,
+              private fb: FormBuilder
   ) {
   }
-
   ngOnInit(): void {
-    this.authenticationService.currentQuiz.subscribe(x => {
-      this.currentQuiz = x;
-      console.log(x);
-      this.quizService.findById(x.id).subscribe(value1 => {
-        this.study = value1;
-        console.log(value1);
-      });
+    // this.authenticationService.currentQuiz.subscribe(x => {
+    //   this.currentQuiz = x;
+    //   console.log(x);
+    //   this.quizService.findById(x.id).subscribe(value1 => {
+    //     this.study = value1;
+    //     console.log(value1);
+    //   });
+    // });
+  }
+
+  // getAllCategory() {
+  //   this.categoryService.getAll().subscribe(next => {
+  //     this.listCategory = next;
+  //   });
+  // }
+
+  getAllQuiz(): Quiz[] {
+    this.qizzesService.getAll().subscribe((data: any) => {
+      this.listQuiz = data;
+    }, error => {
+      console.log('Loi!');
     });
+    return this.listQuiz;
   }
 
 }
