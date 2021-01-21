@@ -36,326 +36,322 @@
               <div class="container">
                 <div *ngIf="type == 'single-choice'" class="row">
                   <div class="col-sm-12 col-md-12">
-                    <form>
-                      <div id="quiz-container" class="col-md-10">
-                        <div class="form-group row">
-                          <label class="col-3
+                    <div id="quiz-container" class="col-md-10">
+                      <div class="form-group row">
+                        <label class="col-3
                             col-form-label">Mã câu hỏi: </label>
-                          <div class="col-9">
-                            <input class="form-control"
-                                   type="text"
-                                   name="quiz-name"
-                                   [(ngModel)]="questionSingleChoice.code">
-                          </div>
+                        <div class="col-9">
+                          <input class="form-control"
+                                 type="text"
+                                 name="quiz-name"
+                                 [(ngModel)]="questionSingleChoice.code">
                         </div>
-                        <div class="form-group row">
-                          <label class="col-3
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-3
                             col-form-label">Nội dung: </label>
-                          <div class="col-9">
+                        <div class="col-9">
                             <textarea
                               class="form-control"
                               name="quiz-content"
                               [(ngModel)]="questionSingleChoice.content"
                               rows="3"></textarea>
-                          </div>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-3
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-3
                             col-form-label">Cấp độ: </label>
-                          <div class="col-9">
-                            <select class="custom-select mr-sm-2"
-                                    name="quiz-level"
-                                    [(ngModel)]="questionSingleChoice.level">
-                              <option value="easy">Dễ</option>
-                              <option value="medium" selected>Trung bình</option>
-                              <option value="hard">Khó</option>
-                            </select>
-                          </div>
+                        <div class="col-9">
+                          <select class="custom-select mr-sm-2"
+                                  name="quiz-level"
+                                  [(ngModel)]="questionSingleChoice.level">
+                            <option value="easy">Dễ</option>
+                            <option value="medium" selected>Trung bình</option>
+                            <option value="hard">Khó</option>
+                          </select>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-3
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-3
                             col-form-label">Loại câu hỏi: </label>
-                          <div class="col-9">
-                            <select disabled class="custom-select mr-sm-2"
-                                    name="quiz-type">
-                              <option value="Multiple Choice" selected>Multiple Choice</option>
-                              <option value="Single Choice">Single
-                                Choice
-                              </option>
-                            </select>
-                          </div>
+                        <div class="col-9">
+                          <select disabled class="custom-select mr-sm-2"
+                                  name="quiz-type">
+                            <option value="Multiple Choice" selected>Multiple Choice</option>
+                            <option value="Single Choice">Single
+                              Choice
+                            </option>
+                          </select>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-3
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-3
                             col-form-label">Giải thích: </label>
-                          <div class="col-9">
+                        <div class="col-9">
                             <textarea
                               class="form-control"
                               name="quiz-explain"
                               [(ngModel)]="questionSingleChoice.explanation"
                               rows="3"></textarea>
-                          </div>
-                        </div>
-                        <div id="quiz-table-container" class="table-responsive">
-                          <table id="quiz-table" class="table table-striped table-bordered table-hover">
-                            <thead class="thead-light">
-                            <tr class="answer-radio">
-                              <th style="width: 10%;" class="text-center">#</th>
-                              <th style="width: 55%;">Nội dung câu trả lời</th>
-                              <th style="width: 15%;" class="text-center">Đáp án đúng</th>
-                              <th style="width: 20%;" class="text-center">Tác vụ</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                              <td class="answer-radio text-center">A</td>
-                              <td class="answer-radio">
-                                <span style="float: left">{{answerASingleChoice.content}}</span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <span *ngIf="answerASingleChoice.isCorrect == true"><i class="fas fa-check"></i></span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <a class="btn btn-info btn-sm"
-                                   (click)="openDialogASingleChoice()">
-                                  <i class="fas fa-pencil-alt">
-                                  </i>
-                                  <span>&nbsp;&nbsp;</span>
-                                  Nhập nội dung
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="answer-radio text-center">B</td>
-                              <td class="answer-radio">
-                                <span style="float: left">{{answerBSingleChoice.content}}</span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <span *ngIf="answerBSingleChoice.isCorrect == true"><i class="fas fa-check"></i></span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <a class="btn btn-info btn-sm"
-                                   (click)="openDialogBSingleChoice()">
-                                  <i class="fas fa-pencil-alt">
-                                  </i>
-                                  <span>&nbsp;&nbsp;</span>
-                                  Nhập nội dung
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="answer-radio text-center">C</td>
-                              <td class="answer-radio">
-                                <span style="float: left">{{answerCSingleChoice.content}}</span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <span *ngIf="answerCSingleChoice.isCorrect == true"><i class="fas fa-check"></i></span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <a class="btn btn-info btn-sm"
-                                   (click)="openDialogCSingleChoice()">
-                                  <i class="fas fa-pencil-alt">
-                                  </i>
-                                  <span>&nbsp;&nbsp;</span>
-                                  Nhập nội dung
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="answer-radio text-center">D</td>
-                              <td class="answer-radio">
-                                <span style="float: left">{{answerDSingleChoice.content}}</span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <span *ngIf="answerDSingleChoice.isCorrect == true"><i class="fas fa-check"></i></span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <a class="btn btn-info btn-sm"
-                                   (click)="openDialogDSingleChoice()">
-                                  <i class="fas fa-pencil-alt">
-                                  </i>
-                                  <span>&nbsp;&nbsp;</span>
-                                  Nhập nội dung
-                                </a>
-                              </td>
-                            </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="col-md-12">
-                            <a style="width: 190px" class="btn btn-success btn-sm float-right"
-                               type="button" (click)="updateSingleChoice()">
-                              <i class="fas fa-pencil-alt"></i>
-                              <span>&nbsp;</span>
-                              Cập nhật</a>
-                          </div>
                         </div>
                       </div>
-                    </form>
+                      <div id="quiz-table-container" class="table-responsive">
+                        <table id="quiz-table" class="table table-striped table-bordered table-hover">
+                          <thead class="thead-light">
+                          <tr class="answer-radio">
+                            <th style="width: 10%;" class="text-center">#</th>
+                            <th style="width: 55%;">Nội dung câu trả lời</th>
+                            <th style="width: 15%;" class="text-center">Đáp án đúng</th>
+                            <th style="width: 20%;" class="text-center">Tác vụ</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td class="answer-radio text-center">A</td>
+                            <td class="answer-radio">
+                              <span style="float: left">{{answerASingleChoice.content}}</span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <span *ngIf="answerASingleChoice.isCorrect == true"><i class="fas fa-check"></i></span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <a class="btn btn-info btn-sm"
+                                 (click)="openDialogASingleChoice()">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                <span>&nbsp;&nbsp;</span>
+                                Nhập nội dung
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="answer-radio text-center">B</td>
+                            <td class="answer-radio">
+                              <span style="float: left">{{answerBSingleChoice.content}}</span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <span *ngIf="answerBSingleChoice.isCorrect == true"><i class="fas fa-check"></i></span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <a class="btn btn-info btn-sm"
+                                 (click)="openDialogBSingleChoice()">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                <span>&nbsp;&nbsp;</span>
+                                Nhập nội dung
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="answer-radio text-center">C</td>
+                            <td class="answer-radio">
+                              <span style="float: left">{{answerCSingleChoice.content}}</span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <span *ngIf="answerCSingleChoice.isCorrect == true"><i class="fas fa-check"></i></span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <a class="btn btn-info btn-sm"
+                                 (click)="openDialogCSingleChoice()">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                <span>&nbsp;&nbsp;</span>
+                                Nhập nội dung
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="answer-radio text-center">D</td>
+                            <td class="answer-radio">
+                              <span style="float: left">{{answerDSingleChoice.content}}</span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <span *ngIf="answerDSingleChoice.isCorrect == true"><i class="fas fa-check"></i></span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <a class="btn btn-info btn-sm"
+                                 (click)="openDialogDSingleChoice()">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                <span>&nbsp;&nbsp;</span>
+                                Nhập nội dung
+                              </a>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="col-md-12">
+                          <a style="width: 190px" class="btn btn-success btn-sm float-right"
+                             type="button" (click)="updateSingleChoice()">
+                            <i class="fas fa-pencil-alt"></i>
+                            <span>&nbsp;</span>
+                            Cập nhật</a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div *ngIf="type == 'multiple-choice'" class="row">
                   <div class="col-sm-12 col-md-12">
-                    <form>
-                      <div class="col-md-10">
-                        <div class="form-group row">
-                          <label class="col-3
+                    <div class="col-md-10">
+                      <div class="form-group row">
+                        <label class="col-3
                             col-form-label">Mã câu hỏi: </label>
-                          <div class="col-9">
-                            <input class="form-control"
-                                   type="text"
-                                   name="quiz-name"
-                                   [(ngModel)]="questionMultipleChoice.code">
-                          </div>
+                        <div class="col-9">
+                          <input class="form-control"
+                                 type="text"
+                                 name="quiz-name"
+                                 [(ngModel)]="questionMultipleChoice.code">
                         </div>
-                        <div class="form-group row">
-                          <label class="col-3
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-3
                             col-form-label">Nội dung: </label>
-                          <div class="col-9">
+                        <div class="col-9">
                             <textarea
                               class="form-control"
                               [(ngModel)]="questionMultipleChoice.content"
                               rows="3"></textarea>
-                          </div>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-3
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-3
                             col-form-label">Cấp độ: </label>
-                          <div class="col-9">
-                            <select class="custom-select mr-sm-2"
-                                    name="quiz-level"
-                                    [(ngModel)]="questionMultipleChoice.level">
-                              <option value="easy">Dễ</option>
-                              <option value="medium" selected>Trung bình</option>
-                              <option value="hard">Khó</option>
-                            </select>
-                          </div>
+                        <div class="col-9">
+                          <select class="custom-select mr-sm-2"
+                                  name="quiz-level"
+                                  [(ngModel)]="questionMultipleChoice.level">
+                            <option value="easy">Dễ</option>
+                            <option value="medium" selected>Trung bình</option>
+                            <option value="hard">Khó</option>
+                          </select>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-3
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-3
                             col-form-label">Loại câu hỏi: </label>
-                          <div class="col-9">
-                            <select disabled class="custom-select mr-sm-2"
-                                    name="quiz-type">
-                              <option value="Multiple Choice">Multiple Choice</option>
-                              <option value="Single Choice" selected>Single Choice
-                              </option>
-                            </select>
-                          </div>
+                        <div class="col-9">
+                          <select disabled class="custom-select mr-sm-2"
+                                  name="quiz-type">
+                            <option value="Multiple Choice">Multiple Choice</option>
+                            <option value="Single Choice" selected>Single Choice
+                            </option>
+                          </select>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-3
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-3
                             col-form-label">Giải thích: </label>
-                          <div class="col-9">
+                        <div class="col-9">
                             <textarea
                               class="form-control"
                               name="quiz-explain"
                               [(ngModel)]="questionMultipleChoice.explanation"
                               rows="3"></textarea>
-                          </div>
-                        </div>
-                        <div class="table-responsive">
-                          <table class="table table-striped table-bordered table-hover">
-                            <thead class="thead-light">
-                            <tr class="answer-radio">
-                              <th style="width: 10%;" class="text-center">#</th>
-                              <th style="width: 55%;">Nội dung câu trả lời</th>
-                              <th style="width: 15%;" class="text-center">Đáp án đúng</th>
-                              <th style="width: 20%;" class="text-center">Tác vụ</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                              <td class="answer-radio text-center">A</td>
-                              <td class="answer-radio">
-                                <span style="float: left">{{answerAMultipleChoice.content}}</span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <span *ngIf="answerAMultipleChoice.isCorrect == true"><i
-                                  class="fas fa-check"></i></span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <a class="btn btn-info btn-sm"
-                                   (click)="openDialogAMultipleChoice()">
-                                  <i class="fas fa-pencil-alt">
-                                  </i>
-                                  <span>&nbsp;&nbsp;</span>
-                                  Nhập nội dung
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="answer-radio text-center">B</td>
-                              <td class="answer-radio">
-                                <span style="float: left">{{answerBMultipleChoice.content}}</span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <span *ngIf="answerBMultipleChoice.isCorrect == true"><i
-                                  class="fas fa-check"></i></span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <a class="btn btn-info btn-sm"
-                                   (click)="openDialogBMultipleChoice()">
-                                  <i class="fas fa-pencil-alt">
-                                  </i>
-                                  <span>&nbsp;&nbsp;</span>
-                                  Nhập nội dung
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="answer-radio text-center">C</td>
-                              <td class="answer-radio">
-                                <span style="float: left">{{answerCMultipleChoice.content}}</span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <span *ngIf="answerCMultipleChoice.isCorrect == true"><i
-                                  class="fas fa-check"></i></span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <a class="btn btn-info btn-sm"
-                                   (click)="openDialogCMultipleChoice()">
-                                  <i class="fas fa-pencil-alt">
-                                  </i>
-                                  <span>&nbsp;&nbsp;</span>
-                                  Nhập nội dung
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="answer-radio text-center">D</td>
-                              <td class="answer-radio">
-                                <span style="float: left">{{answerDMultipleChoice.content}}</span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <span *ngIf="answerDMultipleChoice.isCorrect == true"><i
-                                  class="fas fa-check"></i></span>
-                              </td>
-                              <td class="answer-radio text-center">
-                                <a class="btn btn-info btn-sm"
-                                   (click)="openDialogDMultipleChoice()">
-                                  <i class="fas fa-pencil-alt">
-                                  </i>
-                                  <span>&nbsp;&nbsp;</span>
-                                  Nhập nội dung
-                                </a>
-                              </td>
-                            </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="col-md-12">
-                            <a style="width: 190px" class="btn btn-success btn-sm float-right"
-                               type="button" (click)="updateMultipleChoice()">
-                              <i class="fas fa-pencil-alt"></i>
-                              <span>&nbsp;</span>
-                              Cập nhật</a>
-                          </div>
                         </div>
                       </div>
-                    </form>
+                      <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                          <thead class="thead-light">
+                          <tr class="answer-radio">
+                            <th style="width: 10%;" class="text-center">#</th>
+                            <th style="width: 55%;">Nội dung câu trả lời</th>
+                            <th style="width: 15%;" class="text-center">Đáp án đúng</th>
+                            <th style="width: 20%;" class="text-center">Tác vụ</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td class="answer-radio text-center">A</td>
+                            <td class="answer-radio">
+                              <span style="float: left">{{answerAMultipleChoice.content}}</span>
+                            </td>
+                            <td class="answer-radio text-center">
+                                <span *ngIf="answerAMultipleChoice.isCorrect == true"><i
+                                  class="fas fa-check"></i></span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <a class="btn btn-info btn-sm"
+                                 (click)="openDialogAMultipleChoice()">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                <span>&nbsp;&nbsp;</span>
+                                Nhập nội dung
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="answer-radio text-center">B</td>
+                            <td class="answer-radio">
+                              <span style="float: left">{{answerBMultipleChoice.content}}</span>
+                            </td>
+                            <td class="answer-radio text-center">
+                                <span *ngIf="answerBMultipleChoice.isCorrect == true"><i
+                                  class="fas fa-check"></i></span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <a class="btn btn-info btn-sm"
+                                 (click)="openDialogBMultipleChoice()">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                <span>&nbsp;&nbsp;</span>
+                                Nhập nội dung
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="answer-radio text-center">C</td>
+                            <td class="answer-radio">
+                              <span style="float: left">{{answerCMultipleChoice.content}}</span>
+                            </td>
+                            <td class="answer-radio text-center">
+                                <span *ngIf="answerCMultipleChoice.isCorrect == true"><i
+                                  class="fas fa-check"></i></span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <a class="btn btn-info btn-sm"
+                                 (click)="openDialogCMultipleChoice()">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                <span>&nbsp;&nbsp;</span>
+                                Nhập nội dung
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="answer-radio text-center">D</td>
+                            <td class="answer-radio">
+                              <span style="float: left">{{answerDMultipleChoice.content}}</span>
+                            </td>
+                            <td class="answer-radio text-center">
+                                <span *ngIf="answerDMultipleChoice.isCorrect == true"><i
+                                  class="fas fa-check"></i></span>
+                            </td>
+                            <td class="answer-radio text-center">
+                              <a class="btn btn-info btn-sm"
+                                 (click)="openDialogDMultipleChoice()">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                <span>&nbsp;&nbsp;</span>
+                                Nhập nội dung
+                              </a>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="col-md-12">
+                          <a style="width: 190px" class="btn btn-success btn-sm float-right"
+                             type="button" (click)="updateMultipleChoice()">
+                            <i class="fas fa-pencil-alt"></i>
+                            <span>&nbsp;</span>
+                            Cập nhật</a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div *ngIf="type == 'true-false'" class="tab-pane" id="true-false">
@@ -363,125 +359,123 @@
                   <div class="container">
                     <div class="row">
                       <div class="col-sm-12 col-md-12">
-                        <form>
-                          <div class="col-md-10">
-                            <div class="form-group row">
-                              <label class="col-3
+                        <div class="col-md-10">
+                          <div class="form-group row">
+                            <label class="col-3
                             col-form-label">Mã câu hỏi: </label>
-                              <div class="col-9">
-                                <input class="form-control"
-                                       type="text"
-                                       name="quiz-name"
-                                       [(ngModel)]="questionTrueFalse.code">
-                              </div>
+                            <div class="col-9">
+                              <input class="form-control"
+                                     type="text"
+                                     name="quiz-name"
+                                     [(ngModel)]="questionTrueFalse.code">
                             </div>
-                            <div class="form-group row">
-                              <label class="col-3
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-3
                             col-form-label">Nội dung: </label>
-                              <div class="col-9">
+                            <div class="col-9">
                             <textarea
                               class="form-control"
                               [(ngModel)]="questionTrueFalse.content"
                               rows="3"></textarea>
-                              </div>
                             </div>
-                            <div class="form-group row">
-                              <label class="col-3
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-3
                             col-form-label">Cấp độ: </label>
-                              <div class="col-9">
-                                <select class="custom-select mr-sm-2"
-                                        name="quiz-level"
-                                        [(ngModel)]="questionTrueFalse.level">
-                                  <option value="easy">Dễ</option>
-                                  <option value="medium" selected>Trung bình</option>
-                                  <option value="hard">Khó</option>
-                                </select>
-                              </div>
+                            <div class="col-9">
+                              <select class="custom-select mr-sm-2"
+                                      name="quiz-level"
+                                      [(ngModel)]="questionTrueFalse.level">
+                                <option value="easy">Dễ</option>
+                                <option value="medium" selected>Trung bình</option>
+                                <option value="hard">Khó</option>
+                              </select>
                             </div>
-                            <div class="form-group row">
-                              <label class="col-3
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-3
                             col-form-label">Loại câu hỏi: </label>
-                              <div class="col-9">
-                                <select disabled class="custom-select mr-sm-2"
-                                        name="quiz-type">
-                                  <option value="Multiple Choice">Multiple Choice</option>
-                                  <option value="Single Choice">Single Choice</option>
-                                  <option value="Single Choice" selected>True-False</option>
-                                </select>
-                              </div>
+                            <div class="col-9">
+                              <select disabled class="custom-select mr-sm-2"
+                                      name="quiz-type">
+                                <option value="Multiple Choice">Multiple Choice</option>
+                                <option value="Single Choice">Single Choice</option>
+                                <option value="Single Choice" selected>True-False</option>
+                              </select>
                             </div>
-                            <div class="form-group row">
-                              <label class="col-3
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-3
                             col-form-label">Giải thích: </label>
-                              <div class="col-9">
+                            <div class="col-9">
                             <textarea
                               class="form-control"
                               name="quiz-explain"
                               [(ngModel)]="questionTrueFalse.explanation"
                               rows="3"></textarea>
-                              </div>
-                            </div>
-                            <div class="table-responsive">
-                              <table class="table table-striped table-bordered table-hover">
-                                <thead class="thead-light">
-                                <tr class="answer-radio">
-                                  <th style="width: 10%;" class="text-center">#</th>
-                                  <th style="width: 55%;">Nội dung câu trả lời</th>
-                                  <th style="width: 15%;" class="text-center">Đáp án</th>
-                                  <th style="width: 20%;" class="text-center">Tác vụ</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                  <td class="answer-radio text-center">A</td>
-                                  <td class="answer-radio">
-                                    <span style="float: left">{{answerATrueFalse.content}}</span>
-                                  </td>
-                                  <td class="answer-radio text-center">
-                                    <span *ngIf="answerATrueFalse.isCorrect == true"><i class="fas fa-check"></i></span>
-                                  </td>
-                                  <td class="answer-radio text-center">
-                                    <a class="btn btn-info btn-sm"
-                                       (click)="openDialogATrueFalse()">
-                                      <i class="fas fa-pencil-alt">
-                                      </i>
-                                      <span>&nbsp;&nbsp;</span>
-                                      Nhập nội dung
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="answer-radio text-center">B</td>
-                                  <td class="answer-radio">
-                                    <span style="float: left">{{answerBTrueFalse.content}}</span>
-                                  </td>
-                                  <td class="answer-radio text-center">
-                                    <span *ngIf="answerBTrueFalse.isCorrect == true"><i class="fas fa-check"></i></span>
-                                  </td>
-                                  <td class="answer-radio text-center">
-                                    <a class="btn btn-info btn-sm"
-                                       (click)="openDialogBTrueFalse()">
-                                      <i class="fas fa-pencil-alt">
-                                      </i>
-                                      <span>&nbsp;&nbsp;</span>
-                                      Nhập nội dung
-                                    </a>
-                                  </td>
-                                </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                            <div  class="col-md-12">
-                              <div class="col-md-12">
-                                <a style="width: 190px" class="btn btn-success btn-sm float-right"
-                                   type="button" (click)="updateTrueFalse()">
-                                  <i class="fas fa-pencil-alt"></i>
-                                  <span>&nbsp;</span>
-                                  Cập nhật</a>
-                              </div>
                             </div>
                           </div>
-                        </form>
+                          <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                              <thead class="thead-light">
+                              <tr class="answer-radio">
+                                <th style="width: 10%;" class="text-center">#</th>
+                                <th style="width: 55%;">Nội dung câu trả lời</th>
+                                <th style="width: 15%;" class="text-center">Đáp án</th>
+                                <th style="width: 20%;" class="text-center">Tác vụ</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                <td class="answer-radio text-center">A</td>
+                                <td class="answer-radio">
+                                  <span style="float: left">{{answerATrueFalse.content}}</span>
+                                </td>
+                                <td class="answer-radio text-center">
+                                  <span *ngIf="answerATrueFalse.isCorrect == true"><i class="fas fa-check"></i></span>
+                                </td>
+                                <td class="answer-radio text-center">
+                                  <a class="btn btn-info btn-sm"
+                                     (click)="openDialogATrueFalse()">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    <span>&nbsp;&nbsp;</span>
+                                    Nhập nội dung
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="answer-radio text-center">B</td>
+                                <td class="answer-radio">
+                                  <span style="float: left">{{answerBTrueFalse.content}}</span>
+                                </td>
+                                <td class="answer-radio text-center">
+                                  <span *ngIf="answerBTrueFalse.isCorrect == true"><i class="fas fa-check"></i></span>
+                                </td>
+                                <td class="answer-radio text-center">
+                                  <a class="btn btn-info btn-sm"
+                                     (click)="openDialogBTrueFalse()">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    <span>&nbsp;&nbsp;</span>
+                                    Nhập nội dung
+                                  </a>
+                                </td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="col-md-12">
+                              <a style="width: 190px" class="btn btn-success btn-sm float-right"
+                                 type="button" (click)="updateTrueFalse()">
+                                <i class="fas fa-pencil-alt"></i>
+                                <span>&nbsp;</span>
+                                Cập nhật</a>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div>
@@ -493,107 +487,105 @@
                   <div class="container">
                     <div class="row">
                       <div class="col-sm-12 col-md-12">
-                        <form>
-                          <div class="col-md-10">
-                            <div class="form-group row">
-                              <label class="col-3
+                        <div class="col-md-10">
+                          <div class="form-group row">
+                            <label class="col-3
                             col-form-label">Mã câu hỏi: </label>
-                              <div class="col-9">
-                                <input class="form-control"
-                                       type="text"
-                                       name="quiz-name"
-                                       [(ngModel)]="questionInput.code">
-                              </div>
+                            <div class="col-9">
+                              <input class="form-control"
+                                     type="text"
+                                     name="quiz-name"
+                                     [(ngModel)]="questionInput.code">
                             </div>
-                            <div class="form-group row">
-                              <label class="col-3
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-3
                             col-form-label">Nội dung: </label>
-                              <div class="col-9">
+                            <div class="col-9">
                             <textarea
                               class="form-control"
                               [(ngModel)]="questionInput.content"
                               rows="3"></textarea>
-                              </div>
                             </div>
-                            <div class="form-group row">
-                              <label class="col-3
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-3
                             col-form-label">Cấp độ: </label>
-                              <div class="col-9">
-                                <select class="custom-select mr-sm-2"
-                                        name="quiz-level"
-                                        [(ngModel)]="questionInput.level">
-                                  <option value="easy">Dễ</option>
-                                  <option value="medium" selected>Trung bình</option>
-                                  <option value="hard">Khó</option>
-                                </select>
-                              </div>
+                            <div class="col-9">
+                              <select class="custom-select mr-sm-2"
+                                      name="quiz-level"
+                                      [(ngModel)]="questionInput.level">
+                                <option value="easy">Dễ</option>
+                                <option value="medium" selected>Trung bình</option>
+                                <option value="hard">Khó</option>
+                              </select>
                             </div>
-                            <div class="form-group row">
-                              <label class="col-3
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-3
                             col-form-label">Danh mục: </label>
-                              <div class="col-9">
-                                <select disabled class="custom-select mr-sm-2"
-                                        name="quiz-type">
-                                  <option value="Multiple Choice">Multiple Choice</option>
-                                  <option value="Single Choice">Single Choice</option>
-                                  <option value="Single Choice" selected>True-False</option>
-                                </select>
-                              </div>
+                            <div class="col-9">
+                              <select disabled class="custom-select mr-sm-2"
+                                      name="quiz-type">
+                                <option value="Multiple Choice">Multiple Choice</option>
+                                <option value="Single Choice">Single Choice</option>
+                                <option value="Single Choice" selected>True-False</option>
+                              </select>
                             </div>
-                            <div class="form-group row">
-                              <label class="col-3
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-3
                             col-form-label">Giải thích: </label>
-                              <div class="col-9">
+                            <div class="col-9">
                             <textarea
                               class="form-control"
                               name="quiz-explain"
                               [(ngModel)]="questionInput.explanation"
                               rows="3"></textarea>
-                              </div>
-                            </div>
-                            <div class="table-responsive">
-                              <table class="table table-striped table-bordered table-hover">
-                                <thead class="thead-light">
-                                <tr class="answer-radio">
-                                  <th style="width: 10%;" class="text-center">#</th>
-                                  <th style="width: 55%;">Nội dung câu trả lời</th>
-                                  <th style="width: 15%;" class="text-center">Đáp án</th>
-                                  <th style="width: 20%;" class="text-center">Tác vụ</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                  <td class="answer-radio text-center">1</td>
-                                  <td class="answer-radio">
-                                    <span style="float: left">{{answerAInput.content}}</span>
-                                  </td>
-                                  <td class="answer-radio text-center">
-                                    <span><i class="fas fa-check"></i></span>
-                                  </td>
-                                  <td class="answer-radio text-center">
-                                    <a class="btn btn-info btn-sm"
-                                       (click)="openDialogInput()">
-                                      <i class="fas fa-pencil-alt">
-                                      </i>
-                                      <span>&nbsp;&nbsp;</span>
-                                      Nhập nội dung
-                                    </a>
-                                  </td>
-                                </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                            <div  class="col-md-12">
-                              <div class="col-md-12">
-                                <a style="width: 190px" class="btn btn-success btn-sm float-right"
-                                   type="button" (click)="updateInput()">
-                                  <i class="fas fa-pencil-alt"></i>
-                                  <span>&nbsp;</span>
-                                  Cập nhật</a>
-                              </div>
                             </div>
                           </div>
-                        </form>
+                          <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                              <thead class="thead-light">
+                              <tr class="answer-radio">
+                                <th style="width: 10%;" class="text-center">#</th>
+                                <th style="width: 55%;">Nội dung câu trả lời</th>
+                                <th style="width: 15%;" class="text-center">Đáp án</th>
+                                <th style="width: 20%;" class="text-center">Tác vụ</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                <td class="answer-radio text-center">1</td>
+                                <td class="answer-radio">
+                                  <span style="float: left">{{answerAInput.content}}</span>
+                                </td>
+                                <td class="answer-radio text-center">
+                                  <span><i class="fas fa-check"></i></span>
+                                </td>
+                                <td class="answer-radio text-center">
+                                  <a class="btn btn-info btn-sm"
+                                     (click)="openDialogInput()">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    <span>&nbsp;&nbsp;</span>
+                                    Nhập nội dung
+                                  </a>
+                                </td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="col-md-12">
+                              <a style="width: 190px" class="btn btn-success btn-sm float-right"
+                                 type="button" (click)="updateInput()">
+                                <i class="fas fa-pencil-alt"></i>
+                                <span>&nbsp;</span>
+                                Cập nhật</a>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div>
