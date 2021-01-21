@@ -30,7 +30,7 @@ export class ChangepasswordComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router,
               private fb: FormBuilder,
-              private db: AngularFireDatabase,
+              // private db: AngularFireDatabase,
               private activatedRoute: ActivatedRoute,
               private authService: AuthService) {
     this.authService.currentUser.subscribe(
