@@ -62,25 +62,37 @@
                         <div class="card-body table-responsive p-0">
                           <table class="table no-border">
                             <tr>
-                              <td style="background: #f3f7f9;">Nhiệm vụ chính yếu của Nhóm Phát triển trong một Sprint là gì?</td>
+                              <td style="background: #f3f7f9;">{{question.content}}</td>
                             </tr>
                             <tr>
-                              <td>Chọn một hoặc nhiều đáp án</td>
+                              <td>{{question.type}}</td>
+                            </tr>
+                            <tr *ngFor="let questionAnswer of question.questionAnswers; let i = index">
+                              <td *ngIf="question.type == 'multiple-choice'">
+                                <input  [checked]="questionAnswer.isCorrect == true" type="checkbox" name="answer" disabled>
+                                <span>&nbsp;&nbsp;&nbsp;</span>
+                                <span>{{questionAnswer.code}}.</span>
+                                <span>&nbsp;&nbsp;</span>
+                                <span>{{questionAnswer.content}}</span>
+                              </td>
+                              <td *ngIf="question.type == 'single-choice'">
+                                <input  [checked]="questionAnswer.isCorrect == true" type="radio" name="answer" disabled>
+                                <span>&nbsp;&nbsp;&nbsp;</span>
+                                <span>{{questionAnswer.code}}.</span>
+                                <span>&nbsp;&nbsp;</span>
+                                <span>{{questionAnswer.content}}</span>
+                              </td>
+                              <td *ngIf="question.type == 'true-false'">
+                                <input  [checked]="questionAnswer.isCorrect == true" type="radio" name="answer" disabled>
+                                <span>&nbsp;&nbsp;&nbsp;</span>
+                                <span>{{questionAnswer.content}}</span>
+                              </td>
+                              <td *ngIf="question.type == 'input'">
+                                <p>Nhập câu trả lời : <span><span>&nbsp;&nbsp;&nbsp;</span><input [value]="questionAnswer.content" type="text" name="answer" disabled></span></p>
+                              </td>
                             </tr>
                             <tr>
-                              <td><input type="checkbox" name="answer"><span></span>&nbsp;&nbsp;&nbsp;<span>a. Thực hiện các yêu cầu của Product Owner</span></td>
-                            </tr>
-                            <tr>
-                              <td><input type="checkbox" name="answer"><span></span>&nbsp;&nbsp;&nbsp;<span>b. Thực hiện các yêu cầu của Scrum Master</span></td>
-                            </tr>
-                            <tr>
-                              <td><input type="checkbox" name="answer"><span></span>&nbsp;&nbsp;&nbsp;<span>c. Lập kế hoạch</span></td>
-                            </tr>
-                            <tr>
-                              <td><input type="checkbox" name="answer"><span></span>&nbsp;&nbsp;&nbsp;<span>d. Chuyển giao phần tăng trưởng ở cuối Sprint</span></td>
-                            </tr>
-                            <tr>
-                              <td style="background: #fbe8cd;">Nhóm Scrum có hai đặc điểm cực kì quan trọng là: tự tổ chức (self-organizing) và liên chức năng (cross-functional). Về tự tổ chức, tự quản, tự định hướng thì dễ hiểu, nhưng thế nào là “liên chức năng”? Bài này mong muốn chỉ ra một số hiểu lầm thường gặp, cũng như đào sâu thêm về khái niệm này trong phạm vi Scrum Framework để người học và thực hành Scrum đỡ bị rơi vào các nghịch lí khi cố gắng đối lập Scrum với những gì hiện có.</td>
+                              <td style="background: #fbe8cd;">{{question.explanation}}</td>
                             </tr>
                           </table>
                         </div>

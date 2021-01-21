@@ -6,6 +6,7 @@ import {AttemptCreateComponent} from "./attempt-create/attempt-create.component"
 import {AttemptEditComponent} from "./attempt-edit/attempt-edit.component";
 import {AttemptImportComponent} from "./attempt-import/attempt-import.component";
 import {AttemptViewComponent} from "./attempt-view/attempt-view.component";
+import {FormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -21,8 +22,8 @@ const routes: Routes = [
     component: AttemptEditComponent
   },
   {
-    path: 'view',
-    component: AttemptEditComponent
+    path: 'view/:idAttempt',
+    component: AttemptViewComponent
   },
   {
     path: 'import',
@@ -40,7 +41,8 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class AttemptModule { }

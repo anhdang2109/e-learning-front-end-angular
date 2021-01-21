@@ -92,8 +92,7 @@
           <div class="card">
             <div class="card-header p-2">
               <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link active" href="#attempts"
-                                        data-toggle="tab">Lượt thi</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#attempts" data-toggle="tab">Lượt thi</a></li>
                 <li class="nav-item"><a class="nav-link" href="#upload" data-toggle="tab">Bài thi</a></li>
               </ul>
             </div><!-- /.card-header -->
@@ -178,7 +177,83 @@
                   </div>
                 </div>
                 <!-- /.tab-pane -->
-                <div class="active tab-pane" id="documents">
+                <div class="tab-pane" id="upload">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Danh sách lượt thi</h3>
+
+                      <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                          <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                          <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                      <table class="table table-hover text-nowrap table-responsive">
+                        <thead>
+                        <tr>
+                          <th style="width: 5%" class="text-center">#</th>
+                          <th style="width: 15%">Học viên</th>
+                          <th style="width: 25%">Email</th>
+                          <th style="width: 8%" class="text-center">Trạng thái</th>
+                          <th style="width: 10%" class="text-center">Điểm số</th>
+                          <th style="width: 7%" class="text-center">Ngày khởi tạo</th>
+                          <th style="width: 8%" class="text-center">Ngày hoàn thành</th>
+                          <!--                        <th style="width: 15%"></th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let attempt of attempts; index as i">
+                          <th class="text-center">{{attempt.id}}</th>
+                          <td>{{attempt.username}}</td>
+                          <td>{{ attempt.email}}</td>
+                          <td class="text-center">{{attempt.status}}</td>
+                          <td class="text-center">{{ attempt.averageScore}}</td>
+                          <td class="text-center">12-12-2020</td>
+                          <td class="text-center">12-12-2020</td>
+                          <!--                        <td class="project-actions text-right">-->
+                          <!--                          <form method="post">-->
+                          <!--                            <a class="btn btn-primary btn-sm"-->
+                          <!--                               [routerLink]="'view/' + attempt.id">-->
+                          <!--                              <i class="fas fa-folder"></i>-->
+                          <!--                              Xem-->
+                          <!--                            </a>-->
+                          <!--                            <span>&nbsp;</span><span>&nbsp;</span>-->
+                          <!--                            <a class="btn btn-info btn-sm"-->
+                          <!--                               [routerLink]="'create/' + attempt.id">-->
+                          <!--                              <i class="fas fa-pencil-alt">-->
+                          <!--                              </i>-->
+                          <!--                              Sửa-->
+                          <!--                            </a>-->
+                          <!--                            <span>&nbsp;</span><span>&nbsp;</span>-->
+                          <!--                            <a class="btn btn-danger btn-sm"-->
+                          <!--                               [routerLink]="'delete/' + attempt.id">-->
+                          <!--                              <i class="fas fa-trash">-->
+                          <!--                              </i>-->
+                          <!--                              Xoá-->
+                          <!--                            </a>-->
+                          <!--                          </form>-->
+                          <!--                        </td>-->
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="card-footer clearfix">
+                      <ul class="pagination pagination-sm m-0 float-right">
+                        <li class="page-item"><a class="page-link" href="#">«</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">»</a></li>
+                      </ul>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
                 </div>
                 <!-- /.tab-pane -->
               </div>

@@ -11,10 +11,7 @@ export class QuestionService {
   }
 
   update(product: Question, id: number): Observable<any> {
-    if (!!product.id) {
       return this.http.put(`http://localhost:8080/admin/question/${id}`, product);
-    }
-    return this.http.post(`http://localhost:8080/admin/question`, product);
   }
 
   save(product: Question): Observable<any> {
