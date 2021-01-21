@@ -18,8 +18,8 @@
                 <h3 class="profile-username text-center"><span>{{currentUser.username}}</span></h3>
 
                 <p class="text-muted text-center">Thành viên từ ngày: <span>{{currentUser.createdAt}}</span></p>
-                <p class="text-muted text-center">Cập nhập mới nhất: <span
-                  *ngIf="currentUser.updatedAt == null; else elseBlock">{{currentUser.createdAt}}</span>
+                <p class="text-muted text-center">Cập nhập mới nhất: <ng-template
+                  *ngIf="currentUser.updatedAt == null; else elseBlock">{{currentUser.createdAt}}</ng-template>
                   <span #elseBlock>{{currentUser.updatedAt}}</span>
                 </p>
 
