@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {CategoryCreateComponent} from "./category-create/category-create.component";
-import {CategoryImportComponent} from "./category-import/category-import.component";
-import {CategoryViewComponent} from "./category-view/category-view.component";
 import {CategoryComponent} from "./category.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CategoryDeleteComponent } from './category-delete/category-delete.component';
+import { CategoryEditComponent } from './category-edit/category-edit.component';
 
 const routes: Routes = [
   {
@@ -15,15 +14,15 @@ const routes: Routes = [
   },
   {
     path: 'add',
-    component: CategoryCreateComponent
+    component: CategoryCreateComponent,
   },
   {
-    path: 'view',
-    component: CategoryViewComponent
+    path: 'delete/:id',
+    component: CategoryDeleteComponent,
   },
   {
-    path: 'import',
-    component: CategoryImportComponent
+    path: 'edit/:id',
+    component: CategoryEditComponent
   }
 ];
 
@@ -31,14 +30,14 @@ const routes: Routes = [
   declarations: [
     CategoryComponent,
     CategoryCreateComponent,
-    CategoryImportComponent,
-    CategoryViewComponent,
-    CategoryDeleteComponent
+    CategoryDeleteComponent,
+    CategoryEditComponent
   ],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CategoryModule { }

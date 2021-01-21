@@ -21,6 +21,10 @@ import {Observable} from "rxjs";
   styleUrls: ['./quizzes.component.css']
 })
 export class QuizzesComponent implements OnInit {
+  listCategory: Category[];
+  listQuiz: Quiz[];
+  currentUser: User;
+  newQ: FormGroup;
 
   currentUser: UserToken;
   user: Observable<any>;
@@ -33,7 +37,6 @@ export class QuizzesComponent implements OnInit {
               private userService: UserService,
   ) {
   }
-
   ngOnInit(): void {
     this.authService.currentUser.subscribe(x => {
       this.currentUser = x;
@@ -42,6 +45,5 @@ export class QuizzesComponent implements OnInit {
       });
       console.log(this.currentUser);
     });
-
   }
 }
