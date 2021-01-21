@@ -33,4 +33,8 @@ export class QuizService {
   getAll(): Observable<any> {
     return this.http.get('http://localhost:8080/admin/quizzes');
   }
+
+  countQuizByCategory(categoryId: any): Observable<any> {
+    return this.http.get(`http://localhost:8080/admin/quizzes/count/${categoryId}`);
+  }
 }
