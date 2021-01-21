@@ -137,6 +137,7 @@ export class QuestionsCreateComponent implements OnInit {
   // tslint:disable-next-line:typedef
   createMultipleChoice() {
     if (this.validateAnswers(this.answersMultipleChoice)) {
+      console.log(this.questionMultipleChoice);
       this.questionMultipleChoice.questionAnswers = this.answersMultipleChoice;
       console.log(this.questionMultipleChoice);
       this.productService.save(this.questionMultipleChoice).subscribe(() => {
