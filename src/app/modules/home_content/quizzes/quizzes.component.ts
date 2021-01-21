@@ -28,7 +28,6 @@ export class QuizzesComponent implements OnInit {
   categories: Category[];
   quizzes: Quiz[];
   studies: Study[];
-  userPresent: UserToken;
   currentUser: User;
   idStudy: number;
   countQuiz: any;
@@ -66,14 +65,6 @@ export class QuizzesComponent implements OnInit {
     });
   }
 
-  // private getCurrentUserById() {
-  //   this.authService.currentUser.subscribe(value => {
-  //     this.userService.getUserById(value.id + '').subscribe(result => {
-  //       this.currentUser = result;
-  //     });
-  //   });
-  // }
-
   getAllCategory() {
     this.categoryService.getAll().subscribe(data => {
       this.categories = data;
@@ -95,22 +86,16 @@ export class QuizzesComponent implements OnInit {
     return this.quizzes;
   }
 
-  getAllStudy(): Study[] {
-    this.studyService.getAll().subscribe((data: any) => {
-      this.studies = data;
-    });
-    return this.studies;
-  }
+  // getAllStudy(): Study[] {
+  //   this.studyService.getAll().subscribe((data: any) => {
+  //     this.studies = data;
+  //   });
+  //   return this.studies;
+  // }
 
   getStudyId(idQuiz: number) {
     return this.studyService.getStudyById(this.currentUser.id, idQuiz).toPromise();
   }
-
-  async goToAttempt(idQuiz) {
-
-  }
-
-
 
   // getSizeOfCategory(id: any) {
   //   this.quizzesService.countQuizByCategory(id).subscribe(data => {
@@ -120,31 +105,12 @@ export class QuizzesComponent implements OnInit {
   //   return this.num;
   // }
 
-
-
-  ngOnInit() {
+   ngOnInit() {
     this.getUserCurrentByName();
-    // this.getCurrentUserById();
     this.getAllCategory();
     this.getAllQuiz();
-    this.getAllStudy();
-
-    // console.log(this.categories);
-
-    // for (let i = 0; i < this.categories.length; i++) {
-    //   this.countQuiz[i] = this.getSizeOfCategory(this.categories[1].id);
-    //   console.log(this.countQuiz[1]);
-    //   console.log(this.categories[1].id);
-    // }
-    // console.log(this.countQuiz);
-
-    // this.studyService.getStudyById(33, 7).subscribe(data => {
-    //   this.idStudy = data;
-    // });
-    // console.log(this.idStudy);
-
-
-    // console.log(this.studyService.getStudyById(33, 7));
-    // console.log(this.studies);
+    // this.getAllStudy();
+    console.log("this.currentUser");
+    console.log(this.currentUser);
   }
 }
