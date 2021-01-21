@@ -87,5 +87,8 @@ export class ChangepasswordComponent implements OnInit {
     return user;
   }
 
+  get passwordUser() {
+    return this.newPassword.get('password');
+  }
 
 }

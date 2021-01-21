@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../user.model";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../user.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, ParamMap, Params, Router} from "@angular/router";
 import {UserToken} from "../user-token";
+import {Subscription} from "rxjs";
+import {AuthService} from "../../../authentication/service/auth/auth.service";
 
 @Component({
   selector: 'app-user-edit',
@@ -18,10 +20,30 @@ export class UserEditComponent implements OnInit {
   // @ts-ignore
   userForm: FormGroup;
 
+  currentUser: User;
+  sub: Subscription;
+  currentUserToken: UserToken;
+  username = '';
+  phone = '';
+  gender = '';
+  title = '';
+  email = '';
+  newPassword2: FormGroup = new FormGroup({
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+  });
+
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private activate: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService,
+              ) {
+    this.authService.currentUser.subscribe(
+      currentUser => {
+        this.currentUserToken = currentUser;
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -29,7 +51,6 @@ export class UserEditComponent implements OnInit {
       imageSource: [''],
       username: [''],
       email: [''],
-      password: [''],
       gender: [''],
       title: [''],
       phone: [''],
@@ -44,7 +65,6 @@ export class UserEditComponent implements OnInit {
           imageSource: this.user.imageSource,
           username: this.user.username,
           email: this.user.email,
-          password: this.user.password,
           gender: this.user.gender,
           title: this.user.title,
           phone: this.user.phone,
@@ -54,6 +74,48 @@ export class UserEditComponent implements OnInit {
         console.log(result);
       });
     });
+    this.getUserProfile();
+  }
+
+  getUserProfile() {
+    this.sub = this.activate.paramMap.subscribe((paramMap: ParamMap) => {
+      const id = paramMap.get('id');
+      this.getUserProfileBy(id);
+    });
+  }
+
+  private getUserProfileBy(id: string) {
+    this.userService.getUserById(id).subscribe(value => {
+      this.currentUser = value;
+      this.username = value.username;
+      this.title = value.gender;
+      this.phone = value.phone;
+      this.email = value.email;
+    }, () => {
+      console.log('Lỗi!');
+    });
+  }
+  changePassword() {
+    const user = this.setNewUser();
+    this.userService.changePassword(user, this.currentUser.id).subscribe(() => {
+      alert('Đổi mật khẩu thành công');
+      this.newPassword2.reset();
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  private setNewUser() {
+    const user: User = {
+      username: this.currentUserToken.username,
+      password: this.newPassword2.value.password,
+      confirmPassword: this.newPassword2.value.confirmPassword,
+      title: this.title,
+      email: this.email,
+      phone: this.phone,
+      gender: this.gender
+    };
+    return user;
   }
 
   // tslint:disable-next-line:typedef
@@ -68,7 +130,6 @@ export class UserEditComponent implements OnInit {
       this.user.imageSource = this.userForm.value.imageSource;
       this.user.username = this.userForm.value.username;
       this.user.email = this.userForm.value.email;
-      this.user.password = this.userForm.value.password;
       this.user.gender = this.userForm.value.gender;
       this.user.title = this.userForm.value.title;
       this.user.phone = this.userForm.value.phone;
