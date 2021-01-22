@@ -2,7 +2,7 @@
 <!--Design by Minh-->
 <div class="container col-12">
   <br>
-  <div class="container" >
+  <div class="container" id="top">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="index.html">Home</a>
@@ -24,10 +24,18 @@
               </div>
             </div>
             <div class="card-body p-0">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item active">
+                  <a type="button" class="nav-link" (click)="getQuizzesById()">
+                    <i class="fas fa-inbox" ></i> All
+                    <span><span class="badge bg-primary float-right">{{quizzes.length}}</span></span>
+                  </a>
+                </li>
+              </ul>
               <ul class="nav nav-pills flex-column" *ngFor="let category of categories">
                 <li class="nav-item active">
-                  <a href="" class="nav-link">
-                    <i class="fas fa-inbox"></i> {{category.name}}
+                  <a type="button" class="nav-link" (click)="getQuizzesById(category.id)">
+                    <i class="fas fa-inbox" ></i> {{category.name}}
                     <span *ngIf="category.quizzes.length == 0"><span class="badge bg-danger float-right">{{category.quizzes.length}}</span></span>
                     <span *ngIf="category.quizzes.length != 0"><span class="badge bg-primary float-right">{{category.quizzes.length}}</span></span>
                   </a>
@@ -66,7 +74,7 @@
                     <th></th>
                     <th>Thời gian</th>
                   </tr>
-                  <tr *ngFor="let quiz of quizzes, index as i">
+                  <tr *ngFor="let quiz of quizzesById, index as i">
                     <td>{{i+1}}</td>
                     <td class="mailbox-name">
                       <a routerLink="/home/quizzes/{{quiz.studyId}}/attempts/" title="{{quiz.studyId}}">{{quiz.quizname}}</a>

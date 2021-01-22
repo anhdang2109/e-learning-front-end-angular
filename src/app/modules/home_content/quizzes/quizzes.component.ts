@@ -22,6 +22,7 @@ export class QuizzesComponent implements OnInit {
   categories: Category[];
   quizzes: Quiz[];
   studies: Study[];
+  quizzesById: Quiz[];
   idStudy: number;
   userId: number;
   countQuiz: any;
@@ -32,15 +33,13 @@ export class QuizzesComponent implements OnInit {
               private categoryService: CategoryService,
               private quizzesService: QuizService,
               private studyService: StudyService,
-              private authService: AuthService,
   ) {
   }
 
   ngOnInit() {
     this.userId = JSON.parse(localStorage.getItem('user')).id;
     this.getAllCategory();
-    this.getAllQuiz();
-    console.log('hello world');
+    this.addStudyId();
   }
 
   getAllCategory() {
@@ -50,19 +49,36 @@ export class QuizzesComponent implements OnInit {
     return this.categories;
   }
 
-  getAllQuiz() {
+  addStudyId() {
     this.quizzesService.getAll().subscribe((res: any) => {
       this.quizzes = res.map(async quiz => {
-        let data = await  this.getStudyId(quiz.id);
+        let data = await this.getStudyId(quiz.id);
         quiz.studyId = data? data:0;
       })
       this.quizzes = res;
+      this.quizzesById = res;
     });
   }
 
   getStudyId(idQuiz: number) {
-    console.log(this.userId);
     return this.studyService.getStudyById(this.userId, idQuiz).toPromise();
   }
 
+  async getQuizzesById(id?: number) {
+    if (id == null) {
+      this.quizzesById = this.quizzes;
+    } else {
+      let category = this.getCategoryById(id);
+      this.quizzesById = category.quizzes;
+    }
+  }
+
+  getCategoryById(id: number): Category {
+    for (let category of this.categories) {
+      if (category.id == id) {
+        return category;
+        break;
+      }
+    }
+  }
 }
