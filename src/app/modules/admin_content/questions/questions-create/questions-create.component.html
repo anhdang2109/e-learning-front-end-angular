@@ -30,22 +30,22 @@
                 <li class="nav-item">
                   <a class="nav-link active" id="custom-content-above-home-tab" data-toggle="tab"
                      href="#single-choice" role="tab" aria-controls="custom-content-above-home"
-                     aria-selected="false">Single-choice</a>
+                     aria-selected="false">Một đáp án</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="custom-content-above-profile-tab" data-toggle="tab"
                      href="#multiple-choice" role="tab" aria-controls="custom-content-above-profile"
-                     aria-selected="false">Multiple-choice</a>
+                     aria-selected="false">Nhiều đáp án</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="custom-content-above-messages-tab" data-toggle="tab"
                      href="#true-false" role="tab" aria-controls="custom-content-above-messages"
-                     aria-selected="true">True-false</a>
+                     aria-selected="true">Đúng sai</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="custom-content-above-settings-tab" data-toggle="tab"
                      href="#input" role="tab" aria-controls="custom-content-above-settings"
-                     aria-selected="false">Input</a>
+                     aria-selected="false">Nhập</a>
                 </li>
               </ul>
             </div>
@@ -88,9 +88,9 @@
                                 <select class="custom-select mr-sm-2"
                                         name="quiz-level"
                                         [(ngModel)]="questionSingleChoice.level">
-                                  <option value="easy">Dễ</option>
-                                  <option value="medium" selected>Trung bình</option>
-                                  <option value="hard">Khó</option>
+                                  <option value="Dễ">Dễ</option>
+                                  <option value="Trung bình" selected>Trung bình</option>
+                                  <option value="Khó">Khó</option>
                                 </select>
                               </div>
                             </div>
@@ -100,9 +100,8 @@
                               <div class="col-9">
                                 <select disabled class="custom-select mr-sm-2"
                                         name="quiz-type">
-                                  <option value="Multiple Choice" selected>Multiple Choice</option>
-                                  <option value="Single Choice">Single
-                                    Choice
+                                  <option value="Multiple Choice" selected>Một đáp án</option>
+                                  <option value="Single Choice">Một đáp án
                                   </option>
                                 </select>
                               </div>
@@ -251,9 +250,9 @@
                                 <select class="custom-select mr-sm-2"
                                         name="quiz-level"
                                         [(ngModel)]="questionMultipleChoice.level">
-                                  <option value="easy">Dễ</option>
-                                  <option value="medium" selected>Trung bình</option>
-                                  <option value="hard">Khó</option>
+                                  <option value="Dễ">Dễ</option>
+                                  <option value="Trung bình" selected>Trung bình</option>
+                                  <option value="Khó">Khó</option>
                                 </select>
                               </div>
                             </div>
@@ -263,8 +262,8 @@
                               <div class="col-9">
                                 <select disabled class="custom-select mr-sm-2"
                                         name="quiz-type">
-                                  <option value="Multiple Choice">Multiple Choice</option>
-                                  <option value="Single Choice" selected>Single Choice
+                                  <option value="Multiple Choice">Nhiều đáp án</option>
+                                  <option value="Single Choice" selected>Nhiều đáp án
                                   </option>
                                 </select>
                               </div>
@@ -415,9 +414,9 @@
                                 <select class="custom-select mr-sm-2"
                                         name="quiz-level"
                                         [(ngModel)]="questionTrueFalse.level">
-                                  <option value="easy">Dễ</option>
-                                  <option value="medium" selected>Trung bình</option>
-                                  <option value="hard">Khó</option>
+                                  <option value="Dễ">Dễ</option>
+                                  <option value="Trung bình" selected>Trung bình</option>
+                                  <option value="Khó">Khó</option>
                                 </select>
                               </div>
                             </div>
@@ -429,7 +428,7 @@
                                         name="quiz-type">
                                   <option value="Multiple Choice">Multiple Choice</option>
                                   <option value="Single Choice">Single Choice</option>
-                                  <option value="Single Choice" selected>True-False</option>
+                                  <option value="Single Choice" selected>Đúng sai</option>
                                 </select>
                               </div>
                             </div>
@@ -543,9 +542,9 @@
                                 <select class="custom-select mr-sm-2"
                                         name="quiz-level"
                                         [(ngModel)]="questionInput.level">
-                                  <option value="easy">Dễ</option>
-                                  <option value="medium" selected>Trung bình</option>
-                                  <option value="hard">Khó</option>
+                                  <option value="Dễ">Dễ</option>
+                                  <option value="Trung bình" selected>Trung bình</option>
+                                  <option value="Khó">Khó</option>
                                 </select>
                               </div>
                             </div>
@@ -557,7 +556,7 @@
                                         name="quiz-type">
                                   <option value="Multiple Choice">Multiple Choice</option>
                                   <option value="Single Choice">Single Choice</option>
-                                  <option value="Single Choice" selected>True-False</option>
+                                  <option value="Single Choice" selected>Nhập</option>
                                 </select>
                               </div>
                             </div>

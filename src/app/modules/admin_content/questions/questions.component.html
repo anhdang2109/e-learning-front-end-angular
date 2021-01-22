@@ -78,7 +78,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let product of products">
+                      <tr *ngFor="let product of products | paginate: { itemsPerPage: 5, currentPage: p }">
                         <td>{{ product.id }}</td>
                         <td>{{ product.code }}</td>
                         <td>{{ product.type }}</td>
@@ -123,6 +123,9 @@
             </div>
             <!-- /.card-body -->
           </div>
+          <pagination-controls style="float: right; color:#2eca6a "
+                               (pageChange)="p = $event"></pagination-controls>
+
         </div>
       </div>
       <!-- /.row -->

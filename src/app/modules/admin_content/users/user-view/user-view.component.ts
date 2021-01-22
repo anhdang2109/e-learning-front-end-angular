@@ -16,6 +16,7 @@ export class UserViewComponent implements OnInit {
   role: string;
   users: User[];
   currentUsername: string;
+  p: number = 1;
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,

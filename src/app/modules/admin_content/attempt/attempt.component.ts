@@ -15,6 +15,7 @@ export class AttemptComponent implements OnInit {
   role: string;
   users: User[];
   currentUsername: string;
+  p: number = 1;
 
   constructor(private attemptService: AttemptService,
               private userService: UserService,

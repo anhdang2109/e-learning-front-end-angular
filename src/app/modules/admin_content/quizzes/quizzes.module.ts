@@ -7,6 +7,7 @@ import {QuizzesViewComponent} from "./quizzes-view/quizzes-view.component";
 import {QuizzesImportComponent} from "./quizzes-import/quizzes-import.component";
 import {RouterModule, Routes} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from "ngx-pagination";
 
 const routes: Routes = [
   {
@@ -39,11 +40,12 @@ const routes: Routes = [
     QuizzesViewComponent,
     QuizzesImportComponent
   ],
-  imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    RouterModule.forChild(routes),
-    CommonModule
-  ]
+    imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        RouterModule.forChild(routes),
+        CommonModule,
+        NgxPaginationModule
+    ]
 })
 export class QuizzesModule { }

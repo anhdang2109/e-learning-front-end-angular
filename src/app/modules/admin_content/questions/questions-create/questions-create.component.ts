@@ -141,11 +141,11 @@ export class QuestionsCreateComponent implements OnInit {
       this.questionMultipleChoice.questionAnswers = this.answersMultipleChoice;
       console.log(this.questionMultipleChoice);
       this.productService.save(this.questionMultipleChoice).subscribe(() => {
-        alert('successfully');
+        alert('Thành công');
         this.router.navigate(['/admin/questions']);
       });
     } else {
-      alert('Please input at least one true answer');
+      alert('Vui lòng nhập ít nhất một câu trả lời đúng');
     }
   }
 
@@ -223,11 +223,11 @@ export class QuestionsCreateComponent implements OnInit {
       this.questionSingleChoice.questionAnswers = this.answersSingleChoice;
       console.log(this.questionSingleChoice);
       this.productService.save(this.questionSingleChoice).subscribe(() => {
-        alert('successfully');
+        alert('Thành công');
         this.router.navigate(['/admin/questions']);
       });
     } else {
-      alert('Please input at least one true answer');
+      alert('Vui lòng nhập ít nhất một câu trả lời đúng');
     }
   }
 
@@ -317,11 +317,11 @@ export class QuestionsCreateComponent implements OnInit {
       this.questionTrueFalse.questionAnswers = this.answersTrueFalse;
       console.log(this.questionTrueFalse);
       this.productService.save(this.questionTrueFalse).subscribe(() => {
-        alert('successfully');
+        alert('Thành công');
         this.router.navigate(['/admin/questions']);
       });
     } else {
-      alert('Please input at least one true answer');
+      alert('Vui lòng nhập ít nhất một câu trả lời đúng');
     }
   }
 
@@ -366,7 +366,7 @@ export class QuestionsCreateComponent implements OnInit {
     this.questionInput.questionAnswers = this.answersInput;
     console.log(this.questionInput);
     this.productService.save(this.questionInput).subscribe(() => {
-      alert('successfully');
+      alert('Thành công');
       this.router.navigate(['/admin/questions']);
     });
   }

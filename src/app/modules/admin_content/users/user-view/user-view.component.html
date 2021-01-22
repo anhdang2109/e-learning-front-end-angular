@@ -125,7 +125,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let attempt of attempts; index as i">
+                        <tr *ngFor="let attempt of attempts | paginate: { itemsPerPage: 5, currentPage: p }; index as i">
                           <th class="text-center">{{attempt.id}}</th>
                           <td>{{attempt.username}}</td>
                           <td>{{ attempt.email}}</td>
@@ -161,13 +161,8 @@
                       </table>
                     </div>
                     <div class="card-footer clearfix">
-                      <ul class="pagination pagination-sm m-0 float-right" >
-                        <li class="page-item"><a class="page-link" href="#">«</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">»</a></li>
-                      </ul>
+                      <pagination-controls style="float: right; color:#2eca6a "
+                                           (pageChange)="p = $event"></pagination-controls>
                     </div>
                     <!-- /.card-body -->
                   </div>

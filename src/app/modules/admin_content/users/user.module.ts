@@ -8,6 +8,7 @@ import {UserViewComponent} from './user-view/user-view.component';
 import {UserImportComponent} from './user-import/user-import.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UsersDeletedComponent} from "./users-deleted/users-deleted.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 const routes: Routes = [
@@ -52,12 +53,13 @@ const routes: Routes = [
     UserViewComponent,
     UserImportComponent
   ],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule
-  ]
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgxPaginationModule
+    ]
 })
 export class UserModule {
 }

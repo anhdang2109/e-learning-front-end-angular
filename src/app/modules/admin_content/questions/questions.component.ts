@@ -15,6 +15,7 @@ export class QuestionsComponent implements OnInit {
   role: string;
   users: User[];
   currentUsername: string;
+  p: number = 1;
 
   constructor(private questionService: QuestionService,
               private userService: UserService,

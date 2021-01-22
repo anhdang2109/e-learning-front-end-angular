@@ -16,6 +16,7 @@ export class QuizzesComponent implements OnInit {
   users: User[];
   currentUsername: string;
   quizzes: Quiz[];
+  p: number = 1;
 
   constructor(private userService: UserService,
               private router: Router,

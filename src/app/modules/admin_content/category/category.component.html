@@ -80,7 +80,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let category of listCategory; index as i">
+                      <tr *ngFor="let category of listCategory | paginate: { itemsPerPage: 5, currentPage: p }; index as i">
                         <th scope="row">{{ i + 1 }}</th>
                         <td>{{ category.name}}</td>
                         <td>{{category.description}}</td>
@@ -115,6 +115,8 @@
             </div>
             <!-- /.card-body -->
           </div>
+          <pagination-controls style="float: right; color:#2eca6a "
+                               (pageChange)="p = $event"></pagination-controls>
         </div>
       </div>
       <!-- /.row -->

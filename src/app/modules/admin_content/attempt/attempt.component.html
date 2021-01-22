@@ -74,7 +74,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let attempt of attempts; index as i">
+                      <tr *ngFor="let attempt of attempts | paginate: { itemsPerPage: 5, currentPage: p }; index as i">
                         <th class="text-center">{{attempt.id}}</th>
                         <td>{{attempt.username}}</td>
                         <td>{{ attempt.email}}</td>
@@ -94,14 +94,8 @@
                     </table>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-12 col-md-5">
-                    <div class="dataTables_info" id="example1_info" role="status"
-                         aria-live="polite">
-                      <p></p>
-                    </div>
-                  </div>
-                </div>
+                <pagination-controls style="float: right; color:#2eca6a "
+                                     (pageChange)="p = $event"></pagination-controls>
               </div>
             </div>
             <!-- /.card-body -->
