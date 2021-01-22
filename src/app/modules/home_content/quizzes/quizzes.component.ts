@@ -19,18 +19,13 @@ import {Observable} from "rxjs";
 })
 export class QuizzesComponent implements OnInit {
 
-  listCategory: Category[];
-  listQuiz: Quiz[];
-  datass = []
   categories: Category[];
   quizzes: Quiz[];
   studies: Study[];
   idStudy: number;
+  userId: number;
   countQuiz: any;
   num: any;
-  currentUser: UserToken;
-  user: Observable<any>;
-  study: Study;
 
   constructor(private router: Router,
               private userService: UserService,
@@ -42,21 +37,10 @@ export class QuizzesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userId = JSON.parse(localStorage.getItem('user')).id;
     this.getAllCategory();
     this.getAllQuiz();
-    // this.getAllStudy();
-    console.log("this.currentUser");
-    console.log(this.currentUser);
-  }
-
-  // @ts-ignore
-  getUserCurrentByName(): number {
-    this.authService.currentUser.subscribe(data => {
-      this.userService.getUserByUsername(data.username).subscribe(user => {
-        this.currentUser = user;
-        return this.currentUser.id;
-      });
-    });
+    console.log('hello world');
   }
 
   getAllCategory() {
@@ -76,29 +60,9 @@ export class QuizzesComponent implements OnInit {
     });
   }
 
-  // getAllStudy(): Study[] {
-  //   this.studyService.getAll().subscribe((data: any) => {
-  //     this.studies = data;
-  //   });
-  //   return this.studies;
-  // }
-
-  getSizeOfCategory(id: any) {
-    this.quizzesService.countQuizByCategory(id).subscribe(data => {
-      this.num = data;
-    });
-  }
-
   getStudyId(idQuiz: number) {
-    return this.studyService.getStudyById(this.currentUser.id, idQuiz).toPromise();
+    console.log(this.userId);
+    return this.studyService.getStudyById(this.userId, idQuiz).toPromise();
   }
-
-  // getSizeOfCategory(id: any) {
-  //   this.quizzesService.countQuizByCategory(id).subscribe(data => {
-  //     this.num = data;
-  //   });
-  //   if (this.num == null) { this.num = 0; }
-  //   return this.num;
-  // }
 
 }
