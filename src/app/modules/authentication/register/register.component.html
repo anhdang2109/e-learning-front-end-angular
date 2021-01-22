@@ -48,7 +48,7 @@
           <h3>Vui lòng không để trống</h3>
         </div>
         <div *ngIf="phone.errors.pattern && phone.touched" style="color: #e4606d">
-          <h3>Nhập đúng kiểu sdt hợp lệ</h3>
+          <h3>số điện thoại không hợp lệ</h3>
         </div>
 
         <div class="input-group mb-3">
@@ -88,13 +88,13 @@
           </div>
         </div>
         <div *ngIf="password.errors.required && password.touched" style="color: #e4606d">
-          <h3>Password không được để trống!</h3>
+          <h3>Mật khẩu không được để trống!</h3>
         </div>
         <div *ngIf="password.errors.minlength && password.touched" style="color: #e4606d">
-          <h3>Password phải tối thiểu 6 kí tự để độ bảo mật được cao!</h3>
+          <h3>Mật khẩu tối thiểu 6 ký tự</h3>
         </div>
         <div *ngIf="password.errors.maxlength && password.touched" style="color: #e4606d">
-          <h3>Password thì không được nhiều hơn 12 kí tự</h3>
+          <h3>Mật khẩu không quá 12 kí tự</h3>
         </div>
 
         <div class="row" align="center">
