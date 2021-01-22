@@ -24,6 +24,7 @@ import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import { UsersDeletedComponent } from './modules/admin_content/users/users-deleted/users-deleted.component';
+import { TableQuizzesComponent } from './modules/home_content/quizzes/table-quizzes/table-quizzes.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { UsersDeletedComponent } from './modules/admin_content/users/users-delet
     LoginComponent,
     RegisterComponent,
     ChangepasswordComponent,
-    UsersDeletedComponent
+    UsersDeletedComponent,
+    TableQuizzesComponent
   ],
   imports: [
     HomeModule,

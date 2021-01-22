@@ -24,6 +24,7 @@ export class AttemptsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.activatedRoute.params.subscribe(params => {
       this.idStudy = params.idStudy;
       this.studyService.findById(this.idStudy).toPromise().then(value => {

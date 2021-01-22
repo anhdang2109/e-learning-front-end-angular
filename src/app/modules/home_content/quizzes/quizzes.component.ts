@@ -23,25 +23,18 @@ import {Observable} from "rxjs";
 export class QuizzesComponent implements OnInit {
   listCategory: Category[];
   listQuiz: Quiz[];
-  currentUser: User;
+  datass = []
   newQ: FormGroup;
   categories: Category[];
   quizzes: Quiz[];
   studies: Study[];
-  currentUser: User;
   idStudy: number;
   countQuiz: any;
   num: any;
-
   currentUser: UserToken;
   user: Observable<any>;
-  idStudy: number;
   study: Study;
 
-  constructor(private authService: AuthService,
-              private attemptService: AttemptService,
-              private studyService: StudyService,
-              private userService: UserService,
   constructor(private router: Router,
               private userService: UserService,
               private categoryService: CategoryService,
@@ -50,18 +43,23 @@ export class QuizzesComponent implements OnInit {
               private authService: AuthService,
   ) {
   }
-  ngOnInit(): void {
-    this.authService.currentUser.subscribe(x => {
-      this.currentUser = x;
-      this.userService.getUserByUsername(x.username).subscribe(value1 => {
-        this.user = value1;
 
-  getUserCurrentByName() {
+  ngOnInit() {
+
+    this.getAllCategory();
+    this.getAllQuiz();
+    // this.getAllStudy();
+    console.log("this.currentUser");
+    console.log(this.currentUser);
+  }
+
+  // @ts-ignore
+  getUserCurrentByName(): number {
     this.authService.currentUser.subscribe(data => {
       this.userService.getUserByUsername(data.username).subscribe(user => {
         this.currentUser = user;
+        return this.currentUser.id;
       });
-      console.log(this.currentUser);
     });
   }
 
@@ -72,18 +70,21 @@ export class QuizzesComponent implements OnInit {
     return this.categories;
   }
 
-  getAllQuiz(): Quiz[] {
-    this.quizzesService.getAll().subscribe((data: any) => {
-      this.quizzes = data;
-      this.quizzes.map(async quiz => {
-        let data = await this.getStudyId(quiz.id);
-        if (data == null) {
-          data = 0;
-        }
-        quiz.studyId = data;
+  getStudyId(idQuiz: number) {
+    return this.studyService.getStudyById(33, idQuiz).toPromise();
+  }
+
+  getAllQuiz() {
+
+    this.quizzesService.getAll().subscribe((res: any) => {
+
+      this.quizzes = res.map(async quiz => {
+        let data = await  this.getStudyId(quiz.id);
+        quiz.studyId = data? data:0;
       })
+      this.quizzes = res;
     });
-    return this.quizzes;
+
   }
 
   // getAllStudy(): Study[] {
@@ -93,24 +94,11 @@ export class QuizzesComponent implements OnInit {
   //   return this.studies;
   // }
 
-  getStudyId(idQuiz: number) {
-    return this.studyService.getStudyById(this.currentUser.id, idQuiz).toPromise();
+  getSizeOfCategory(id: any) {
+    this.quizzesService.countQuizByCategory(id).subscribe(data => {
+      this.num = data;
+    });
+
   }
 
-  // getSizeOfCategory(id: any) {
-  //   this.quizzesService.countQuizByCategory(id).subscribe(data => {
-  //     this.num = data;
-  //   });
-  //   if (this.num == null) { this.num = 0; }
-  //   return this.num;
-  // }
-
-   ngOnInit() {
-    this.getUserCurrentByName();
-    this.getAllCategory();
-    this.getAllQuiz();
-    // this.getAllStudy();
-    console.log("this.currentUser");
-    console.log(this.currentUser);
-  }
 }
