@@ -17,7 +17,6 @@ export class AdminLayoutComponent implements OnInit {
               private router: Router
   ) {
   }
-
   ngOnInit() {
     this.role = localStorage.getItem("ROLE");
     if (this.role == "ROLE_USER") {

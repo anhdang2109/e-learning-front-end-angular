@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
   newU: FormGroup;
   role: string;
   currentUsername: string;
+  p: number = 1;
 
   constructor(private userService: UserService,
               private fb: FormBuilder,

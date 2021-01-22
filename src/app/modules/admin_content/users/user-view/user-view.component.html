@@ -32,34 +32,34 @@
                        alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center"><span>Đặng Trần Nam Anh</span></h3>
+                <h3 class="profile-username text-center"><span>{{user.username}}</span></h3>
 
-                <p class="text-muted text-center">Thành viên từ ngày: <span>12-12-2020</span></p>
+                <p class="text-muted text-center">Thành viên từ ngày: <span>{{user.createdAt}}</span></p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
                     <b>Trạng thái</b> <a class="float-right">
-                    <span>Hoạt động</span>
+                    <span *ngIf="user.isDeleted === 1">Hoạt động</span>
                     <span>&nbsp;</span>
                     <span class="dotGreen"></span>
                   </a>
                   </li>
                   <li class="list-group-item">
-                    <b>Quyền hạn</b>
+                    <b>Email</b>
                     <a class="float-right">
-                      <span>Thành viên</span>
+                      <span>{{user.email}}</span>
                       <span>&nbsp;</span> <i class="fas fa-id-badge"></i>
                     </a>
                   </li>
                   <li class="list-group-item">
-                    <b>Ví tiền</b> <a class="float-right"><span></span><span>&nbsp;</span> <i
-                    class="fas fa-coins"></i></a>
+                    <b>Nghề nghiệp</b> <a class="float-right"><span></span><span>&nbsp;</span>
+                    {{user.title}}</a>
                   </li>
                   <div class="card-body">
                     <strong><i class="fas fa-venus-mars"></i><span>&nbsp;</span> Giới tính</strong>
 
                     <p class="text-muted">
-                      <span>Nam</span>
+                      <span>{{user.gender}}</span>
                     </p>
 
                     <hr>
@@ -67,19 +67,15 @@
                     <strong><i class="fas fa-phone"></i><span>&nbsp;</span> Số điện thoại</strong>
 
                     <p class="text-muted">
-                      <span></span>
+                      <span>{{user.phone}}</span>
                     </p>
 
                     <hr>
-
-                    <strong><i class="fas fa-envelope"></i><span>&nbsp;</span> Email</strong>
-                    <p class="text-muted"></p>
-                    <hr>
                   </div>
                 </ul>
-                <a class="btn btn-primary btn-block"><b>Chỉnh sửa thông
+                <a class="btn btn-primary btn-block" routerLink="/admin/users/edit/{{user.id}}"><b>Chỉnh sửa thông
                   tin</b></a>
-                <a class="btn btn-danger btn-block"><b>Xoá người dùng</b></a>
+                <a class="btn btn-danger btn-block" (click)="delete(user.id)"><b>Tạm dừng</b></a>
               </form>
             </div>
             <!-- /.card-body -->
@@ -165,7 +161,7 @@
                       </table>
                     </div>
                     <div class="card-footer clearfix">
-                      <ul class="pagination pagination-sm m-0 float-right">
+                      <ul class="pagination pagination-sm m-0 float-right" >
                         <li class="page-item"><a class="page-link" href="#">«</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -176,85 +172,7 @@
                     <!-- /.card-body -->
                   </div>
                 </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="upload">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title">Danh sách lượt thi</h3>
 
-                      <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                          <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                          <div class="input-group-append">
-                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0">
-                      <table class="table table-hover text-nowrap table-responsive">
-                        <thead>
-                        <tr>
-                          <th style="width: 5%" class="text-center">#</th>
-                          <th style="width: 15%">Học viên</th>
-                          <th style="width: 25%">Email</th>
-                          <th style="width: 8%" class="text-center">Trạng thái</th>
-                          <th style="width: 10%" class="text-center">Điểm số</th>
-                          <th style="width: 7%" class="text-center">Ngày khởi tạo</th>
-                          <th style="width: 8%" class="text-center">Ngày hoàn thành</th>
-                          <!--                        <th style="width: 15%"></th>-->
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let attempt of attempts; index as i">
-                          <th class="text-center">{{attempt.id}}</th>
-                          <td>{{attempt.username}}</td>
-                          <td>{{ attempt.email}}</td>
-                          <td class="text-center">{{attempt.status}}</td>
-                          <td class="text-center">{{ attempt.averageScore}}</td>
-                          <td class="text-center">12-12-2020</td>
-                          <td class="text-center">12-12-2020</td>
-                          <!--                        <td class="project-actions text-right">-->
-                          <!--                          <form method="post">-->
-                          <!--                            <a class="btn btn-primary btn-sm"-->
-                          <!--                               [routerLink]="'view/' + attempt.id">-->
-                          <!--                              <i class="fas fa-folder"></i>-->
-                          <!--                              Xem-->
-                          <!--                            </a>-->
-                          <!--                            <span>&nbsp;</span><span>&nbsp;</span>-->
-                          <!--                            <a class="btn btn-info btn-sm"-->
-                          <!--                               [routerLink]="'create/' + attempt.id">-->
-                          <!--                              <i class="fas fa-pencil-alt">-->
-                          <!--                              </i>-->
-                          <!--                              Sửa-->
-                          <!--                            </a>-->
-                          <!--                            <span>&nbsp;</span><span>&nbsp;</span>-->
-                          <!--                            <a class="btn btn-danger btn-sm"-->
-                          <!--                               [routerLink]="'delete/' + attempt.id">-->
-                          <!--                              <i class="fas fa-trash">-->
-                          <!--                              </i>-->
-                          <!--                              Xoá-->
-                          <!--                            </a>-->
-                          <!--                          </form>-->
-                          <!--                        </td>-->
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="card-footer clearfix">
-                      <ul class="pagination pagination-sm m-0 float-right">
-                        <li class="page-item"><a class="page-link" href="#">«</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">»</a></li>
-                      </ul>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                </div>
                 <!-- /.tab-pane -->
               </div>
               <!-- /.tab-content -->

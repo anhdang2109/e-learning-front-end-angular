@@ -1,4 +1,4 @@
-<body class="hold-transition register-page" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI1fRYVxgof-Xdg3zkJy1jcFQO97C-rp-PSg&usqp=CAU')">
+<body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
     <b>Đăng Ký</b>
@@ -70,7 +70,7 @@
           </div>
         </div>
         <div *ngIf="username.errors.required && username.touched" style="color: #e4606d">
-          <h3>Vui lòng lòng để trống</h3>
+          <h3>Vui lòng không để trống</h3>
         </div>
         <div *ngIf="username.errors.minlength && username.touched" style="color: #e4606d">
           <h3>Uesrname phải tối thiểu 6 kí tự</h3>

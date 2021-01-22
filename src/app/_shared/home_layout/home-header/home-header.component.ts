@@ -19,11 +19,13 @@ import {StudyService} from "../../../modules/admin_content/studies/service/study
 export class HomeHeaderComponent implements OnInit {
 
   // currentUser: UserToken;
+
   user: Observable<any>;
   idStudy: number;
   study: Study;
   userFromDB: User = {};
   currentUser: User = {};
+
 
   constructor(private authService: AuthService,
               private attemptService: AttemptService,
@@ -43,15 +45,19 @@ export class HomeHeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.authService.currentUser.subscribe(x => {
-    //   this.currentUser = x;
-    //   this.userService.getUserByUsername(x.username).subscribe(value1 => {
-    //     this.user = value1;
-    //   });
-    //   console.log(this.currentUser);
-    // });
-
+    this.authService.currentUser.subscribe(x => {
+      this.currentUser = x;
+      this.userService.getUserByUsername(x.username).subscribe(value1 => {
+        this.user = value1;
+      });
+      console.log(this.currentUser);
+    });
   }
+
+  // get isAdmin() {
+  //   // @ts-ignore
+  //   return this.currentUser && this.currentUser.roles === "ROLE_ADMIN";
+  // }
 
   logout() {
     this.authService.logout();
