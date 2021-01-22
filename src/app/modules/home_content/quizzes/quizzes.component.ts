@@ -3,16 +3,13 @@ import {User} from "../../admin_content/users/user.model";
 import {Category} from "../../admin_content/category/category.model";
 import {Quiz} from "../../admin_content/quizzes/model/quiz.model";
 import {UserService} from "../../admin_content/users/user.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {AuthService} from "../../authentication/service/auth/auth.service";
 import {CategoryService} from "../../admin_content/category/category.service";
 import {QuizService} from "../../admin_content/quizzes/service/quiz.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {UserToken} from "../../admin_content/users/user-token";
 import {Study} from "../../admin_content/studies/model/study.model";
 import {StudyService} from "../../admin_content/studies/service/study.service";
-import {Attempt} from "../../admin_content/attempt/attempt.model";
-import {AttemptService} from "../../admin_content/attempt/attempt.service";
-import {UserToken} from "../../admin_content/users/user-token";
 import {Observable} from "rxjs";
 
 @Component({
@@ -21,10 +18,10 @@ import {Observable} from "rxjs";
   styleUrls: ['./quizzes.component.css']
 })
 export class QuizzesComponent implements OnInit {
+
   listCategory: Category[];
   listQuiz: Quiz[];
   datass = []
-  newQ: FormGroup;
   categories: Category[];
   quizzes: Quiz[];
   studies: Study[];
@@ -45,7 +42,6 @@ export class QuizzesComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.getAllCategory();
     this.getAllQuiz();
     // this.getAllStudy();
@@ -70,21 +66,14 @@ export class QuizzesComponent implements OnInit {
     return this.categories;
   }
 
-  getStudyId(idQuiz: number) {
-    return this.studyService.getStudyById(33, idQuiz).toPromise();
-  }
-
   getAllQuiz() {
-
     this.quizzesService.getAll().subscribe((res: any) => {
-
       this.quizzes = res.map(async quiz => {
         let data = await  this.getStudyId(quiz.id);
         quiz.studyId = data? data:0;
       })
       this.quizzes = res;
     });
-
   }
 
   // getAllStudy(): Study[] {
@@ -98,7 +87,18 @@ export class QuizzesComponent implements OnInit {
     this.quizzesService.countQuizByCategory(id).subscribe(data => {
       this.num = data;
     });
-
   }
+
+  getStudyId(idQuiz: number) {
+    return this.studyService.getStudyById(this.currentUser.id, idQuiz).toPromise();
+  }
+
+  // getSizeOfCategory(id: any) {
+  //   this.quizzesService.countQuizByCategory(id).subscribe(data => {
+  //     this.num = data;
+  //   });
+  //   if (this.num == null) { this.num = 0; }
+  //   return this.num;
+  // }
 
 }
