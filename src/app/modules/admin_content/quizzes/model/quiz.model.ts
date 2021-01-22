@@ -6,4 +6,5 @@ export interface Quiz {
   description?: string;
   randomNumber?: number;
   questions?: Question[];
+  studyId?: any;
 }

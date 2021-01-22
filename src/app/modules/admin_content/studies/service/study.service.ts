@@ -37,6 +37,11 @@ export class StudyService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('http://localhost:8080/admin/studies');
+    return this.http.get(`http://localhost:8080/admin/studies`);
   }
+
+  getStudyById(userId: any, quizId: any): Observable<any> {
+    return this.http.get(`http://localhost:8080/admin/studies/${userId}/${quizId}`);
+  }
+
 }

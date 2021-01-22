@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../service/auth/auth.service";
 import {first} from "rxjs/operators";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../../admin_content/users/user.service";
+import {User} from "../../admin_content/users/user.model";
 
 
 @Component({
@@ -23,7 +25,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
-              private authenticationService: AuthService) {
+              private authenticationService: AuthService,
+  ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
     }

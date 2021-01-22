@@ -25,7 +25,6 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import { UsersDeletedComponent } from './modules/admin_content/users/users-deleted/users-deleted.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +36,7 @@ import { UsersDeletedComponent } from './modules/admin_content/users/users-delet
     LoginComponent,
     RegisterComponent,
     ChangepasswordComponent,
-    UsersDeletedComponent
+    UsersDeletedComponent,
   ],
   imports: [
     HomeModule,
