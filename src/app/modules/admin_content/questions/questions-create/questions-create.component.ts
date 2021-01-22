@@ -56,28 +56,32 @@ export class QuestionsCreateComponent implements OnInit {
 
   // @ts-ignore
   questionSingleChoice: Question = {
-    code: '',
+    code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
     type: 'single-choice',
     level: 'medium',
     content: '',
     explanation: '',
   };
   questionMultipleChoice: Question = {
-    code: '',
+    // @ts-ignore
+    code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
     type: 'multiple-choice',
     level: 'medium',
     content: '',
     explanation: ''
   };
   questionTrueFalse: Question = {
-    code: '',
+    // @ts-ignore
+    code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
     type: 'true-false',
     level: 'medium',
     content: '',
     explanation: ''
   };
   questionInput: Question = {
-    code: '',
+    // @ts-ignore
+    // code: Math.floor((Math.random() * 100000) + 1),
+    code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
     type: 'input',
     level: 'medium',
     content: '',
@@ -234,7 +238,11 @@ export class QuestionsCreateComponent implements OnInit {
   openDialogASingleChoice(): void {
     const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
       width: '500px',
-      data: {type: this.questionSingleChoice.type, content: this.answerASingleChoice.content, isCorrect: this.answerASingleChoice.isCorrect}
+      data: {
+        type: this.questionSingleChoice.type,
+        content: this.answerASingleChoice.content,
+        isCorrect: this.answerASingleChoice.isCorrect
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -254,7 +262,11 @@ export class QuestionsCreateComponent implements OnInit {
   openDialogBSingleChoice(): void {
     const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
       width: '500px',
-      data: {type: this.questionSingleChoice.type, content: this.answerBSingleChoice.content, isCorrect: this.answerBSingleChoice.isCorrect}
+      data: {
+        type: this.questionSingleChoice.type,
+        content: this.answerBSingleChoice.content,
+        isCorrect: this.answerBSingleChoice.isCorrect
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -274,7 +286,11 @@ export class QuestionsCreateComponent implements OnInit {
   openDialogCSingleChoice(): void {
     const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
       width: '500px',
-      data: {type: this.questionSingleChoice.type, content: this.answerCSingleChoice.content, isCorrect: this.answerCSingleChoice.isCorrect}
+      data: {
+        type: this.questionSingleChoice.type,
+        content: this.answerCSingleChoice.content,
+        isCorrect: this.answerCSingleChoice.isCorrect
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -294,7 +310,11 @@ export class QuestionsCreateComponent implements OnInit {
   openDialogDSingleChoice(): void {
     const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
       width: '500px',
-      data: {type: this.questionSingleChoice.type, content: this.answerDSingleChoice.content, isCorrect: this.answerDSingleChoice.isCorrect}
+      data: {
+        type: this.questionSingleChoice.type,
+        content: this.answerDSingleChoice.content,
+        isCorrect: this.answerDSingleChoice.isCorrect
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -328,7 +348,11 @@ export class QuestionsCreateComponent implements OnInit {
   openDialogATrueFalse(): void {
     const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
       width: '500px',
-      data: {type: this.questionTrueFalse.type, content: this.answerATrueFalse.content, isCorrect: this.answerATrueFalse.isCorrect}
+      data: {
+        type: this.questionTrueFalse.type,
+        content: this.answerATrueFalse.content,
+        isCorrect: this.answerATrueFalse.isCorrect
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -346,7 +370,11 @@ export class QuestionsCreateComponent implements OnInit {
   openDialogBTrueFalse(): void {
     const dialogRef = this.dialog.open(DialogQuestionAnswerComponent, {
       width: '500px',
-      data: {type: this.questionTrueFalse.type, content: this.answerBTrueFalse.content, isCorrect: this.answerBTrueFalse.isCorrect}
+      data: {
+        type: this.questionTrueFalse.type,
+        content: this.answerBTrueFalse.content,
+        isCorrect: this.answerBTrueFalse.isCorrect
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -386,6 +414,7 @@ export class QuestionsCreateComponent implements OnInit {
 
   validateAnswers(answers: QuestionAnswer[]): boolean {
     let count = 0;
+    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < answers.length; i++) {
       if (answers[i].isCorrect === false) {
         console.log('answer i = ' + answers[i].isCorrect);

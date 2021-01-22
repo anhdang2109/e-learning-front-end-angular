@@ -25,7 +25,8 @@ export class HomeHeaderComponent implements OnInit {
   study: Study;
   userFromDB: User = {};
   currentUser: User = {};
-
+  role: string;
+  currentUsername: string;
 
   constructor(private authService: AuthService,
               private attemptService: AttemptService,
@@ -52,12 +53,14 @@ export class HomeHeaderComponent implements OnInit {
       });
       console.log(this.currentUser);
     });
+
+    this.role = localStorage.getItem("ROLE");
+    if (this.role == "ROLE_USER") {
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
 
-  // get isAdmin() {
-  //   // @ts-ignore
-  //   return this.currentUser && this.currentUser.roles === "ROLE_ADMIN";
-  // }
 
   logout() {
     this.authService.logout();
