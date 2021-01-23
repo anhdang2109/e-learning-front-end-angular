@@ -87,28 +87,13 @@
                         <td>{{study.quizname}}</td>
                         <td class="text-center">12-12-2020</td>
                         <td class="text-center">12-12-2020</td>
-                        <td class="project-actions text-right">
-                          <form method="post">
-                            <a class="btn btn-primary btn-sm"
-                               [routerLink]="'view/' + study.id">
-                              <i class="fas fa-folder"></i>
-                              Xem
-                            </a>
-                            <span>&nbsp;</span><span>&nbsp;</span>
-                            <a class="btn btn-info btn-sm"
-                               [routerLink]="'create/' + study.id">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              Sửa
-                            </a>
-                            <span>&nbsp;</span><span>&nbsp;</span>
+                        <td class="project-actions text-center">
                             <a class="btn btn-danger btn-sm"
                                [routerLink]="'delete/' + study.id">
                               <i class="fas fa-trash">
                               </i>
                               Xoá
                             </a>
-                          </form>
                         </td>
                       </tr>
                       </tbody>
