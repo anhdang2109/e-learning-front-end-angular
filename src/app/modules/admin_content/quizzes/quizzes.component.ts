@@ -37,4 +37,14 @@ export class QuizzesComponent implements OnInit {
       console.log(this.quizzes);
     });
   }
+  delete(id: any) {
+    if (confirm('Bạn đã chắc chắn?')) {
+      this.quizService.deleteById(id).subscribe(value => {
+        console.log('Delete', value);
+        this.quizService.getAll().toPromise().then(value1 => {
+          this.quizzes = value1;
+        });
+      });
+    }
+  }
 }
