@@ -56,6 +56,7 @@ export class QuestionsCreateComponent implements OnInit {
 
   // @ts-ignore
   questionSingleChoice: Question = {
+    // code: Math.floor((Math.random() * 100000) + 1),
     code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
     type: 'single-choice',
     level: 'medium',
@@ -64,6 +65,7 @@ export class QuestionsCreateComponent implements OnInit {
   };
   questionMultipleChoice: Question = {
     // @ts-ignore
+    // code: Math.floor((Math.random() * 100000) + 1),
     code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
     type: 'multiple-choice',
     level: 'medium',
@@ -72,6 +74,7 @@ export class QuestionsCreateComponent implements OnInit {
   };
   questionTrueFalse: Question = {
     // @ts-ignore
+    // code: Math.floor((Math.random() * 100000) + 1),
     code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
     type: 'true-false',
     level: 'medium',
