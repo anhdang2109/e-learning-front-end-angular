@@ -59,6 +59,7 @@ export class HomeHeaderComponent implements OnInit {
       this.router.navigate(['/home']);
     }
     this.currentUsername = localStorage.getItem("USERNAME");
+    console.log()
   }
 
 

@@ -22,7 +22,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/home/contact">Liên hệ</a>
         </li>
-        <li class="nav-item" *ngIf="currentUsername">
+        <li class="nav-item" *ngIf="currentUser && role == 'ROLE_ADMIN'">
           <a class="nav-link" routerLink="/admin">Trang quản lý</a>
         </li>
         <li class="nav-item" *ngIf="!currentUser">
