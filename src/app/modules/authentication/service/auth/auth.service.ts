@@ -52,6 +52,9 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('USERNAME');
+    localStorage.removeItem('ROLE');
+    localStorage.removeItem('ACCESS_TOKEN');
     this.currentUserSubject.next(null);
     window.localStorage.clear();
   }
