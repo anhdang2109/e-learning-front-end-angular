@@ -68,7 +68,8 @@
                   <tbody>
                   <tr *ngFor="let attempt of attempts">
                     <td>{{ attempt.id }}</td>
-                    <td>{{ attempt.status }}</td>
+                    <td *ngIf="attempt.status == 'finished'">Hoàn thành</td>
+                    <td *ngIf="attempt.status == 'in progress'">Đang làm</td>
                     <td class="text-center">{{ attempt.averageScore }} / 10</td>
                     <td class="text-center">12-12-2020</td>
                     <td class="text-center">12-12-2020</td>
