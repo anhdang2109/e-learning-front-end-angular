@@ -6,6 +6,7 @@ import {CategoryComponent} from "./category.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CategoryDeleteComponent } from './category-delete/category-delete.component';
 import { CategoryEditComponent } from './category-edit/category-edit.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 const routes: Routes = [
   {
@@ -33,11 +34,12 @@ const routes: Routes = [
     CategoryDeleteComponent,
     CategoryEditComponent
   ],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxPaginationModule
+    ]
 })
 export class CategoryModule { }

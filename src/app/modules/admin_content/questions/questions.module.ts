@@ -18,6 +18,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 const routes: Routes = [
@@ -56,14 +57,15 @@ const routes: Routes = [
     DialogEditQuestionInputComponent,
     DialogEditQuestionAnswerComponent
   ],
-  imports: [
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    RouterModule.forChild(routes),
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule
-  ]
+    imports: [
+        MatDialogModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        RouterModule.forChild(routes),
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgxPaginationModule
+    ]
 })
 export class QuestionsModule { }

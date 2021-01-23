@@ -53,12 +53,12 @@ export class QuizzesCreateComponent implements OnInit {
           }
         }
         else {
-          alert("khong tim dc cau hoi ma " + str[i]);
+          alert("Không tìm thấy mã câu hỏi " + str[i]);
         }
       }
     }
     else {
-      alert("Pls insert question code");
+      alert("Vui lòng nhập văn bản bạn muốn tìm kiếm");
     }
   }
   findQuestion(code: string): Question{

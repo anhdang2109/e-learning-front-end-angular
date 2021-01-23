@@ -15,5 +15,5 @@ export class User {
   updatedAt?: any;
   confirmPassword?: string;
   newPassword?: string;
-  // roles: Role[];
+  roles?: Role[];
 }

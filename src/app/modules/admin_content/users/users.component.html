@@ -48,25 +48,25 @@
                       <span>&nbsp;</span>
                       Danh sách Chặn</a>
                   </div>
-                  <div class="col-sm-12 col-md-6">
-                    <div id="example1_filter" class="dataTables_filter">
-                      <form method="get">
-                        <div class="form-inline" style="float: right">
-                          <input class="form-control form-control-sm"
-                                 style="width: 340px"
-                                 name="s" id="s"
-                                 type="search"
-                                 placeholder="Nhập tên hoặc email hoặc SĐT"
-                                 aria-controls="example1">
-                          <span>&nbsp;</span>
-                          <a class="btn btn-secondary btn-sm">
-                            <i class="fas fa-search"></i>
-                            Tìm kiếm
-                          </a>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
+<!--                  <div class="col-sm-12 col-md-6">-->
+<!--                    <div id="example1_filter" class="dataTables_filter">-->
+<!--                      <form method="get">-->
+<!--                        <div class="form-inline" style="float: right">-->
+<!--                          <input class="form-control form-control-sm"-->
+<!--                                 style="width: 340px"-->
+<!--                                 name="s" id="s"-->
+<!--                                 type="search"-->
+<!--                                 placeholder="Nhập tên hoặc email hoặc SĐT"-->
+<!--                                 aria-controls="example1">-->
+<!--                          <span>&nbsp;</span>-->
+<!--                          <a class="btn btn-secondary btn-sm">-->
+<!--                            <i class="fas fa-search"></i>-->
+<!--                            Tìm kiếm-->
+<!--                          </a>-->
+<!--                        </div>-->
+<!--                      </form>-->
+<!--                    </div>-->
+<!--                  </div>-->
 
                 </div>
                 <br>
@@ -88,7 +88,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let user of user; index as i">
+                      <tr *ngFor="let user of user | paginate: { itemsPerPage: 5, currentPage: p }; index as i">
                         <th scope="row">{{ i + 1 }}</th>
                         <td>{{ user.username}}</td>
                         <td>{{ user.email  }}</td>
@@ -101,7 +101,7 @@
                         <td class="project-actions text-right">
 
                           <a class="btn btn-primary btn-sm"
-                             routerLink="/admin/users/view">
+                             routerLink="/admin/users/view/{{user.id}}">
                             <i class="fas fa-folder"></i>
                             Xem
                           </a>
@@ -133,6 +133,9 @@
                 <!--                    </div>-->
                 <!--                  </div>-->
                 <!--                </div>-->
+                <pagination-controls style="float: right; color:#2eca6a "
+                                     (pageChange)="p = $event"></pagination-controls>
+
               </div>
             </div>
             <!-- /.card-body -->

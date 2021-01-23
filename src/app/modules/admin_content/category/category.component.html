@@ -1,4 +1,5 @@
-<div class="content-wrapper" style="min-height: 415.969px;">
+
+<div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
@@ -8,7 +9,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
             <li class="breadcrumb-item active">Quản lý danh mục</li>
           </ol>
         </div><!-- /.col -->
@@ -28,9 +29,11 @@
           <div class="card">
             <!-- .card-header -->
             <div class="card-header">
-              <h3 class="card-title">Danh sách danh mục</h3>
-              <a style="width: 190px" class="btn btn-success btn-sm float-right" routerLink="/admin/categories/add">
-                <i class="fas fa-plus-circle" aria-hidden="true"></i>
+              <h3 class="card-title">Danh sách </h3>
+              <span> </span><span> </span>
+              <a style="width: 190px" class="btn btn-success btn-sm float-right"
+                 routerLink="/admin/categories/add">
+                <i class="fas fa-plus-circle"></i>
                 <span>&nbsp;</span>
                 Thêm danh mục</a>
             </div>
@@ -38,87 +41,82 @@
 
             <!-- .card-body -->
             <div class="card-body">
-              <div class="dataTables_wrapper dt-bootstrap4">
+              <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
-                  <div class="col-sm-12 col-md-6">
-                    <div class="dataTables_length" id="example1_length"><label>Hiển thị
-                      <select name="example1_length" aria-controls="example1" class="custom-select custom-select-sm form-control form-control-sm" id="pageSizeSelect">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                      </select> danh mục </label></div>
-                  </div>
-                  <div class="col-sm-12 col-md-6">
-                    <div id="example1_filter" class="dataTables_filter">
-                      <form action="/admin/categories" method="get">
-                        <div class="form-inline" style="float: right">
-                          <input class="form-control form-control-sm" style="width: 340px" name="s" id="s" type="search" placeholder="Nhập tên danh mục" aria-controls="example1">
-                          <span>&nbsp;</span>
-                          <a class="btn btn-secondary btn-sm" href="javascript:{}" onclick="this.closest('form').submit();return false;">
-                            <i class="fas fa-search" aria-hidden="true"></i>
-                            Tìm kiếm
-                          </a>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
+                  <!--                  <div class="col-sm-12 col-md-6">-->
+                  <!--                    <div id="example1_filter" class="dataTables_filter">-->
+                  <!--                      <form method="get">-->
+                  <!--                        <div class="form-inline" style="float: right">-->
+                  <!--                          <input class="form-control form-control-sm"-->
+                  <!--                                 style="width: 340px"-->
+                  <!--                                 name="s" id="s"-->
+                  <!--                                 type="search"-->
+                  <!--                                 placeholder="Nhập tên hoặc email hoặc SĐT"-->
+                  <!--                                 aria-controls="example1">-->
+                  <!--                          <span>&nbsp;</span>-->
+                  <!--                          <a class="btn btn-secondary btn-sm">-->
+                  <!--                            <i class="fas fa-search"></i>-->
+                  <!--                            Tìm kiếm-->
+                  <!--                          </a>-->
+                  <!--                        </div>-->
+                  <!--                      </form>-->
+                  <!--                    </div>-->
+                  <!--                  </div>-->
+
                 </div>
+                <br>
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
                     <table class="table table-hover text-nowrap table-responsive">
                       <thead>
                       <tr>
-                        <th class="text-center" style="width: 5%">#</th>
+                        <th style="width: 5%">#</th>
                         <th style="width: 20%">Tên danh mục</th>
-                        <th style="width: 40%">Mô tả danh mục</th>
-<!--                        <th class="text-center" style="width: 10%">Tài liệu</th>-->
-                        <th class="text-center" style="width: 15%">Action</th>
+                        <th style="width: 30%">Mô tả</th>
+                        <!--                        <th style="width: 8%" class="text-center">Ngày tạo</th>-->
+                        <!--                        <th style="width: 8%" class="text-center">Ngày cập nhập</th>-->
+
+                        <th></th>
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let category of listCategory">
-                        <td class="text-center">{{category.id}}</td>
-                        <td>{{category.name}}</td>
+                      <tr *ngFor="let category of listCategory | paginate: { itemsPerPage: 5, currentPage: p }; index as i">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ category.name}}</td>
                         <td>{{category.description}}</td>
-<!--                        <td class="text-center">0</td>-->
-                        <td><button [routerLink]="['/admin/categories/edit/' + category.id]"  class="btn btn-danger btn-sm" >Edit</button></td>
-                        <td><button [routerLink]="['/admin/categories/delete/' + category.id]" class="btn btn-danger btn-sm">Delete</button></td>
-<!--                        <td class="project-actions text-right">-->
-<!--                          <form action="/admin/categories/delete/ + category.id" method="post"><input type="hidden" name="_csrf" value="2aadf25a-ed64-46c3-9118-d12d87b5c9e3">-->
-<!--&lt;!&ndash;                            <a class="btn btn-primary btn-sm" href="/admin/categories/view/1">&ndash;&gt;-->
-<!--&lt;!&ndash;                              <i class="fas fa-folder" aria-hidden="true"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                              Xem&ndash;&gt;-->
-<!--&lt;!&ndash;                            </a>&ndash;&gt;-->
-<!--                            <a class="btn btn-info btn-sm" [routerLink]="['/admin/categories/edit/' + category.id]">-->
-<!--                              <i class="fas fa-pencil-alt" aria-hidden="true">-->
-<!--                              </i>-->
-<!--                              Sửa-->
-<!--                            </a>-->
-<!--                            <a class="btn btn-danger btn-sm" [routerLink]="['/admin/categories/delete/' + category.id]" href="javascript:{}" onclick="this.closest('form').submit();return false;" disabled="disabled">-->
-<!--                              <i class="fas fa-trash" aria-hidden="true">-->
-<!--                              </i>-->
-<!--                              Xoá-->
-<!--                            </a>-->
-<!--                          </form>-->
-<!--                        </td>-->
+                        <td class="project-actions text-right">
+
+<!--                          <a class="btn btn-primary btn-sm"-->
+<!--                             routerLink="/admin/users/view/{{user.id}}">-->
+<!--                            <i class="fas fa-folder"></i>-->
+<!--                            Xem-->
+<!--                          </a>-->
+                          <span>&nbsp;</span><span>&nbsp;</span>
+                          <a class="btn btn-info btn-sm"
+                             routerLink="/admin/categories/edit/{{category.id}}">
+                            <i class="fas fa-pencil-alt">
+                            </i>
+                            Sửa
+                          </a>
+                          <span>&nbsp;</span><span>&nbsp;</span>
+                          <button class="btn btn-danger btn-sm" routerLink="/admin/categories/delete/{{category.id}}">
+                            <i class="fas fa-lock">
+                            </i>
+                            Xoá
+                          </button>
+
+                        </td>
                       </tr>
                       </tbody>
                     </table>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12 col-md-5">
-                    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                      <p></p>
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-md-7">
-
                   </div>
                 </div>
               </div>
             </div>
             <!-- /.card-body -->
           </div>
+          <pagination-controls style="float: right; color:#2eca6a "
+                               (pageChange)="p = $event"></pagination-controls>
         </div>
       </div>
       <!-- /.row -->
@@ -128,3 +126,4 @@
   </div>
   <!-- /.content -->
 </div>
+

@@ -34,7 +34,7 @@ export class CategoryCreateComponent implements OnInit {
     this.categoryService.create(newU).subscribe( () => {
       console.log(this.newCategoryForm.value);
       this.router.navigate(['/admin/categories']);
-      alert('tao moi thanh cong');
+      alert('Thành công');
     });
   }
   get name(){

@@ -15,6 +15,7 @@ export class QuestionsComponent implements OnInit {
   role: string;
   users: User[];
   currentUsername: string;
+  p: number = 1;
 
   constructor(private questionService: QuestionService,
               private userService: UserService,
@@ -37,7 +38,7 @@ export class QuestionsComponent implements OnInit {
 
   onDelete(id) {
     console.log(id);
-    if (confirm("Are you sure?")){
+    if (confirm("Bạn có chắc chắn?")){
       console.log("hello");
       this.questionService.deleteById(id).toPromise().then(value => {
         console.log('Delete', value);

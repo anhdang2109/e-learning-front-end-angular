@@ -7,6 +7,7 @@ import {AttemptEditComponent} from "./attempt-edit/attempt-edit.component";
 import {AttemptImportComponent} from "./attempt-import/attempt-import.component";
 import {AttemptViewComponent} from "./attempt-view/attempt-view.component";
 import {FormsModule} from '@angular/forms';
+import {NgxPaginationModule} from "ngx-pagination";
 
 const routes: Routes = [
   {
@@ -39,10 +40,11 @@ const routes: Routes = [
     AttemptViewComponent,
     AttemptImportComponent
   ],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule,
-    FormsModule
-  ]
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule,
+        FormsModule,
+        NgxPaginationModule
+    ]
 })
 export class AttemptModule { }

@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-              <div *ngIf="username.errors.required && username.touched" style="color: #e4606d">
+              <div *ngIf="username.errors && username.touched" style="color: #e4606d">
                 <h3>Vui lòng không để trống!</h3>
               </div>
       <div class="input-group mb-3">
@@ -31,7 +31,7 @@
 
         </div>
       </div>
-              <div *ngIf="username.errors.required && password.touched" style="color: #e4606d">
+              <div *ngIf="password.errors && password.touched" style="color: #e4606d">
                 <h3>Vui lòng không để trống!</h3>
               </div>
       <div class="row">

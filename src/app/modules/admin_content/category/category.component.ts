@@ -15,6 +15,7 @@ export class CategoryComponent implements OnInit {
   role: string;
   category: Category[];
   currentUsername: string;
+  p: number = 1;
   listCategory: Category[] | undefined;
   constructor(private userService: UserService,
               private router: Router,

@@ -79,7 +79,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let quiz of quizzes">
+                      <tr *ngFor="let quiz of quizzes | paginate: { itemsPerPage: 5, currentPage: p }">
                         <td>{{ quiz.id }}</td>
                         <td>{{ quiz.quizname }}</td>
                         <td>{{ quiz.description }}</td>
@@ -126,6 +126,9 @@
             </div>
             <!-- /.card-body -->
           </div>
+          <pagination-controls style="float: right; color:#2eca6a "
+                               (pageChange)="p = $event"></pagination-controls>
+
         </div>
       </div>
       <!-- /.row -->
