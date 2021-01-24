@@ -40,4 +40,14 @@ export class StudiesComponent implements OnInit {
     }
     this.currentUsername = localStorage.getItem("USERNAME");
   }
+  delete(id: any) {
+    if (confirm('Bạn đã chắc chắn?')) {
+      this.studyService.deleteById(id).subscribe(value => {
+        console.log('Delete', value);
+        this.studyService.getAll().toPromise().then(value1 => {
+          this.studies = value1;
+        });
+      });
+    }
+  }
 }

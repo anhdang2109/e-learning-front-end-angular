@@ -6,6 +6,8 @@ import {Question} from '../questions.model';
 import {QuestionService} from '../question.service';
 import {QuestionAnswer} from '../../questions-answer/questions-answer.model';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {Category} from '../../category/category.model';
+import {CategoryService} from '../../category/category.service';
 
 export interface DialogData {
   type: string;
@@ -53,42 +55,67 @@ export class DialogQuestionInputComponent {
   styleUrls: ['./questions-create.component.css']
 })
 export class QuestionsCreateComponent implements OnInit {
+  assignedSingleChoiceCategory = {
+    id: 1,
+    name: ''
+  };
+  assignedMultipleChoiceCategory = {
+    id: 1,
+    name: ''
+  };
+  assignedTrueFalseCategory = {
+    id: 1,
+    name: ''
+  };
+  assignedInputCategory = {
+    id: 1,
+    name: ''
+  };
+  categories: Category[] = [];
 
   // @ts-ignore
   questionSingleChoice: Question = {
     // code: Math.floor((Math.random() * 100000) + 1),
-    code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
+    // code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
+    code: '',
     type: 'single-choice',
     level: 'medium',
     content: '',
     explanation: '',
+    category: null
   };
   questionMultipleChoice: Question = {
     // @ts-ignore
     // code: Math.floor((Math.random() * 100000) + 1),
-    code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
+    // code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
+    code: '',
     type: 'multiple-choice',
     level: 'medium',
     content: '',
-    explanation: ''
+    explanation: '',
+    category: null
   };
   questionTrueFalse: Question = {
     // @ts-ignore
     // code: Math.floor((Math.random() * 100000) + 1),
-    code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
+    // code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
+    code: '',
     type: 'true-false',
     level: 'medium',
     content: '',
-    explanation: ''
+    explanation: '',
+    category: null
   };
   questionInput: Question = {
     // @ts-ignore
     // code: Math.floor((Math.random() * 100000) + 1),
-    code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
+    // code: Math.random().toString(36).substring(2, 3) + Math.random().toString(36).substring(2, 3),
+    code: '',
     type: 'input',
     level: 'medium',
     content: '',
-    explanation: ''
+    explanation: '',
+    category: null
   };
 
   answerAMultipleChoice: QuestionAnswer = {code: 'a', content: '', isCorrect: false};
@@ -126,6 +153,7 @@ export class QuestionsCreateComponent implements OnInit {
   constructor(private http: HttpClient,
               private fb: FormBuilder,
               private productService: QuestionService,
+              private categoryService: CategoryService,
               private router: Router,
               public dialog: MatDialog) {
     console.log(this.questionSingleChoice);
@@ -139,6 +167,11 @@ export class QuestionsCreateComponent implements OnInit {
     console.log(this.questionMultipleChoice);
     console.log(this.questionTrueFalse);
     console.log(this.questionInput);
+    this.categoryService.getAll().toPromise().then(value => {
+      this.categories = value;
+      console.log(value);
+      console.log(this.categories);
+    });
   }
 
   // tslint:disable-next-line:typedef
@@ -146,6 +179,7 @@ export class QuestionsCreateComponent implements OnInit {
     if (this.validateAnswers(this.answersMultipleChoice)) {
       console.log(this.questionMultipleChoice);
       this.questionMultipleChoice.questionAnswers = this.answersMultipleChoice;
+      this.questionMultipleChoice.category = this.assignedMultipleChoiceCategory;
       console.log(this.questionMultipleChoice);
       this.productService.save(this.questionMultipleChoice).subscribe(() => {
         alert('Thành công');
@@ -228,6 +262,7 @@ export class QuestionsCreateComponent implements OnInit {
   createSingleChoice() {
     if (this.validateAnswers(this.answersSingleChoice)) {
       this.questionSingleChoice.questionAnswers = this.answersSingleChoice;
+      this.questionSingleChoice.category = this.assignedSingleChoiceCategory;
       console.log(this.questionSingleChoice);
       this.productService.save(this.questionSingleChoice).subscribe(() => {
         alert('Thành công');
@@ -338,6 +373,7 @@ export class QuestionsCreateComponent implements OnInit {
     if (this.validateAnswers(this.answersTrueFalse)) {
       console.log(this.questionTrueFalse);
       this.questionTrueFalse.questionAnswers = this.answersTrueFalse;
+      this.questionTrueFalse.category = this.assignedTrueFalseCategory;
       console.log(this.questionTrueFalse);
       this.productService.save(this.questionTrueFalse).subscribe(() => {
         alert('Thành công');
@@ -395,6 +431,7 @@ export class QuestionsCreateComponent implements OnInit {
   createInput() {
     this.answersInput.push(this.answerAInput);
     this.questionInput.questionAnswers = this.answersInput;
+    this.questionInput.category = this.assignedInputCategory;
     console.log(this.questionInput);
     this.productService.save(this.questionInput).subscribe(() => {
       alert('Thành công');

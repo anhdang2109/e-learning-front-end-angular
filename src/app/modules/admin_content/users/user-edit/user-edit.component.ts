@@ -57,6 +57,7 @@ export class UserEditComponent implements OnInit {
       isDeleted: [''],
       roles: ['']
     });
+    console.log(this.userForm);
     this.activate.params.subscribe((params: Params) => {
       this.id = params.id;
       this.userService.getUserById(this.id).subscribe(result => {

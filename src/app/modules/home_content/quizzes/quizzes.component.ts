@@ -19,12 +19,14 @@ import {Observable} from "rxjs";
 })
 export class QuizzesComponent implements OnInit {
 
-  categories: Category[];
+  categories: Category[] = [];
+  categoryPool: Category[] = [];
   quizzes: Quiz[] = [];
   studies: Study[] = [];
   studyPool: Study[] = [];
+  studyView: Study[] = [];
   quizzesById: Quiz[] = [];
-  idStudy: number;
+  // idStudy: number;
   userId: number;
   countQuiz: any = null;
   num: any;
@@ -39,59 +41,94 @@ export class QuizzesComponent implements OnInit {
 
   ngOnInit() {
     this.userId = JSON.parse(localStorage.getItem('user')).id;
-    this.getStudies();
-    this.getAllCategory();
-    this.addStudyId();
-  }
 
-  getAllCategory() {
-    this.categoryService.getAll().subscribe(data => {
-      this.categories = data;
-    });
-    return this.categories;
-  }
-
-  addStudyId() {
-    this.quizzesService.getAll().subscribe((res: any) => {
-      this.quizzes = res.map(async quiz => {
-        let data = await this.getStudyId(quiz.id);
-        quiz.studyId = data? data:0;
-      })
-      this.quizzes = res;
-      this.quizzesById = res;
-    });
-  }
-
-  getStudyId(idQuiz: number) {
-    return this.studyService.getStudyById(this.userId, idQuiz).toPromise();
-  }
-
-  async getQuizzesById(id?: number) {
-    if (id == null) {
-      this.quizzesById = this.quizzes;
-    } else {
-      let category = this.getCategoryById(id);
-      this.quizzesById = category.quizzes;
-    }
-  }
-
-  getCategoryById(id: number): Category {
-    for (let category of this.categories) {
-      if (category.id == id) {
-        return category;
-        break;
-      }
-    }
-  }
-
-  getStudies() {
     this.studyService.getAll().subscribe( data => {
       this.studies = data;
       for (let i = 0; i < this.studies.length; i++) {
-        if(this.studies[i].userID == this.userId){
+        if ( this.studies[i].userID === this.userId){
           this.studyPool.push(this.studies[i]);
+          const index = this.categoryPool.push(this.studies[i].quiz.category);
+          console.log(index - 1 );
+          this.categoryPool[index - 1 ].study = this.studies[i];
+          console.log(this.categoryPool);
         }
       }
+      this.categoryService.getAll().subscribe(data1 => {
+        this.categories = data1;
+        console.log(this.categories);
+        for (const category of this.categories) {
+          category.studies = [];
+          for (const categoryPool of this.categoryPool) {
+            if ( categoryPool.study.quiz.category.id === category.id) {
+              category.studies.push(categoryPool.study);
+            }
+          }
+        }
+        this.studyView = this.studyPool;
+        console.log('studyPool');
+        console.log(this.categoryPool);
+        console.log(this.categories);
+      });
     });
+    // this.getAllCategory();
+    // this.addStudyId();
   }
+
+  // getAllCategory() {
+  //   this.categoryService.getAll().subscribe(data => {
+  //     this.categories = data;
+  //     for (let i = 0; i < this.categories.length; i++) {
+  //       if ( this.studies[i].userID === this.userId){
+  //         this.studyPool.push(this.studies[i]);
+  //       }
+  //     }
+  //   });
+  //   return this.categories;
+  // }
+
+  // addStudyId() {
+  //   this.quizzesService.getAll().subscribe((res: any) => {
+  //     this.quizzes = res.map(async quiz => {
+  //       let data = await this.getStudyId(quiz.id);
+  //       quiz.studyId = data? data:0;
+  //     })
+  //     this.quizzes = res;
+  //     this.quizzesById = res;
+  //   });
+  // }
+
+  // getStudyId(idQuiz: number) {
+  //   return this.studyService.getStudyById(this.userId, idQuiz).toPromise();
+  // }
+
+  getAllStudies() {
+    this.studyView = this.studyPool;
+  }
+  getStudies(id: number){
+    console.log(id);
+    this.studyView = [];
+    for (const study of this.studyPool) {
+      if ( study.quiz.category.id === id) {
+        this.studyView.push(study);
+      }
+    }
+  }
+
+  // async getQuizzesById(id?: number) {
+  //   if (id == null) {
+  //     this.quizzesById = this.quizzes;
+  //   } else {
+  //     const category = this.getCategoryById(id);
+  //     this.quizzesById = category.quizzes;
+  //   }
+  // }
+  //
+  // getCategoryById(id: number): Category {
+  //   for (const category of this.categories) {
+  //     if (category.id === id) {
+  //       return category;
+  //       break;
+  //     }
+  //   }
+  // }
 }
