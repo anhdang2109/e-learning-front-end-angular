@@ -14,6 +14,8 @@ import {AngularFireDatabase} from "@angular/fire/database";
   styleUrls: ['./changepassword.component.css']
 })
 export class ChangepasswordComponent implements OnInit {
+  fieldTextType: boolean;
+  repeatFieldTextType: boolean;
   currentUser: User;
   sub: Subscription;
   currentUserToken: UserToken;
@@ -90,5 +92,11 @@ export class ChangepasswordComponent implements OnInit {
   get passwordUser() {
     return this.newPassword.get('password');
   }
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
 
+  toggleRepeatFieldTextType() {
+    this.repeatFieldTextType = !this.repeatFieldTextType;
+  }
 }

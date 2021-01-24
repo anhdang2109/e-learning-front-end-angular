@@ -12,6 +12,8 @@ import {User} from "../../admin_content/users/user.model";
 export class RegisterComponent implements OnInit {
 
   successMessage = '';
+  fieldTextType: boolean;
+  repeatFieldTextType: boolean;
   failMessage = '';
   // @ts-ignore
   registerForm: FormGroup = new FormGroup({
@@ -68,6 +70,14 @@ export class RegisterComponent implements OnInit {
   }
   get password() {
     return this.registerForm.get('password');
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+  toggleRepeatFieldTextType() {
+    this.repeatFieldTextType = !this.repeatFieldTextType;
   }
 
 }

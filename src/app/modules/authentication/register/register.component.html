@@ -80,10 +80,17 @@
         </div>
         <div class="input-group mb-3">
           <label  class="col-sm-3 col-form-label">Mật khẩu</label>
-          <input type="password" class="form-control"  formControlName="password">
+          <input [type]="fieldTextType ? 'text' : 'password'" class="form-control"  formControlName="password">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              <i
+                class="fa"
+                [ngClass]="{
+                        'fa-eye-slash': !fieldTextType,
+                        'fa-eye': fieldTextType
+                      }"
+                (click)="toggleFieldTextType()"
+              ></i>
             </div>
           </div>
         </div>
@@ -99,10 +106,17 @@
 
         <div class="input-group mb-3">
           <label  class="col-sm-3 col-form-label">Nhập lại</label>
-          <input type="password" class="form-control"  formControlName="confirmPassword">
+          <input [type]="fieldTextType ? 'text' : 'password'" class="form-control"  formControlName="confirmPassword">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              <i
+                class="fa"
+                [ngClass]="{
+                        'fa-eye-slash': !repeatFieldTextType,
+                        'fa-eye': repeatFieldTextType
+                      }"
+                (click)="toggleRepeatFieldTextType()"
+              ></i>
             </div>
           </div>
         </div>

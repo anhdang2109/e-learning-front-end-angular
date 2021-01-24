@@ -22,11 +22,17 @@
                 <h3>Vui lòng không để trống!</h3>
               </div>
       <div class="input-group mb-3">
-        <input required="required" type="password" class="form-control" placeholder="Password" formControlName="password">
-
+        <input required="required" [type]="fieldTextType ? 'text' : 'password'" class="form-control" placeholder="Mật khẩu" formControlName="password">
         <div class="input-group-append">
           <div class="input-group-text">
-            <span class="fas fa-lock"></span>
+                    <i
+                      class="fa"
+                      [ngClass]="{
+                        'fa-eye-slash': !fieldTextType,
+                        'fa-eye': fieldTextType
+                      }"
+                      (click)="toggleFieldTextType()"
+                    ></i>
           </div>
 
         </div>
