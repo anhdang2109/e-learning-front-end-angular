@@ -20,12 +20,13 @@ import {Observable} from "rxjs";
 export class QuizzesComponent implements OnInit {
 
   categories: Category[];
-  quizzes: Quiz[];
-  studies: Study[];
-  quizzesById: Quiz[];
+  quizzes: Quiz[] = [];
+  studies: Study[] = [];
+  studyPool: Study[] = [];
+  quizzesById: Quiz[] = [];
   idStudy: number;
   userId: number;
-  countQuiz: any;
+  countQuiz: any = null;
   num: any;
 
   constructor(private router: Router,
@@ -38,6 +39,7 @@ export class QuizzesComponent implements OnInit {
 
   ngOnInit() {
     this.userId = JSON.parse(localStorage.getItem('user')).id;
+    this.getStudies();
     this.getAllCategory();
     this.addStudyId();
   }
@@ -80,5 +82,16 @@ export class QuizzesComponent implements OnInit {
         break;
       }
     }
+  }
+
+  getStudies() {
+    this.studyService.getAll().subscribe( data => {
+      this.studies = data;
+      for (let i = 0; i < this.studies.length; i++) {
+        if(this.studies[i].userID == this.userId){
+          this.studyPool.push(this.studies[i]);
+        }
+      }
+    });
   }
 }
