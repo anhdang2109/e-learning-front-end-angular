@@ -44,16 +44,16 @@
           <div class="col-md-10">
             <table class="table">
               <tr>
-                <td><span>{{attempt.status}} </span></td>
+                <td><span>25-1-2021 </span></td>
               </tr>
               <tr>
-                <td><span>{{attempt.status}} </span></td>
+                <td><span>Hoàn thành</span></td>
               </tr>
               <tr>
-                <td><span>{{attempt.status}}</span></td>
+                <td><span>25-1-2021</span></td>
               </tr>
               <tr>
-                <td><span>{{attempt.assumptions[0].userAnswers[0].content}} </span></td>
+                <td><span>15 </span></td>
               </tr>
               <tr>
                 <td><span>{{attempt.averageScore}} / 10 ( -- %) </span></td>
@@ -92,31 +92,31 @@
               <div class="card-body table-responsive p-0">
                 <table class="table no-border">
                   <tr>
-                    <td style="background: #f3f7f9;">{{assumption.question.content}}</td>
+                    <td style="background: #f3f7f9;">{{assumption.content}}</td>
                   </tr>
                   <tr>
-                    <td>{{assumption.question.type}}</td>
+                    <td>{{assumption.type}}</td>
                   </tr>
                   <tr *ngFor="let userAnswer of assumption.userAnswers; let i = index">
-                    <td *ngIf="assumption.question.type == 'multiple-choice'">
+                    <td *ngIf="assumption.type == 'multiple-choice'">
                       <input *ngIf="attempt.status == 'in progress'"  [(ngModel)]="userAnswer.correctAnswer" [ngModelOptions]="{standalone: true}" type="checkbox" name="answer">
                       <input *ngIf="attempt.status == 'finished'" [checked]="userAnswer.correctAnswer == true" type="checkbox" name="answer" disabled>
                       <span>&nbsp;&nbsp;&nbsp;</span>
                       <span>{{userAnswer.content}}</span>
                     </td>
-                    <td *ngIf="assumption.question.type == 'single-choice' || assumption.question.type == 'true-false'">
-                      <input *ngIf="attempt.status == 'in progress'" [(ngModel)]="assumption.guessNumber" [value]="i"   type="radio" [name]="'answer' + assumption.question.id">
-                      <input *ngIf="attempt.status == 'finished'" [checked]="userAnswer.correctAnswer == true" type="radio" [name]="'answer' + assumption.question.id" disabled>
+                    <td *ngIf="assumption.type == 'single-choice' || assumption.type == 'true-false'">
+                      <input *ngIf="attempt.status == 'in progress'" [(ngModel)]="assumption.guessNumber" [value]="i"   type="radio" [name]="'answer' + assumption.id">
+                      <input *ngIf="attempt.status == 'finished'" [checked]="userAnswer.correctAnswer == true" type="radio" [name]="'answer' + assumption.id" disabled>
                       <span>&nbsp;&nbsp;&nbsp;</span>
                       <span>{{userAnswer.content}}</span>
                     </td>
-                    <td *ngIf="assumption.question.type == 'input'">
+                    <td *ngIf="assumption.type == 'input'">
                       <p *ngIf="attempt.status == 'in progress'">Nhập câu trả lời : <span><span>&nbsp;&nbsp;&nbsp;</span><input [(ngModel)]="userAnswer.content" type="text" name="answer"></span></p>
                       <p *ngIf="attempt.status == 'finished'">Nhập câu trả lời : <span><span>&nbsp;&nbsp;&nbsp;</span><input [(ngModel)]="userAnswer.content" type="text" name="answer" disabled></span></p>
                     </td>
                   </tr>
                   <tr>
-                    <td *ngIf="attempt.status == 'finished'" style="background: #fbe8cd;">{{assumption.question.explanation}}</td>
+                    <td *ngIf="attempt.status == 'finished'" style="background: #fbe8cd;">{{assumption.explanation}}</td>
                   </tr>
                 </table>
               </div>

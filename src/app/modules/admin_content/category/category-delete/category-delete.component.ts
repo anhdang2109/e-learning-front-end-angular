@@ -40,9 +40,13 @@ export class CategoryDeleteComponent implements OnInit {
   delete() {
     const book = this.categoryForm.value;
     // @ts-ignore
-    this.categoryService.delete(this.category.id, book).subscribe(() => {
-      this.router.navigate(['/admin/categories']);
-      alert('xoa thanh cong');
+    this.categoryService.delete(this.category.id, book).toPromise().then(value => {
+      if ( value === null) {
+        alert("Khong the xoa vi danh muc da duoc gan");
+      } else {
+        alert("thanh cong");
+        this.router.navigate(['/admin/categories']);
+      }
     });
 
   }

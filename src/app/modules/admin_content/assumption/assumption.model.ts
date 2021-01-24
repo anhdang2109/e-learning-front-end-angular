@@ -8,6 +8,10 @@ export interface Assumption {
   status?: string;
   isCorrect?: boolean;
   isFlag?: boolean;
+  type?: string;
+  level?: string;
+  content?: string;
+  explanation?: string;
   question: Question;
   userAnswers?: UserAnswer[];
 }

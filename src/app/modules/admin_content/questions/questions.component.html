@@ -40,27 +40,61 @@
             <div class="card-body">
               <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
-                  <div class="col-sm-12 col-md-6">
-                  </div>
-                  <div class="col-sm-12 col-md-6">
+                  <div class="col-sm-12 col-md-12">
                     <div id="example1_filter" class="dataTables_filter">
-                      <form method="get">
-                        <div class="form-inline" style="float: right">
-                          <input (keydown.enter)="filterQuestion()"
-                            [(ngModel)]="search.code"
-                            class="form-control form-control-sm"
-                            style="width: 340px"
-                            name="s" id="s"
-                            type="search"
-                            placeholder="Nhập code"
-                            aria-controls="example1">
-                          <span>&nbsp;</span>
-                          <a class="btn btn-secondary btn-sm" (click)="filterQuestion()">
-                            <i class="fas fa-search"></i>
-                            Tìm kiếm
-                          </a>
+                      <div class="form-inline">
+                        <div class="col-md-3">
+                          <div class="form-inline">
+                            <label><strong>Danh mục: </strong></label>
+                            <span>&nbsp;&nbsp;</span>
+                            <select class="custom-select" [(ngModel)]="search.categoryID" (change)="filterQuestion()">
+                              <option [value]=0 selected>Chọn danh mục câu hỏi</option>
+                              <option *ngFor="let category of categories;" [value]="category.id">{{category.name}}</option>
+                            </select></div>
                         </div>
-                      </form>
+                        <div class="col-md-3">
+                          <div class="form-inline">
+                            <label><strong>Thể loại: </strong></label>
+                            <span>&nbsp;&nbsp;</span>
+                            <select class="custom-select" [(ngModel)]="search.type" (change)="filterQuestion()">
+                              <option value="unknown" selected>Chọn thể loại câu hỏi</option>
+                              <option value="single-choice">Một đáp án</option>
+                              <option value="multiple-choice">Nhiều đáp án</option>
+                              <option value="true-false">Đúng sai</option>
+                              <option value="input">Nhập</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-inline">
+                            <label><strong>Cấp độ: </strong></label>
+                            <span>&nbsp;&nbsp;</span>
+                            <select class="custom-select" [(ngModel)]="search.level" (change)="filterQuestion()">
+                              <option value="unknown" selected>Chọn cấp độ câu hỏi</option>
+                              <option value="easy">Dễ</option>
+                              <option value="medium">Trung bình</option>
+                              <option value="hard">Khó</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-inline">
+                            <input (keydown.enter)="filterQuestion()"
+                                   [(ngModel)]="search.code"
+                                   class="form-control form-control"
+                                   style="width: 230px"
+                                   name="s" id="s"
+                                   type="search"
+                                   placeholder="Nhập code"
+                                   aria-controls="example1">
+                            <span>&nbsp;</span>
+                            <a class="btn btn-secondary" (click)="filterQuestion()">
+                              <i class="fas fa-search"></i>
+                              Tìm kiếm
+                            </a>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
