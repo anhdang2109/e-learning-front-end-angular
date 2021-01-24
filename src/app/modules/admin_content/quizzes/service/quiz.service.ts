@@ -3,7 +3,7 @@ import {environment} from "../../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Quiz} from "../model/quiz.model";
-const API = environment.API_FAKE;
+// const API = environment.API_FAKE;
 @Injectable({
   providedIn: 'root'
 })

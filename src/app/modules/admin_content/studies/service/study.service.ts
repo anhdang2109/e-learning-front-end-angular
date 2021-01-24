@@ -5,7 +5,7 @@ import {Study} from "../model/study.model";
 import {Observable} from "rxjs";
 import {Attempt} from '../../attempt/attempt.model';
 
-const API = environment.API_FAKE;
+// const API = environment.API_FAKE;
 
 @Injectable({
   providedIn: 'root'

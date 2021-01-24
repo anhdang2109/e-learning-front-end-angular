@@ -49,7 +49,6 @@ import {NgxPaginationModule} from "ngx-pagination";
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     NgxPaginationModule,
 

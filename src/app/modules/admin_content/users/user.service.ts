@@ -5,7 +5,7 @@ import {User} from './user.model';
 import {environment} from '../../../../environments/environment';
 
 
-const USER_API_ENDPOINT: string = environment.API_ENDPOINT;
+// const USER_API_ENDPOINT: string = environment.API_ENDPOINT;
 
 @Injectable({
   providedIn: 'root'

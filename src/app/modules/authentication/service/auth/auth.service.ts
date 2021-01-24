@@ -9,7 +9,7 @@ import {UserToken} from "../../../admin_content/users/user-token";
 import {User} from "../../../admin_content/users/user.model";
 import {Quiz} from "../../../admin_content/quizzes/model/quiz.model";
 
-const API_URL = `${environment.API_ENDPOINT}`;
+// const API_URL = `${environment.API_ENDPOINT}`;
 
 
 @Injectable({
@@ -37,11 +37,11 @@ export class AuthService {
   }
 
   register(user: User): Observable<User> {
-    return this.http.post<User>(API_URL + '/register', user);
+    return this.http.post<User>('http://localhost:8080/' + '/register', user);
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>(API_URL + '/login', {username, password})
+    return this.http.post<any>('http://localhost:8080/' + '/login', {username, password})
       .pipe(map(user => {
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUserSubject.next(user);
