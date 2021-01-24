@@ -26,18 +26,18 @@
             <div class="card-body p-0">
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item active">
-                  <a type="button" class="nav-link" (click)="getQuizzesById()">
+                  <a type="button" class="nav-link" (click)="getAllStudies()">
                     <i class="fas fa-inbox" ></i> All
-                    <span><span class="badge bg-primary float-right">{{quizzes.length}}</span></span>
+                    <span><span class="badge bg-primary float-right">{{categories.length}}</span></span>
                   </a>
                 </li>
               </ul>
               <ul class="nav nav-pills flex-column" *ngFor="let category of categories">
                 <li class="nav-item active">
-                  <a type="button" class="nav-link" (click)="getQuizzesById(category.id)">
+                  <a type="button" class="nav-link" (click)="getStudies(category.id)">
                     <i class="fas fa-inbox" ></i> {{category.name}}
-                    <span *ngIf="category.quizzes.length == 0"><span class="badge bg-danger float-right">{{category.quizzes.length}}</span></span>
-                    <span *ngIf="category.quizzes.length != 0"><span class="badge bg-primary float-right">{{category.quizzes.length}}</span></span>
+                    <span *ngIf="category.studies.length == 0"><span class="badge bg-danger float-right">{{category.studies.length}}</span></span>
+                    <span *ngIf="category.studies.length != 0"><span class="badge bg-primary float-right">{{category.studies.length}}</span></span>
                   </a>
                 </li>
               </ul>
@@ -67,24 +67,27 @@
               <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped col-12" >
                   <tbody>
-                  <tr class="text-center">
-                    <th>#</th>
+                  <tr>
+                    <th class="text-center">#</th>
                     <th>Tên bài thi</th>
                     <th>Mô tả</th>
-                    <th>Cập nhật</th>
-                    <th>Điểm cao nhất</th>
-                    <th></th>
+                    <th class="text-center">Danh mục</th>
+                    <th class="text-center">Số câu hỏi</th>
+                    <th class="text-center">Ngày bắt đầu</th>
+                    <th class="text-center">
+                    </th>
                   </tr>
-                  <tr *ngFor="let study of studyPool; let i = index;">
-                    <td>{{i+1}}</td>
+                  <tr *ngFor="let study of studyView; let i = index;">
+                    <td class="text-center">{{i+1}}</td>
                     <td>
-                      <a routerLink="/home/quizzes/{{study.id}}/attempts/">{{study.quizname}}</a>
+                      <a [routerLink]="'/home/quizzes/' + study.id + '/attempts/'">{{study.quizname}}</a>
                     </td>
-                    <td>{{study.description}}</td>
-                    <td><b>{{study.updated_at}}</b></td>
-                    <td><b>{{study.highestScore}}</b></td>
-                    <td>
-                      <a class="btn btn-primary" routerLink="/home/quizzes/{{study.id}}/attempts/"><b>Xem</b></a>
+                    <td>{{study.quiz.description}}</td>
+                    <td class="text-center"> {{study.quiz.category.name}}</td>
+                    <td class="text-center">{{study.quiz.questions.length}}</td>
+                    <td class="text-center">12-12-2020</td>
+                    <td class="text-center">
+                      <a class="btn btn-primary" [routerLink]="'/home/quizzes/' + study.id + '/attempts/'"><b>Xem</b></a>
                     </td>
                     </tr>
                   </tbody>
