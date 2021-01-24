@@ -128,7 +128,7 @@ export class QuizzesCreateComponent implements OnInit {
       this.questionPool.splice(this.findIndexQuestion(code, this.questionPool), 1);
     }
     else {
-      alert("cant find question");
+      alert("không thể tìm thấy câu hỏi");
     }
   }
   create() {
@@ -136,7 +136,7 @@ export class QuizzesCreateComponent implements OnInit {
     this.quiz.category = this.assignedCategory;
     console.log(this.quiz);
     this.quizService.save(this.quiz).subscribe(() => {
-      alert('successfully');
+      alert('Thành công');
       this.router.navigate(['/admin/quizzes']);
     });
   }

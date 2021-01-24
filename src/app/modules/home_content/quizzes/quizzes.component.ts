@@ -30,6 +30,7 @@ export class QuizzesComponent implements OnInit {
   userId: number;
   countQuiz: any = null;
   num: any;
+  p: number = 1;
 
   constructor(private router: Router,
               private userService: UserService,

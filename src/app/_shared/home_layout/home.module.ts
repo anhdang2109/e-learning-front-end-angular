@@ -12,6 +12,7 @@ import {ContactComponent} from '../../modules/home_content/contact/contact.compo
 import {UserEditComponent} from '../../modules/home_content/user/user-edit/user-edit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChangepasswordComponent} from "../../modules/changepassword/changepassword.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 const routes: Routes = [
   {
@@ -77,12 +78,13 @@ const routes: Routes = [
     QuizzesComponent,
     ContactComponent
   ],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxPaginationModule
+    ]
 })
 export class HomeModule {
 }
