@@ -7,6 +7,8 @@ import {QuestionService} from '../question.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {DialogData} from '../questions-create/questions-create.component';
+import {Category} from '../../category/category.model';
+import {CategoryService} from '../../category/category.service';
 
 
 @Component({
@@ -51,6 +53,7 @@ export class DialogEditQuestionInputComponent {
 export class QuestionsEditComponent implements OnInit {
   private id: number;
   type: string;
+  categories: Category[] = [];
 // @ts-ignore
   questionSingleChoice: Question = {
     code: '',
@@ -58,27 +61,31 @@ export class QuestionsEditComponent implements OnInit {
     level: 'medium',
     content: '',
     explanation: '',
+    category: null
   };
   questionMultipleChoice: Question = {
     code: '',
     type: 'multiple-choice',
     level: 'medium',
     content: '',
-    explanation: ''
+    explanation: '',
+    category: null
   };
   questionTrueFalse: Question = {
     code: '',
     type: 'true-false',
     level: 'medium',
     content: '',
-    explanation: ''
+    explanation: '',
+    category: null
   };
   questionInput: Question = {
     code: '',
     type: 'input',
     level: 'medium',
     content: '',
-    explanation: ''
+    explanation: '',
+    category: null
   };
 
   answerAMultipleChoice: QuestionAnswer = {code: 'a', content: '', isCorrect: false};
@@ -105,6 +112,7 @@ export class QuestionsEditComponent implements OnInit {
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private questionService: QuestionService,
+    private categoryService: CategoryService,
     private router: Router,
     public dialog: MatDialog
   ) {
@@ -121,6 +129,7 @@ export class QuestionsEditComponent implements OnInit {
         console.log(this.type);
         if (this.type === 'single-choice') {
           this.questionSingleChoice = value;
+          console.log(this.questionSingleChoice);
           this.answerASingleChoice = value.questionAnswers[0];
           this.answerBSingleChoice = value.questionAnswers[1];
           this.answerCSingleChoice = value.questionAnswers[2];
@@ -162,6 +171,11 @@ export class QuestionsEditComponent implements OnInit {
           ];
         }
       });
+    });
+    this.categoryService.getAll().toPromise().then(value => {
+      this.categories = value;
+      console.log(value);
+      console.log(this.categories);
     });
   }
 
