@@ -50,39 +50,43 @@
           <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title">Danh sách bài thi</h3>
-              <div class="card-tools">
-                <div class="input-group input-group-sm">
-                  <input type="text" class="form-control" placeholder="Tìm kiếm bài thi ...">
-                  <div class="input-group-append">
-                    <div class="btn btn-primary">
-                      <i class="fas fa-search"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<!--              <div class="card-tools">-->
+<!--                <div class="input-group input-group-sm">-->
+<!--                  <input type="text" class="form-control" placeholder="Tìm kiếm bài thi ...">-->
+<!--                  <div class="input-group-append">-->
+<!--                    <div class="btn btn-primary">-->
+<!--                      <i class="fas fa-search"></i>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
               <!-- /.card-tools -->
             </div>
             <!-- /.card-header -->
-            <div class="card-body p-0">
+            <div class="card-body p-0 col-12">
               <div class="table-responsive mailbox-messages">
-                <table class="table table-hover table-striped">
+                <table class="table table-hover table-striped col-12" >
                   <tbody>
                   <tr class="text-center">
                     <th>#</th>
                     <th>Tên bài thi</th>
                     <th>Mô tả</th>
+                    <th>Cập nhật</th>
+                    <th>Điểm cao nhất</th>
                     <th></th>
-                    <th>Thời gian</th>
                   </tr>
-                  <tr *ngFor="let quiz of quizzesById, index as i">
+                  <tr *ngFor="let study of studyPool; let i = index;">
                     <td>{{i+1}}</td>
-                    <td class="mailbox-name">
-                      <a routerLink="/home/quizzes/{{quiz.studyId}}/attempts/" title="{{quiz.studyId}}">{{quiz.quizname}}</a>
+                    <td>
+                      <a routerLink="/home/quizzes/{{study.id}}/attempts/">{{study.quizname}}</a>
                     </td>
-                    <td class="mailbox-subject"><!--<b>{{quiz.quizname}}</b> - -->{{quiz.description}}</td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">5 mins ago</td>
-                  </tr>
+                    <td>{{study.description}}</td>
+                    <td><b>{{study.updated_at}}</b></td>
+                    <td><b>{{study.highestScore}}</b></td>
+                    <td>
+                      <a class="btn btn-primary" routerLink="/home/quizzes/{{study.id}}/attempts/"><b>Xem</b></a>
+                    </td>
+                    </tr>
                   </tbody>
                 </table>
                 <!-- /.table -->
