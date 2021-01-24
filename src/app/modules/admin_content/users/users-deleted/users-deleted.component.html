@@ -40,29 +40,29 @@
             <!-- .card-body -->
             <div class="card-body">
               <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
-                  <div class="col-sm-12 col-md-6">
-                  </div>
-                  <div class="col-sm-12 col-md-6">
-                    <div id="example1_filter" class="dataTables_filter">
-                      <form method="get">
-                        <div class="form-inline" style="float: right">
-                          <input class="form-control form-control-sm"
-                                 style="width: 340px"
-                                 name="s" id="s"
-                                 type="search"
-                                 placeholder="Nhập tên hoặc email hoặc SĐT"
-                                 aria-controls="example1">
-                          <span>&nbsp;</span>
-                          <a class="btn btn-secondary btn-sm">
-                            <i class="fas fa-search"></i>
-                            Tìm kiếm
-                          </a>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+<!--                <div class="row">-->
+<!--                  <div class="col-sm-12 col-md-6">-->
+<!--                  </div>-->
+<!--                  <div class="col-sm-12 col-md-6">-->
+<!--                    <div id="example1_filter" class="dataTables_filter">-->
+<!--                      <form method="get">-->
+<!--                        <div class="form-inline" style="float: right">-->
+<!--                          <input class="form-control form-control-sm"-->
+<!--                                 style="width: 340px"-->
+<!--                                 name="s" id="s"-->
+<!--                                 type="search"-->
+<!--                                 placeholder="Nhập tên hoặc email hoặc SĐT"-->
+<!--                                 aria-controls="example1">-->
+<!--                          <span>&nbsp;</span>-->
+<!--                          <a class="btn btn-secondary btn-sm">-->
+<!--                            <i class="fas fa-search"></i>-->
+<!--                            Tìm kiếm-->
+<!--                          </a>-->
+<!--                        </div>-->
+<!--                      </form>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
                 <br>
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
@@ -104,8 +104,6 @@
 
                         </td>
                       </tr>
-                      <pagination-controls style="float: right; color:#2eca6a "
-                                           (pageChange)="p = $event"></pagination-controls>
                       </tbody>
                     </table>
                   </div>
@@ -114,6 +112,8 @@
             </div>
             <!-- /.card-body -->
           </div>
+          <pagination-controls style="float: right; color:#2eca6a "
+                               (pageChange)="p = $event"></pagination-controls>
         </div>
       </div>
       <!-- /.row -->

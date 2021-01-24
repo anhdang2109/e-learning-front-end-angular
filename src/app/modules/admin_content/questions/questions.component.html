@@ -39,29 +39,29 @@
             <!-- .card-body -->
             <div class="card-body">
               <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
-                  <div class="col-sm-12 col-md-6">
-                  </div>
-                  <div class="col-sm-12 col-md-6">
-                    <div id="example1_filter" class="dataTables_filter">
-                      <form  method="get">
-                        <div class="form-inline" style="float: right">
-                          <input class="form-control form-control-sm"
-                                 style="width: 340px"
-                                 name="s" id="s"
-                                 type="search"
-                                 placeholder="Nhập tên hoặc email hoặc SĐT"
-                                 aria-controls="example1">
-                          <span>&nbsp;</span>
-                          <a class="btn btn-secondary btn-sm">
-                            <i class="fas fa-search"></i>
-                            Tìm kiếm
-                          </a>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+<!--                <div class="row">-->
+<!--                  <div class="col-sm-12 col-md-6">-->
+<!--                  </div>-->
+<!--                  <div class="col-sm-12 col-md-6">-->
+<!--                    <div id="example1_filter" class="dataTables_filter">-->
+<!--                      <form  method="get">-->
+<!--                        <div class="form-inline" style="float: right">-->
+<!--                          <input class="form-control form-control-sm"-->
+<!--                                 style="width: 340px"-->
+<!--                                 name="s" id="s"-->
+<!--                                 type="search"-->
+<!--                                 placeholder="Nhập tên hoặc email hoặc SĐT"-->
+<!--                                 aria-controls="example1">-->
+<!--                          <span>&nbsp;</span>-->
+<!--                          <a class="btn btn-secondary btn-sm">-->
+<!--                            <i class="fas fa-search"></i>-->
+<!--                            Tìm kiếm-->
+<!--                          </a>-->
+<!--                        </div>-->
+<!--                      </form>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
                 <br>
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
@@ -82,7 +82,9 @@
                         <td>{{ product.id }}</td>
                         <td>{{ product.code }}</td>
                         <td>{{ product.type }}</td>
-                        <td>{{ product.level }}</td>
+                        <td *ngIf="product.level === 'easy'" >Dễ</td>
+                        <td *ngIf="product.level === 'medium'" >Trung bình</td>
+                        <td *ngIf="product.level === 'hard'" >Khó</td>
                         <td>12-12-2020</td>
                         <td>12-12-2020</td>
                         <td class="project-actions text-right">

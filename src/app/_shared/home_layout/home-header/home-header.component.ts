@@ -55,11 +55,11 @@ export class HomeHeaderComponent implements OnInit {
     });
 
     this.role = localStorage.getItem("ROLE");
-    if (this.role == "ROLE_USER") {
+    if (this.role === "ROLE_USER") {
       this.router.navigate(['/home']);
     }
     this.currentUsername = localStorage.getItem("USERNAME");
-    console.log()
+    console.log();
   }
 
 
