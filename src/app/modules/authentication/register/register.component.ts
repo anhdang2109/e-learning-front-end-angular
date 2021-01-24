@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    // confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     title: new FormControl('', [Validators.required]),
     imageSource: new FormControl(''),
     gender: new FormControl('', Validators.required),
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
     const user: User = {
       username: this.registerForm.value.username,
       password: this.registerForm.value.password,
-      // confirmPassword: this.registerForm.value.confirmPassword,
+      confirmPassword: this.registerForm.value.confirmPassword,
       imageSource: this.registerForm.value.imageSource,
       title: this.registerForm.value.title,
       email: this.registerForm.value.email,

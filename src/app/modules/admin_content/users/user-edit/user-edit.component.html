@@ -46,21 +46,21 @@
                           </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label class="col-form-label">
-                              <strong>Ảnh đại diện:</strong>
-                            </label>
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input"
-                                     id="customFile" formControlName="imageSource">
-                              <label class="custom-file-label" for="customFile">Choose
-                                file</label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+<!--                      <div class="row">-->
+<!--                        <div class="col-md-6">-->
+<!--                          <div class="form-group">-->
+<!--                            <label class="col-form-label">-->
+<!--                              <strong>Ảnh đại diện:</strong>-->
+<!--                            </label>-->
+<!--                            <div class="custom-file">-->
+<!--                              <input type="file" class="custom-file-input"-->
+<!--                                     id="customFile" formControlName="imageSource">-->
+<!--                              <label class="custom-file-label" for="customFile">Choose-->
+<!--                                file</label>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
@@ -92,7 +92,7 @@
 <!--                        </div>-->
 
 <!--                         Button trigger modal-->
-                            <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#updateModal">
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#updateModal" style="width: 150px; height: 50px" >
                               Đổi mật khẩu
                             </button>
                             <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -110,10 +110,19 @@
                                         <label for="password">Mật khẩu</label>
                                         <input type="password" formControlName="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
                                       </div>
+                                      <div *ngIf="passwordUser.errors && passwordUser.touched" style="color: #e4606d">
+                                        <h3>Độ dài tối tiểu là 6 kí tự và không vượt quá 12 kí tự</h3>
+                                      </div>
                                       <div class="form-group">
                                         <label for="password1">Nhập lại mật khẩu</label>
                                         <input type="password" formControlName="confirmPassword" class="form-control" id="password1"
                                                placeholder="Nhập lại mật khẩu">
+                                      </div>
+                                      <div *ngIf="passwordUser.errors && passwordUser.touched" style="color: #e4606d">
+                                        <h3>Mật khẩu không trùng khớp</h3>
+                                      </div>
+                                      <div *ngIf="passwordUser.errors && passwordUser.touched" style="color: #e4606d">
+                                        <h3>Độ dài tối tiểu là 6 kí tự và không vượt quá 12 kí tự</h3>
                                       </div>
                                       <button type="submit" class="btn btn-primary">Xác nhận</button>
                                     </form>

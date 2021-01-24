@@ -23,8 +23,8 @@ export class ChangepasswordComponent implements OnInit {
   title = '';
   email = '';
   newPassword: FormGroup = new FormGroup({
-    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
   });
 
   constructor(private userService: UserService,

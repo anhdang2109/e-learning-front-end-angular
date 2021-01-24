@@ -19,7 +19,7 @@
           </div>
         </div>
         <div *ngIf="email.errors.email && email.touched" style="color: #e4606d">
-          <h3>Vui lòng nhập hợp lệ email (tên email.@gmail/email.com)</h3>
+          <h3>Vui lòng nhập hợp lệ email (tên không dấu .@gmail.com/email.com)</h3>
         </div>
         <div *ngIf="email.errors.required && email.touched" style="color: #e4606d">
           <h3>Vui lòng không để trống</h3>
@@ -48,7 +48,7 @@
           <h3>Vui lòng không để trống</h3>
         </div>
         <div *ngIf="phone.errors.pattern && phone.touched" style="color: #e4606d">
-          <h3>số điện thoại không hợp lệ</h3>
+          <h3>Số điện thoại không hợp lệ</h3>
         </div>
 
         <div class="input-group mb-3">
@@ -73,10 +73,10 @@
           <h3>Vui lòng không để trống</h3>
         </div>
         <div *ngIf="username.errors.minlength && username.touched" style="color: #e4606d">
-          <h3>Uesrname phải tối thiểu 6 kí tự</h3>
+          <h3>Tài khoản phải tối thiểu 4 kí tự</h3>
         </div>
         <div *ngIf="username.errors.maxlength && username.touched" style="color: #e4606d">
-          <h3>Username không đặt nhiều hơn 12 kí tự </h3>
+          <h3>Tài khoản không đặt nhiều hơn 8 kí tự </h3>
         </div>
         <div class="input-group mb-3">
           <label  class="col-sm-3 col-form-label">Mật khẩu</label>
@@ -94,7 +94,26 @@
           <h3>Mật khẩu tối thiểu 6 ký tự</h3>
         </div>
         <div *ngIf="password.errors.maxlength && password.touched" style="color: #e4606d">
-          <h3>Mật khẩu không quá 12 kí tự</h3>
+          <h3>Mật khẩu không quá 8 kí tự</h3>
+        </div>
+
+        <div class="input-group mb-3">
+          <label  class="col-sm-3 col-form-label">Nhập lại</label>
+          <input type="password" class="form-control"  formControlName="confirmPassword">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="password.errors.required && password.touched" style="color: #e4606d">
+          <h3>Mật khẩu không trùng khớp!</h3>
+        </div>
+        <div *ngIf="password.errors.minlength && password.touched" style="color: #e4606d">
+          <h3>Mật khẩu tối thiểu 6 ký tự</h3>
+        </div>
+        <div *ngIf="password.errors.maxlength && password.touched" style="color: #e4606d">
+          <h3>Mật khẩu không quá 8 kí tự</h3>
         </div>
 
         <div class="row" align="center">
