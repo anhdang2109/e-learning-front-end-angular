@@ -60,26 +60,26 @@
                         </div>
                       </div>
                     </div>
-<!--                    <div class="row">-->
-<!--                      <div class="col-md-12">-->
-<!--                        <div class="form-group"><label class="col-form-label"><strong>Danh mục: </strong></label>-->
-<!--                          <select-->
-<!--                          name="category"-->
-<!--                          class="form-control m-input">-->
-<!--                          <option value="english">Tiếng anh</option>-->
-<!--                          <option value="development">Lập trình</option>-->
-<!--                          <option value="science" selected="selected">Khoa học</option>-->
-<!--                        </select></div>-->
-<!--                      </div>-->
-<!--                    </div>-->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group"><label class="col-form-label"><strong>Danh mục: </strong></label>
+                          <select
+                            [(ngModel)]="assignedCategory.id"
+                            name="category"
+                            class="form-control m-input">
+                            <option *ngFor="let category of categories;" [value]="category.id" [selected]="category.id === 1">{{category.name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
                     <br>
                     <br>
                     <div class="row">
                       <div class="col-md-12">
                         <div class="input-group">
-                          <input [(ngModel)]="searchString" type="search" class="form-control form-control" placeholder="Nhập mã câu hỏi">
+                          <input [(ngModel)]="questionSearch.code" type="search" class="form-control form-control" placeholder="Nhập mã câu hỏi" (keydown.enter)="searchQuestion()">
                           <div class="input-group-append">
-                            <button type="submit" class="btn btn-default" (click)="addQuestion()">
+                            <button type="submit" class="btn btn-default" (click)="searchQuestion()">
                               <i class="fa fa-search"></i>
                               Tìm
                             </button>
@@ -89,6 +89,54 @@
                     </div>
                     <br>
                     <div class="row">
+                      <label>Danh sách câu hỏi được tìm thấy: </label>
+                      <table class="table table-hover text-nowrap table-responsive" style="width: 100%">
+                        <thead>
+                        <tr>
+                          <th style="width: 5%" class="text-center">#</th>
+                          <th style="width: 20%">Mã câu hỏi</th>
+                          <th style="width: 20%" class="text-center">Loại câu hỏi</th>
+                          <th style="width: 20%" class="text-center">Cấp độ câu hỏi</th>
+                          <th style="width: 20%" class="text-center">Ngày tạo</th>
+                          <th style="width: 15%" class="text-center">Ngày cập nhập</th>
+                          <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let question of searchPool">
+                          <td class="text-center">{{question.id}}</td>
+                          <td>{{question.code}}</td>
+                          <td class="text-center">{{question.type}}</td>
+                          <td class="text-center">{{question.level}}</td>
+                          <td class="text-center">12-12-2020</td>
+                          <td class="text-center">12-12-2020</td>
+                          <td>
+                            <button class="btn btn-warning btn-sm" (click)="addSearchQuestion(question.code)">
+                              <i class="fas fa-plus-circle"></i>
+                              Thêm
+                            </button>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <br>
+<!--                    <div class="row">-->
+<!--                      <div class="col-md-12">-->
+<!--                        <div class="input-group">-->
+<!--                          <input [(ngModel)]="searchString" type="search" class="form-control form-control" placeholder="Nhập mã câu hỏi">-->
+<!--                          <div class="input-group-append">-->
+<!--                            <button type="submit" class="btn btn-default" (click)="addQuestion()">-->
+<!--                              <i class="fa fa-search"></i>-->
+<!--                              Tìm-->
+<!--                            </button>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <br>-->
+                    <div class="row">
+                      <label>Danh sách câu hỏi được thêm: </label>
                       <table class="table table-hover text-nowrap table-responsive" style="width: 100%">
                         <thead>
                         <tr>

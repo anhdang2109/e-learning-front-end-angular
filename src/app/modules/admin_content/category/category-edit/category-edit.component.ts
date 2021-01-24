@@ -46,14 +46,16 @@ export class CategoryEditComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   update() {
-    if (!this.categoryForm.invalid){
-      this.category.name = this.categoryForm.value.name;
-      this.category.description = this.categoryForm.value.description;
-      this.categoryService.update(this.category).subscribe(() => {
+    console.log(this.categoryForm);
+    console.log(this.categoryForm.invalid);
+    // if (!this.categoryForm.invalid){
+    this.category.name = this.categoryForm.value.name;
+    this.category.description = this.categoryForm.value.description;
+    this.categoryService.update(this.category).subscribe(() => {
         this.router.navigate(['/admin/categories']);
         alert('cap nhat thanh cong');
       }, error => alert('loi'));
-    }
+    // }
   }
   get name(){
     return this.categoryForm.get('name');

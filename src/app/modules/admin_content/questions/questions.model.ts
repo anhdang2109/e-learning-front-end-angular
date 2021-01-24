@@ -1,4 +1,5 @@
 import {QuestionAnswer} from '../questions-answer/questions-answer.model';
+import {Category} from '../category/category.model';
 
 export class Question {
   id?: number;
@@ -8,5 +9,6 @@ export class Question {
   level?: string;
   content?: string;
   explanation?: string;
+  category?: Category;
   questionAnswers?: QuestionAnswer[];
 }
