@@ -24,7 +24,6 @@ export class AttemptsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.activatedRoute.params.subscribe(params => {
       this.idStudy = params.idStudy;
       this.studyService.findById(this.idStudy).toPromise().then(value => {
@@ -34,6 +33,7 @@ export class AttemptsComponent implements OnInit {
         this.attempts = this.study.attempts;
       });
     });
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   tryAttempt(): void {
