@@ -72,5 +72,13 @@ export class UserEditComponent implements OnInit {
     this.router.navigate(['/home/user']);
   }
 
-
+  get email() {
+    return this.FormUser.get('email');
+  }
+  get phone() {
+    return this.FormUser.get('phone');
+  }
+  get username() {
+    return this.FormUser.get('username');
+  }
 }

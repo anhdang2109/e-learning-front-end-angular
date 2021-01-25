@@ -131,8 +131,11 @@
         </div>
       </div>
       <div class="card-footer">
-        <button *ngIf="attempt.status == 'in progress'" (click)="onUpdate()" type="button" class="btn btn-primary" style="width: 205px">
+        <button *ngIf="attempt.status == 'in progress'" (click)="onUpdate()" type="button" class="btn btn-success" style="width: 205px">
           Nộp bài
+        </button>
+        <button [routerLink]="'/home/quizzes/'+ idStudy + '/attempts'" type="button" class="btn btn-dark" style="width: 100px; float: right">
+          Quay lại
         </button>
       </div>
       <div>

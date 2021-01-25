@@ -144,4 +144,7 @@ export class UserEditComponent implements OnInit {
       console.log(error);
     });
   }
+  get passwordUser() {
+    return this.newPassword2.get('password');
+  }
 }

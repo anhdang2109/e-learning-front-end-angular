@@ -14,6 +14,8 @@ import {AngularFireDatabase} from "@angular/fire/database";
   styleUrls: ['./changepassword.component.css']
 })
 export class ChangepasswordComponent implements OnInit {
+  fieldTextType: boolean;
+  repeatFieldTextType: boolean;
   currentUser: User;
   sub: Subscription;
   currentUserToken: UserToken;
@@ -23,8 +25,8 @@ export class ChangepasswordComponent implements OnInit {
   title = '';
   email = '';
   newPassword: FormGroup = new FormGroup({
-    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
   });
 
   constructor(private userService: UserService,
@@ -90,5 +92,11 @@ export class ChangepasswordComponent implements OnInit {
   get passwordUser() {
     return this.newPassword.get('password');
   }
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
 
+  toggleRepeatFieldTextType() {
+    this.repeatFieldTextType = !this.repeatFieldTextType;
+  }
 }

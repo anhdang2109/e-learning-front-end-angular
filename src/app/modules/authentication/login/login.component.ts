@@ -13,6 +13,8 @@ import {User} from "../../admin_content/users/user.model";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  fieldTextType: boolean;
+  repeatFieldTextType: boolean;
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
 
@@ -67,4 +69,13 @@ export class LoginComponent implements OnInit {
   get password(){
     return this.loginForm.get('password');
   }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+  toggleRepeatFieldTextType() {
+    this.repeatFieldTextType = !this.repeatFieldTextType;
+  }
+
 }

@@ -117,7 +117,6 @@ export class QuestionsCreateComponent implements OnInit {
     explanation: '',
     category: null
   };
-
   answerAMultipleChoice: QuestionAnswer = {code: 'a', content: '', isCorrect: false};
   answerBMultipleChoice: QuestionAnswer = {code: 'b', content: '', isCorrect: false};
   answerCMultipleChoice: QuestionAnswer = {code: 'c', content: '', isCorrect: false};
