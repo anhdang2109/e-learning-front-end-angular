@@ -46,21 +46,6 @@
                           </div>
                         </div>
                       </div>
-<!--                      <div class="row">-->
-<!--                        <div class="col-md-6">-->
-<!--                          <div class="form-group">-->
-<!--                            <label class="col-form-label">-->
-<!--                              <strong>Ảnh đại diện:</strong>-->
-<!--                            </label>-->
-<!--                            <div class="custom-file">-->
-<!--                              <input type="file" class="custom-file-input"-->
-<!--                                     id="customFile" (change)="saveImg($event)">-->
-<!--                              <label class="custom-file-label" for="customFile">Choose-->
-<!--                                file</label>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </div>-->
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
@@ -84,10 +69,43 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label for="password">Mật khẩu</label>
-                            <input type="password" class="form-control"
+                            <label >Mật khẩu</label>
+                            <input  [type]="fieldTextType ? 'text' : 'password'" class="form-control"
                                    id="password"
                                    placeholder="Điền mật khẩu" formControlName="password" name="password">
+                            <div class="input-group-append">
+                              <div class="input-group-text">
+                                <i
+                                  class="fa"
+                                  [ngClass]="{
+                        'fa-eye-slash': !fieldTextType,
+                        'fa-eye': fieldTextType
+                      }"
+                                  (click)="toggleFieldTextType()"
+                                ></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label >Nhập lại</label>
+                            <input [type]="fieldTextType ? 'text' : 'password'" class="form-control"
+
+                                   placeholder="nhập lại mật khẩu" formControlName="confirmPassword" name="password">
+
+                          </div>
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <i
+                                class="fa"
+                                [ngClass]="{
+                        'fa-eye-slash': !fieldTextType,
+                        'fa-eye': fieldTextType
+                      }"
+                                (click)="toggleFieldTextType()"
+                              ></i>
+                            </div>
                           </div>
                         </div>
                       </div>
