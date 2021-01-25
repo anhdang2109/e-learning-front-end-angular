@@ -11,22 +11,22 @@ export class AttemptService {
   }
 
   update(product: Attempt, id: number): Observable<any> {
-      return this.http.put(`http://localhost:8080/admin/attempts/${id}`, product);
+      return this.http.put(`https://quizzes2501.herokuapp.com/admin/attempts/${id}`, product);
   }
 
   save(product: Attempt): Observable<any> {
-    return this.http.post(`http://localhost:8080/admin/attempts/`, product);
+    return this.http.post(`https://quizzes2501.herokuapp.com/admin/attempts/`, product);
   }
 
   findById(id: number): Observable<any> {
-    return this.http.get(`http://localhost:8080/admin/attempts/${id}`);
+    return this.http.get(`https://quizzes2501.herokuapp.com/admin/attempts/${id}`);
   }
 
   deleteById(id: number): Observable<any> {
-    return this.http.delete(`http://localhost:8080/admin/attempts/${id}`);
+    return this.http.delete(`https://quizzes2501.herokuapp.com/admin/attempts/${id}`);
   }
 
   getAll(): Observable<any> {
-    return this.http.get('http://localhost:8080/admin/attempts');
+    return this.http.get('https://quizzes2501.herokuapp.com/admin/attempts');
   }
 }

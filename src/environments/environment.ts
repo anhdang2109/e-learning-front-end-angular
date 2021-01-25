@@ -14,7 +14,7 @@ export const environment = {
     appId: '1:944237622450:web:3a5316ec1584e4589485ab',
     measurementId: 'G-4DQHY2CY4G'
   },
-  API_ENDPOINT: 'http://localhost:8080',
+  API_ENDPOINT: 'https://quizzes2501.herokuapp.com/',
 
   API_FAKE: 'http://localhost:3000',
 

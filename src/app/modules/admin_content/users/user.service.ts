@@ -11,7 +11,7 @@ import {environment} from '../../../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  API = 'http://localhost:8080/users';
+  API = 'https://quizzes2501.herokuapp.com/users';
 
   constructor(private http: HttpClient) {
   }
@@ -37,7 +37,7 @@ export class UserService {
   }
 
   getUserByUsername(username: any): Observable<any> {
-    return this.http.get('http://localhost:8080/' + `${username}`);
+    return this.http.get('https://quizzes2501.herokuapp.com/' + `${username}`);
   }
 
   update(user: User): Observable<any> {
