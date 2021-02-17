@@ -37,11 +37,11 @@ export class AuthService {
   }
 
   register(user: User): Observable<User> {
-    return this.http.post<User>('https://quizzes2501.herokuapp.com' + '/register', user);
+    return this.http.post<User>('http://localhost:8080' + '/register', user);
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>('https://quizzes2501.herokuapp.com' + '/login', {username, password})
+    return this.http.post<any>('http://localhost:8080' + '/login', {username, password})
       .pipe(map(user => {
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUserSubject.next(user);

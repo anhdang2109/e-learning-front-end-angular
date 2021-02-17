@@ -8,7 +8,7 @@ import {environment} from "../../../../environments/environment";
   providedIn: 'root'
 })
 export class CategoryService {
-  API_URL = 'https://quizzes2501.herokuapp.com/admin/categories';
+  API_URL = 'http://localhost:8080/admin/categories';
 
   constructor(private http: HttpClient) { }
 

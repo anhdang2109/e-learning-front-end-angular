@@ -10,4 +10,6 @@ export interface Attempt {
   averageScore?: number;
   study?: Study;
   assumptions?: Assumption[];
+  createdAt?: any;
+  updatedAt?: any;
 }

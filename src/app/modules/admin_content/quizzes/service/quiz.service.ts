@@ -13,28 +13,28 @@ export class QuizService {
 
   update(product: Quiz, id: number): Observable<any> {
     if (!!product.id) {
-      return this.http.put(`https://quizzes2501.herokuapp.com/admin/quizzes/${id}`, product);
+      return this.http.put(`http://localhost:8080/admin/quizzes/${id}`, product);
     }
-    return this.http.post(`https://quizzes2501.herokuapp.com/admin/quizzes`, product);
+    return this.http.post(`http://localhost:8080/admin/quizzes`, product);
   }
 
   save(product: Quiz): Observable<any> {
-    return this.http.post(`https://quizzes2501.herokuapp.com/admin/quizzes`, product);
+    return this.http.post(`http://localhost:8080/admin/quizzes`, product);
   }
 
   findById(id: number): Observable<any> {
-    return this.http.get(`https://quizzes2501.herokuapp.com/admin/quizzes/${id}`);
+    return this.http.get(`http://localhost:8080/admin/quizzes/${id}`);
   }
 
   deleteById(id: number): Observable<any> {
-    return this.http.delete(`https://quizzes2501.herokuapp.com/admin/quizzes/${id}`);
+    return this.http.delete(`http://localhost:8080/admin/quizzes/${id}`);
   }
 
   getAll(): Observable<any> {
-    return this.http.get('https://quizzes2501.herokuapp.com/admin/quizzes');
+    return this.http.get('http://localhost:8080/admin/quizzes');
   }
 
   countQuizByCategory(categoryId: any): Observable<any> {
-    return this.http.get(`https://quizzes2501.herokuapp.com/admin/quizzes/count/${categoryId}`);
+    return this.http.get(`http://localhost:8080/admin/quizzes/count/${categoryId}`);
   }
 }

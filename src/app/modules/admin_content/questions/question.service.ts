@@ -12,29 +12,29 @@ export class QuestionService {
   }
 
   update(product: Question, id: number): Observable<any> {
-      return this.http.put(`https://quizzes2501.herokuapp.com/admin/question/${id}`, product);
+      return this.http.put(`http://localhost:8080/admin/question/${id}`, product);
   }
 
   save(product: Question): Observable<any> {
-    return this.http.post(`https://quizzes2501.herokuapp.com/admin/question`, product);
+    return this.http.post(`http://localhost:8080/admin/question`, product);
   }
 
   findById(id: number): Observable<any> {
-    return this.http.get(`https://quizzes2501.herokuapp.com/admin/question/${id}`);
+    return this.http.get(`http://localhost:8080/admin/question/${id}`);
   }
   searchQuestion(search: QuestionSearch): Observable<any> {
-    return this.http.post(`https://quizzes2501.herokuapp.com/admin/question/searchByCode`, search);
+    return this.http.post(`http://localhost:8080/admin/question/searchByCode`, search);
   }
 
   filterQuestion(search: QuestionSearch): Observable<any> {
-    return this.http.post(`https://quizzes2501.herokuapp.com/admin/question/filter`, search);
+    return this.http.post(`http://localhost:8080/admin/question/filter`, search);
   }
 
   deleteById(id: number): Observable<any> {
-    return this.http.delete(`https://quizzes2501.herokuapp.com/admin/question/${id}`);
+    return this.http.delete(`http://localhost:8080/admin/question/${id}`);
   }
 
   getAll(): Observable<any> {
-    return this.http.get('https://quizzes2501.herokuapp.com/admin/question');
+    return this.http.get('http://localhost:8080/admin/question');
   }
 }

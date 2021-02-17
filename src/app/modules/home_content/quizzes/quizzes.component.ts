@@ -45,6 +45,7 @@ export class QuizzesComponent implements OnInit {
 
     this.studyService.getAll().subscribe( data => {
       this.studies = data;
+      // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < this.studies.length; i++) {
         if ( this.studies[i].userID === this.userId){
           this.studyPool.push(this.studies[i]);
