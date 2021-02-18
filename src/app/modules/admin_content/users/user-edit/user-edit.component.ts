@@ -19,6 +19,8 @@ export class UserEditComponent implements OnInit {
   user: UserToken;
   // @ts-ignore
   userForm: FormGroup;
+  role: string;
+  currentUsername: string;
 
   currentUser: User;
   sub: Subscription;
@@ -76,6 +78,12 @@ export class UserEditComponent implements OnInit {
       });
     });
     this.getUserProfile();
+    this.role = localStorage.getItem("ROLE");
+    if (this.role === "ROLE_USER" || this.role == null) {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
 
   getUserProfile() {

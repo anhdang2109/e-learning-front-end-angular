@@ -39,7 +39,7 @@ export class UsersDeletedComponent implements OnInit {
       }
     );
     this.role = localStorage.getItem("ROLE");
-    if (this.role == "ROLE_USER") {
+    if (this.role === "ROLE_USER" || this.role == null) {
       alert("Bạn không có quyền!");
       this.router.navigate(['/home']);
     }

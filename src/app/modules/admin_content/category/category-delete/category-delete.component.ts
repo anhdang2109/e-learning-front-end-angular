@@ -11,6 +11,8 @@ import {Category} from "../category.model";
 })
 export class CategoryDeleteComponent implements OnInit {
   category: Category;
+  role: string;
+  currentUsername: string;
   constructor(private router: Router,
               private categoryService: CategoryService,
               private activatedRoute: ActivatedRoute,
@@ -35,6 +37,12 @@ export class CategoryDeleteComponent implements OnInit {
       name: '',
       description: ''
     };
+    this.role = localStorage.getItem("ROLE");
+    if (this.role === "ROLE_USER" || this.role == null) {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
   // tslint:disable-next-line:typedef
   delete() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../users/user.model";
 import {UserService} from "../users/user.service";
 import {Router} from "@angular/router";
@@ -10,8 +10,9 @@ import {Router} from "@angular/router";
 })
 export class QuestionsAnswerComponent implements OnInit {
 
-  role: string;
+
   users: User[];
+  role: string;
   currentUsername: string;
 
   constructor(private userService: UserService,
@@ -21,7 +22,7 @@ export class QuestionsAnswerComponent implements OnInit {
 
   ngOnInit() {
     this.role = localStorage.getItem("ROLE");
-    if (this.role == "ROLE_USER") {
+    if (this.role === "ROLE_USER" || this.role == null) {
       alert("Bạn không có quyền!");
       this.router.navigate(['/home']);
     }

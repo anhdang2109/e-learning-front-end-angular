@@ -18,6 +18,8 @@ export class UserCreateComponent implements OnInit {
   repeatFieldTextType: boolean;
   successMessage = '';
   failMessage = '';
+  role: string;
+  currentUsername: string;
   registerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
@@ -33,6 +35,12 @@ export class UserCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.role = localStorage.getItem("ROLE");
+    if (this.role === "ROLE_USER" || this.role == null) {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
 
   register() {

@@ -13,6 +13,8 @@ export class CategoryEditComponent implements OnInit {
   errorMessage = '';
 
   category: Category;
+  role: string;
+  currentUsername: string;
 
   constructor(
     private router: Router,
@@ -43,6 +45,12 @@ export class CategoryEditComponent implements OnInit {
         });
       });
     });
+    this.role = localStorage.getItem("ROLE");
+    if (this.role === "ROLE_USER" || this.role == null) {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
   // tslint:disable-next-line:typedef
   update() {

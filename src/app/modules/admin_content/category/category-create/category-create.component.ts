@@ -12,6 +12,8 @@ import {CategoryService} from "../category.service";
 export class CategoryCreateComponent implements OnInit {
   errorMessage = '';
   newCategoryForm: FormGroup;
+  role: string;
+  currentUsername: string;
   constructor(
     private router: Router,
     private categoryService: CategoryService,
@@ -28,6 +30,12 @@ export class CategoryCreateComponent implements OnInit {
       // name: [null],
       // description: [null],
     });
+    this.role = localStorage.getItem("ROLE");
+    if (this.role === "ROLE_USER" || this.role == null) {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
   creatNewCategory() {
     const newU: Category = this.newCategoryForm.value;

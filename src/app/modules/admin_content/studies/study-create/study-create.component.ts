@@ -33,6 +33,8 @@ export class StudyCreateComponent implements OnInit {
   userExist: boolean = false;
   users: User[];
   quizzes: Quiz[];
+  role: string;
+  currentUsername: string;
   constructor(private studyService: StudyService,
               private quizService: QuizService,
               private userService: UserService,
@@ -51,6 +53,12 @@ export class StudyCreateComponent implements OnInit {
       console.log(value);
       console.log(this.quizzes);
     });
+    this.role = localStorage.getItem("ROLE");
+    if (this.role === "ROLE_USER" || this.role == null) {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
   findUser(){
     if (this.checkUserExisted() != null){

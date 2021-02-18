@@ -18,6 +18,8 @@ import {QuestionSearch} from '../../questions/questionSearch.model';
 })
 export class QuizzesCreateComponent implements OnInit {
   // errorMessage = '';
+  role: string;
+  currentUsername: string;
   quiz: Quiz = {
     quizname: '',
     description: '',
@@ -56,6 +58,12 @@ export class QuizzesCreateComponent implements OnInit {
       console.log(value);
       console.log(this.categories);
     });
+    this.role = localStorage.getItem("ROLE");
+    if (this.role === "ROLE_USER" || this.role == null) {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
   cutString(): string[] {
     const str = this.searchString.split(',');

@@ -11,6 +11,8 @@ import {Question} from '../questions.model';
 export class QuestionsViewComponent implements OnInit {
   idQuestion: number;
   question: Question;
+  role: string;
+  currentUsername: string;
   constructor(
     private questionService: QuestionService,
     private activatedRoute: ActivatedRoute,
@@ -26,6 +28,12 @@ export class QuestionsViewComponent implements OnInit {
         this.question = value;
       });
     });
+    this.role = localStorage.getItem("ROLE");
+    if (this.role === "ROLE_USER" || this.role == null) {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
 
 }

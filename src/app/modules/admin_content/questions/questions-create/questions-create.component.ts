@@ -55,6 +55,8 @@ export class DialogQuestionInputComponent {
   styleUrls: ['./questions-create.component.css']
 })
 export class QuestionsCreateComponent implements OnInit {
+  role: string;
+  currentUsername: string;
   assignedSingleChoiceCategory = {
     id: 1,
     name: ''
@@ -171,6 +173,12 @@ export class QuestionsCreateComponent implements OnInit {
       console.log(value);
       console.log(this.categories);
     });
+    this.role = localStorage.getItem("ROLE");
+    if (this.role === "ROLE_USER" || this.role == null) {
+      alert("Bạn không có quyền!");
+      this.router.navigate(['/home']);
+    }
+    this.currentUsername = localStorage.getItem("USERNAME");
   }
 
   // tslint:disable-next-line:typedef
